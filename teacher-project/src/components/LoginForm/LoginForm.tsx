@@ -1,25 +1,29 @@
 import { SubmitHandler, useForm } from "react-hook-form";
+import { ILoginFields } from "../../types/authorization.interface";
+import styles from "./LoginForm.module.scss";
+import { Link } from "react-router-dom";
+import { ROUTES } from "../../constants/routes";
 
 export function LoginForm(): JSX.Element {
     const {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm();
+    } = useForm<ILoginFields>();
 
     const onSubmit: SubmitHandler<ILoginFields> = (data) => {
         // handleAuth(data as ICredentials);
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="login-form">
-            <div className="login-form__text">
-                <h1>Log In</h1>
+        <form onSubmit={handleSubmit(onSubmit)} className={styles.loginForm}>
+            <div className={styles.header}>
+                <h1>Увійти як студент</h1>
             </div>
-            <div className="login-form__email">
-                <label>e-mail</label>
+            <div className={styles.email}>
+                <label>Електрона пошта</label>
                 <input
-                    placeholder="enter your e-mail here"
+                    placeholder="Введіть електрону пошту"
                     {...register("email", {
                         required: "Email is required field",
                         maxLength: {
@@ -35,10 +39,10 @@ export function LoginForm(): JSX.Element {
                 />
                 {/* {errors.email && <ErrorForm message={errors.email.message} />} */}
             </div>
-            <div className="login-form__password">
-                <label>password</label>
+            <div className={styles.password}>
+                <label>Пароль</label>
                 <input
-                    placeholder="enter your password here"
+                    placeholder="Введіть пароль"
                     {...register("password", {
                         required: "Password is required field",
                         maxLength: {
@@ -57,8 +61,14 @@ export function LoginForm(): JSX.Element {
                     <ErrorForm message={errors.password.message} />
                 )} */}
             </div>
-            <div className="login-form__btn">
-                <button>Submit</button>
+            <div className={styles.button}>
+                <button>Увійти</button>
+            </div>
+            <div className="">
+                <p></p>
+                <Link to={ROUTES.REGISTRATION}>зареєструватися</Link>
+                <p>або</p>
+                <Link>увійти як викладач</Link>
             </div>
         </form>
     );
