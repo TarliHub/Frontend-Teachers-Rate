@@ -6,7 +6,13 @@ const config: Config = {
         "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     ],
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                formBgColor: "rgba(217, 217, 217, 0.58)",
+                headerFormBgColor: "rgba(217, 217, 217)",
+                buttonColor: "#0582CA",
+            },
+        },
     },
     plugins: [],
 };
