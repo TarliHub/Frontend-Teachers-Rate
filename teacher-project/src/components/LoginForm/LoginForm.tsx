@@ -61,7 +61,7 @@ export function LoginForm(): JSX.Element {
                     type="text"
                 />
                 {errors.password && (
-                    <InputError errorMessage="f;ldskf;lkds;lfk;kfds;kf;kds;fskf;d;lfks;fs;ffdfs;fdmdsf;dsmf;smd;lf" />
+                    <InputError errorMessage={errors.password.message} />
                 )}
             </div>
             <div className={styles.bottomBlock}>
