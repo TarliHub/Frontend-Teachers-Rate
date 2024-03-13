@@ -3,6 +3,7 @@ import { ILoginFields } from "../../types/authorization.interface";
 import styles from "./LoginForm.module.scss";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../constants/routes";
+import { InputError } from "../InputError/InputError";
 
 export function LoginForm(): JSX.Element {
     const {
@@ -25,41 +26,43 @@ export function LoginForm(): JSX.Element {
                 <input
                     placeholder="Введіть електрону пошту"
                     {...register("email", {
-                        required: "Email is required field",
+                        required: "*email is required field",
                         maxLength: {
                             value: 30,
-                            message: "Email cannot exceed 30 characters",
+                            message: "*email cannot exceed 30 characters",
                         },
                         pattern: {
                             value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
-                            message: "Please enter vaild email",
+                            message: "*please enter vaild email",
                         },
                     })}
                     type="text"
                 />
-                {/* {errors.email && <ErrorForm message={errors.email.message} />} */}
+                {errors.email && (
+                    <InputError errorMessage={errors.email.message} />
+                )}
             </div>
             <div className={styles.password}>
                 <label>Пароль</label>
                 <input
                     placeholder="Введіть пароль"
                     {...register("password", {
-                        required: "Password is required field",
+                        required: "*password is required field",
                         maxLength: {
                             value: 30,
-                            message: "Password cannot exceed 30 characters",
+                            message: "*password cannot exceed 30 characters",
                         },
                         minLength: {
                             value: 5,
                             message:
-                                "Password must be at least 5 characters long",
+                                "*password must be at least 5 characters long",
                         },
                     })}
                     type="text"
                 />
-                {/* {errors.password && (
-                    <ErrorForm message={errors.password.message} />
-                )} */}
+                {errors.password && (
+                    <InputError errorMessage="f;ldskf;lkds;lfk;kfds;kf;kds;fskf;d;lfks;fs;ffdfs;fdmdsf;dsmf;smd;lf" />
+                )}
             </div>
             <div className={styles.bottomBlock}>
                 <div className={styles.button}>
@@ -71,7 +74,7 @@ export function LoginForm(): JSX.Element {
                 <div className={styles.bottomNav}>
                     <Link to={ROUTES.REGISTRATION}>зареєструватися</Link>
                     <p>або</p>
-                    <Link>увійти як викладач</Link>
+                    <Link to={ROUTES.TEACHER_LOGIN}>увійти як викладач</Link>
                 </div>
             </div>
         </form>
