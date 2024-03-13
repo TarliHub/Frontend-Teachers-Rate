@@ -30,8 +30,13 @@
         rounded text-center py-[6px] hover:bg-[#015281] transition-all duration-500;
         }
 
+        .askText {
+            @apply text-xl;
+        }
+
         .bottomNav {
             @apply w-full flex justify-center items-end gap-2;
+
             p {
                 @apply text-xl;
             }

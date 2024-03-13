@@ -65,7 +65,9 @@ export function LoginForm(): JSX.Element {
                 <div className={styles.button}>
                     <button>Увійти</button>
                 </div>
-                <p>у вас ще немає облікового запису?</p>
+                <p className={styles.askText}>
+                    у вас ще немає облікового запису?
+                </p>
                 <div className={styles.bottomNav}>
                     <Link to={ROUTES.REGISTRATION}>зареєструватися</Link>
                     <p>або</p>
