@@ -61,14 +61,16 @@ export function LoginForm(): JSX.Element {
                     <ErrorForm message={errors.password.message} />
                 )} */}
             </div>
-            <div className={styles.button}>
-                <button>Увійти</button>
-            </div>
-            <div className="">
-                <p></p>
-                <Link to={ROUTES.REGISTRATION}>зареєструватися</Link>
-                <p>або</p>
-                <Link>увійти як викладач</Link>
+            <div className={styles.bottomBlock}>
+                <div className={styles.button}>
+                    <button>Увійти</button>
+                </div>
+                <p>у вас ще немає облікового запису?</p>
+                <div className={styles.bottomNav}>
+                    <Link to={ROUTES.REGISTRATION}>зареєструватися</Link>
+                    <p>або</p>
+                    <Link>увійти як викладач</Link>
+                </div>
             </div>
         </form>
     );
