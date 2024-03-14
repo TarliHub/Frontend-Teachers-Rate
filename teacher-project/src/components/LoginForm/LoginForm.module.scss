@@ -26,7 +26,7 @@
         @apply w-full flex flex-col items-center h-64 justify-end;
 
         .button {
-            @apply w-32 bg-buttonColor cursor-pointer text-white font-medium text-2xl 
+            @apply p-7 bg-buttonColor cursor-pointer text-white font-medium text-2xl 
         rounded text-center py-[6px] hover:bg-[#015281] transition-all duration-500;
         }
 
