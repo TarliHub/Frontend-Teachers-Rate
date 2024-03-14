@@ -1,0 +1,49 @@
+@import "../../assets/styles/vars.scss";
+
+.loginTeacherForm {
+    @apply flex flex-col items-center w-[500px] bg-formBgColor rounded h-[570px] overflow-hidden text-[#03071E] font-medium;
+    font-family: $main-font-family;
+
+    .header {
+        @apply text-center w-full text-4xl p-3 bg-headerFormBgColor;
+    }
+
+    .email,
+    .password {
+        @apply text-2xl w-11/12 pb-4 pt-4;
+
+        input {
+            @apply bg-[#f8f8f8] border-2 border-[#CCCCCC] rounded-sm w-full h-11 pl-2 outline-none;
+
+            &::placeholder {
+                @apply text-xl text-[#03071e88];
+                font-family: $main-font-family;
+            }
+        }
+    }
+
+    .bottomBlock {
+        @apply w-full flex flex-col items-center h-64 justify-end;
+
+        .button {
+            @apply p-7 bg-buttonColor cursor-pointer text-white font-medium text-2xl 
+        rounded text-center py-[6px] hover:bg-[#015281] transition-all duration-500;
+        }
+
+        .askText {
+            @apply text-xl;
+        }
+
+        .bottomNav {
+            @apply w-full flex justify-center items-end gap-2;
+
+            p {
+                @apply text-xl;
+            }
+
+            a {
+                @apply text-buttonColor text-2xl;
+            }
+        }
+    }
+}
