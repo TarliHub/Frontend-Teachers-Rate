@@ -19,7 +19,7 @@ export function LoginForm(): JSX.Element {
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={styles.loginForm}>
             <div className={styles.header}>
-                <h1>Увійти як студент</h1>
+                <h1>Увійти</h1>
             </div>
             <div className={styles.email}>
                 <label>Електрона пошта</label>
@@ -73,8 +73,6 @@ export function LoginForm(): JSX.Element {
                 </p>
                 <div className={styles.bottomNav}>
                     <Link to={ROUTES.REGISTRATION}>зареєструватися</Link>
-                    <p>або</p>
-                    <Link to={ROUTES.TEACHER_LOGIN}>увійти як викладач</Link>
                 </div>
             </div>
         </form>
