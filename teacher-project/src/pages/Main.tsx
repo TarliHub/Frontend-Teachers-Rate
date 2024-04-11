@@ -1,12 +1,9 @@
-import { useUsersList } from "../hooks/useUsersList";
+import { AdminMain } from "../components/MainComponents/AdminMain/AdminMain";
 
 export function Main(): JSX.Element {
-    const UsersList = useUsersList();
-    console.log(UsersList.data);
-
     return (
         <div>
-
+            <AdminMain />
         </div>
     );
 }
