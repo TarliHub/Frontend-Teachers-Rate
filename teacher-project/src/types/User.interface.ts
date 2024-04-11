@@ -1,6 +1,7 @@
 export interface IUsersList {
     pageIndex: number;
     pageSize: number;
+    pagesCount: number;
     items: IUser[];
 }
 
