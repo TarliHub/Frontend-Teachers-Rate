@@ -1,0 +1,11 @@
+.taskContainer {
+    @apply flex flex-col;
+}
+
+.taskElement {
+    @apply flex flex-row text-sm w-full p-2 border-black border-2 rounded-md md:text-base lg:text-lg ;
+
+    p{
+        @apply p-2;
+    }
+}
