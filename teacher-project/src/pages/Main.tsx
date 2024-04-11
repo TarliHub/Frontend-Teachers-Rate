@@ -1,14 +1,12 @@
-import UserService from "../services/User.service";
+import { useUsersList } from "../hooks/useUsersList";
 
 export function Main(): JSX.Element {
-    const fetchData = async () => {
-        const data = await UserService.getUsersList();
-        console.log(data);
-    };
+    const UsersList = useUsersList();
+    console.log(UsersList.data);
 
     return (
         <div>
-            <button onClick={fetchData}>Go</button>
+
         </div>
     );
 }
