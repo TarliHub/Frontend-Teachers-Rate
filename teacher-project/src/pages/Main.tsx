@@ -1,9 +1,14 @@
-import { UserMain } from "../components/MainComponents/UserMain/UserMain";
+import UserService from "../services/User.service";
 
 export function Main(): JSX.Element {
+    const fetchData = async () => {
+        const data = await UserService.getUsersList();
+        console.log(data);
+    };
+
     return (
         <div>
-            <UserMain />
+            <button onClick={fetchData}>Go</button>
         </div>
     );
 }
