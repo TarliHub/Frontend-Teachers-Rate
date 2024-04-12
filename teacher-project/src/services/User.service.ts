@@ -31,6 +31,19 @@ class UserService {
                 throw error;
             });
     }
+
+    static deleteUser(userId: number): Promise<T> {
+        return axios
+            .delete(`${BASE_API_URL}/User/${userId}`)
+            .then((response: AxiosResponse<T, D>) => {
+                console.log(response);
+                return response;
+            })
+            .catch((error) => {
+                console.error(error);
+                throw error;
+            });
+    }
 }
 
 export default UserService;
