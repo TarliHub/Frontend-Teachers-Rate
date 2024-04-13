@@ -46,7 +46,9 @@ export function UpdateUser({}: IUpdateUserProps) {
                     type="text"
                 />
                 {errors.name && (
-                    <InputError errorMessage={errors.name.message} />
+                    <div className={styles.errorText}>
+                        {errors.name.message}
+                    </div>
                 )}
             </div>
             <div className={styles.lastName}>
@@ -70,7 +72,9 @@ export function UpdateUser({}: IUpdateUserProps) {
                     defaultValue={"Гнідий"}
                 />
                 {errors.lastName && (
-                    <InputError errorMessage={errors.lastName.message} />
+                    <div className={styles.errorText}>
+                        {errors.lastName.message}
+                    </div>
                 )}
             </div>
             <div className={styles.email}>
@@ -92,7 +96,9 @@ export function UpdateUser({}: IUpdateUserProps) {
                     defaultValue={"admin@example.com"}
                 />
                 {errors.email && (
-                    <InputError errorMessage={errors.email.message} />
+                    <div className={styles.errorText}>
+                        {errors.email.message}
+                    </div>
                 )}
             </div>
             <div className={styles.password}>
@@ -115,7 +121,9 @@ export function UpdateUser({}: IUpdateUserProps) {
                     defaultValue={"123456"}
                 />
                 {errors.password && (
-                    <InputError errorMessage={errors.password.message} />
+                    <div className={styles.errorText}>
+                        {errors.password.message}
+                    </div>
                 )}
             </div>
             <div className={styles.role}>
@@ -129,10 +137,8 @@ export function UpdateUser({}: IUpdateUserProps) {
                     <option value="admin">Адміністратор</option>
                 </select>
             </div>
-            <div className={styles.bottomBlock}>
-                <div className={styles.button}>
-                    <button>Обновити дані</button>
-                </div>
+            <div className={styles.button}>
+                <button>Обновити дані</button>
             </div>
         </form>
     );
