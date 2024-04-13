@@ -1,8 +1,20 @@
 import axios, { AxiosResponse } from "axios";
 import { BASE_API_URL } from "../constants/api";
-import { IUser, IUsersList } from "../types/User.interface";
+import { IUser, IUserUpdate, IUsersList } from "../types/User.interface";
 
 class UserService {
+    static getUser(userId: number): Promise<IUser> {
+        return axios
+            .get(`${BASE_API_URL}/User/${userId}`)
+            .then((response: AxiosResponse<IUser>) => {
+                return response.data;
+            })
+            .catch((error) => {
+                console.error(error);
+                throw error;
+            });
+    }
+
     static getUsersList(pageParam?: number): Promise<IUsersList> {
         return axios
             .get(`${BASE_API_URL}/User`, {
@@ -23,6 +35,18 @@ class UserService {
     static createUser(userData: IUser): Promise<IUser> {
         return axios
             .post(`${BASE_API_URL}/User`, userData)
+            .then((response: AxiosResponse<IUser>) => {
+                return response.data;
+            })
+            .catch((error) => {
+                console.error(error);
+                throw error;
+            });
+    }
+
+    static updateUser(userData: IUserUpdate): Promise<IUser> {
+        return axios
+            .put(`${BASE_API_URL}/User/${userData.id}`, userData)
             .then((response: AxiosResponse<IUser>) => {
                 return response.data;
             })
