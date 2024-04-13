@@ -3,7 +3,6 @@ import { ILoginFields } from "../../types/authorization.interface";
 import styles from "./LoginForm.module.scss";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../constants/routes";
-import { InputError } from "../InputError/InputError";
 
 export function LoginForm(): JSX.Element {
     const {
@@ -39,7 +38,9 @@ export function LoginForm(): JSX.Element {
                     type="text"
                 />
                 {errors.email && (
-                    <InputError errorMessage={errors.email.message} />
+                    <div className={styles.errorText}>
+                        {errors.email.message}
+                    </div>
                 )}
             </div>
             <div className={styles.password}>
@@ -61,7 +62,9 @@ export function LoginForm(): JSX.Element {
                     type="text"
                 />
                 {errors.password && (
-                    <InputError errorMessage={errors.password.message} />
+                    <div className={styles.errorText}>
+                        {errors.password.message}
+                    </div>
                 )}
             </div>
             <div className={styles.bottomBlock}>

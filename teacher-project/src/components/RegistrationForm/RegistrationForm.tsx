@@ -1,7 +1,6 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IRegisterFields } from "../../types/authorization.interface";
 import styles from "./RegistrationForm.module.scss";
-import { InputError } from "../InputError/InputError";
 import { ROUTES } from "../../constants/routes";
 import { Link } from "react-router-dom";
 
@@ -45,7 +44,9 @@ export function RegistrationForm(): JSX.Element {
                     type="text"
                 />
                 {errors.email && (
-                    <InputError errorMessage={errors.email.message} />
+                    <div className={styles.errorText}>
+                        {errors.email.message}
+                    </div>
                 )}
             </div>
             <div className={styles.password}>
@@ -63,7 +64,9 @@ export function RegistrationForm(): JSX.Element {
                     type="password"
                 />
                 {errors.password && (
-                    <InputError errorMessage={errors.password.message} />
+                    <div className={styles.errorText}>
+                        {errors.password.message}
+                    </div>
                 )}
             </div>
             <div className={styles.password}>
@@ -77,7 +80,9 @@ export function RegistrationForm(): JSX.Element {
                     type="password"
                 />
                 {errors.confirmPassword && (
-                    <InputError errorMessage={errors.confirmPassword.message} />
+                    <div className={styles.errorText}>
+                        {errors.confirmPassword.message}
+                    </div>
                 )}
             </div>
             <div className={styles.bottomBlock}>

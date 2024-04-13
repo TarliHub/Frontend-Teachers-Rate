@@ -47,3 +47,7 @@
         }
     }
 }
+
+.errorText {
+    @apply text-xl font-medium text-[#FF0000];
+}
