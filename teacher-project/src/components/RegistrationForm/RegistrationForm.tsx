@@ -1,5 +1,5 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import { IRegisterFields } from "../../types/authorization.interface";
+import { IRegisterFields } from "../../types/Authorization.interface.ts";
 import styles from "./RegistrationForm.module.scss";
 import { ROUTES } from "../../constants/routes";
 import { Link } from "react-router-dom";

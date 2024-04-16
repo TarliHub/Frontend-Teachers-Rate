@@ -5,16 +5,13 @@ export const useUsersList = () => {
     return useInfiniteQuery({
         queryKey: ["users-list"],
         queryFn: async ({ pageParam }: { pageParam: number }) => {
-            const result = await UserService.getUsersList(pageParam);
-            return result;
+            return await UserService.getUsersList(pageParam);
         },
         initialPageParam: 0,
         getNextPageParam: (lastPage, allPages) => {
-            const nextPage =
-                allPages.length == lastPage.pagesCount
-                    ? undefined
-                    : +(lastPage.pageIndex + 1);
-            return nextPage;
+            return allPages.length == lastPage.pagesCount
+                ? undefined
+                : +(lastPage.pageIndex + 1);
         },
         getPreviousPageParam: () => 0,
     });

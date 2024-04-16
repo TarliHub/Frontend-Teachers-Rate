@@ -1,5 +1,5 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import { ILoginFields } from "../../types/authorization.interface";
+import { ILoginFields } from "../../types/Authorization.interface.ts";
 import styles from "./LoginForm.module.scss";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../../constants/routes";
