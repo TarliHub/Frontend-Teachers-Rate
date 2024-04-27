@@ -1,0 +1,7 @@
+.logoBlock {
+    @apply text-[15px] font-bold text-[#FFC234] flex items-center min-w-[235px] lg:m-4;
+}
+
+.logoText {
+    @apply flex flex-col h-[50px]
+}

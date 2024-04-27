@@ -1,24 +1,28 @@
-import { NavigationBarAdmin } from "./NavigationBarAdmin";
-import { NavigationBarCC } from "./NavigationBarCC";
-import { NavigationBarUser } from "./NavigationBarUser";
+import {
+    adminNavigation,
+    cCNavigation,
+    userNavigation,
+} from "../../constants/navigationData";
+import { INavigation } from "../../types/Navigation";
+import { NavigationBarBlock } from "./NavigationBarBlock";
 
 interface INavigationBarProps {
     role: "CentralComision" | "Admin" | "User";
 }
 
-interface IRoleComponents {
-    CentralComision: () => JSX.Element;
-    Admin: () => JSX.Element;
-    User: () => JSX.Element;
+interface IRoleNavigation {
+    CentralComision: INavigation[];
+    Admin: INavigation[];
+    User: INavigation[];
 }
 
-const roleComponents: IRoleComponents = {
-    CentralComision: NavigationBarCC,
-    Admin: NavigationBarAdmin,
-    User: NavigationBarUser,
+const roleProps: IRoleNavigation = {
+    CentralComision: cCNavigation,
+    Admin: adminNavigation,
+    User: userNavigation,
 };
 
 export function NavigationBar({ role }: INavigationBarProps): JSX.Element {
-    const Component = roleComponents[role as keyof IRoleComponents];
-    return <Component />;
+    const navigationData = roleProps[role as keyof IRoleNavigation];
+    return <NavigationBarBlock navigationData={navigationData} />;
 }
