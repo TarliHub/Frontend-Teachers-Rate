@@ -1,13 +1,24 @@
-import styles from "./NavigationBar.module.scss";
-import { ROUTES } from "../../constants/routes";
-import { CustomNavLink } from "./CustomNavLink/CustomNavLink";
+import { NavigationBarAdmin } from "./NavigationBarAdmin";
+import { NavigationBarCC } from "./NavigationBarCC";
+import { NavigationBarUser } from "./NavigationBarUser";
 
-export function NavigationBar(): JSX.Element {
-    return (
-        <div className={styles.navigationBar}>
-            <p>Тернопільський коледж</p>
-            <CustomNavLink url="/" name="Головна" />
-            <CustomNavLink url={ROUTES.TASKS} name="Завдання" />
-        </div>
-    );
+interface INavigationBarProps {
+    role: "CentralComision" | "Admin" | "User";
+}
+
+interface IRoleComponents {
+    CentralComision: () => JSX.Element;
+    Admin: () => JSX.Element;
+    User: () => JSX.Element;
+}
+
+const roleComponents: IRoleComponents = {
+    CentralComision: NavigationBarCC,
+    Admin: NavigationBarAdmin,
+    User: NavigationBarUser,
+};
+
+export function NavigationBar({ role }: INavigationBarProps): JSX.Element {
+    const Component = roleComponents[role as keyof IRoleComponents];
+    return <Component />;
 }
