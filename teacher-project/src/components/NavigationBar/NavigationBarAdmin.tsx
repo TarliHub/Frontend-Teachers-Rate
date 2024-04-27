@@ -5,7 +5,6 @@ import { CustomNavLink } from "./CustomNavLink/CustomNavLink";
 export function NavigationBarAdmin(): JSX.Element {
     return (
         <div className={styles.navigationBar}>
-            <p>Тернопільський коледж</p>
             <CustomNavLink url="/" name="Головна" />
             <CustomNavLink
                 url={ROUTES.MANAGE_TEACHERS}

@@ -4,7 +4,7 @@ import { NavigationBar } from "../components/NavigationBar/NavigationBar";
 export function Main(): JSX.Element {
     return (
         <div>
-            <NavigationBar />
+            <NavigationBar role="User"/>
             <AdminMain />
         </div>
     );
