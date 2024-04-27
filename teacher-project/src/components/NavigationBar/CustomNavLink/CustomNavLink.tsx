@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import styles from "../NavigationBar.module.scss";
 import { NavLink } from "react-router-dom";
 
@@ -7,10 +8,12 @@ interface ICustomNavLinkProps {
 }
 
 export function CustomNavLink({ url, name }: ICustomNavLinkProps): JSX.Element {
+    const activeClassName = useMemo(() => styles.active, []);
+
     return (
         <NavLink
             to={url}
-            className={({ isActive }) => (isActive ? styles.active : "")}
+            className={({ isActive }) => (isActive ? activeClassName : "")}
         >
             {name}
         </NavLink>
