@@ -1,15 +1,35 @@
 .navigationBar {
-    @apply flex flex-row h-20 w-full bg-[#0582CA];
+    @apply flex flex-row h-20 w-full bg-[#0582CA] items-center justify-between lg:justify-start;
+
+    .mobileMenuButton {
+        @apply lg:hidden p-2;
+    }
+}
+
+.mobileMenu {
+    @apply absolute bg-[#00000067] h-[100svh] w-[100svw] lg:hidden flex flex-row-reverse;
+
+    .listOfButtons {
+        @apply bg-[#EEEEEE] sm:w-[330px] h-full flex flex-col;
+
+        h2 {
+            @apply text-3xl font-bold px-4 pb-8 pt-4;
+        }
+
+        a {
+        @apply text-2xl px-4 py-2;
+        }
+    }
 }
 
 .navigationBar > a {
-    @apply flex text-white text-lg items-center h-full mx-4 border-b-8 border-[#0582ca00] duration-300;
+    @apply text-white text-lg items-center h-full mx-4 border-b-8 border-[#0582ca00] duration-300 hidden lg:flex;
 }
 
 a.active {
-    @apply border-[#00B7F3];
+    @apply lg:border-[#00B7F3];
 }
 
 .navigationBar > a:hover {
-    @apply border-[#00B7F3];
+    @apply lg:border-[#00B7F3];
 }
