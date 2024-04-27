@@ -1,24 +1,13 @@
-import { NavLink } from "react-router-dom";
 import styles from "./NavigationBar.module.scss";
 import { ROUTES } from "../../constants/routes";
-import "./NavigationBar.css";
+import { CustomNavLink } from "./CustomNavLink/CustomNavLink";
 
 export function NavigationBar(): JSX.Element {
     return (
         <div className={styles.navigationBar}>
             <p>Тернопільський коледж</p>
-            <NavLink
-                className={styles.main}
-                to="/"
-            >
-                Головна
-            </NavLink>
-            <NavLink
-                className={styles.tasks}
-                to={ROUTES.TASKS}
-            >
-                Завдання
-            </NavLink>
+            <CustomNavLink url="/" name="Головна" />
+            <CustomNavLink url={ROUTES.TASKS} name="Завдання" />
         </div>
     );
 }

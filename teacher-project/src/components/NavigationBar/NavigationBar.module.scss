@@ -6,7 +6,7 @@
     @apply flex text-white text-lg items-center h-full mx-4 border-b-8 border-[#0582ca00] p-2 duration-300;
 }
 
-.navigationBar a.active {
+a.active {
     @apply border-[#00B7F3];
 }
 

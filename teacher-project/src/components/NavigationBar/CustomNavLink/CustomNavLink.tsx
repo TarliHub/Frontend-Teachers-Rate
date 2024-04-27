@@ -1,0 +1,18 @@
+import styles from "../NavigationBar.module.scss";
+import { NavLink } from "react-router-dom";
+
+interface ICustomNavLinkProps {
+    url: string;
+    name: string;
+}
+
+export function CustomNavLink({ url, name }: ICustomNavLinkProps): JSX.Element {
+    return (
+        <NavLink
+            to={url}
+            className={({ isActive }) => (isActive ? styles.active : "")}
+        >
+            {name}
+        </NavLink>
+    );
+}
