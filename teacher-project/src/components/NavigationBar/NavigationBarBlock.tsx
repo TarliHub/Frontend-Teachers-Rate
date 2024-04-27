@@ -2,6 +2,7 @@ import styles from "./NavigationBar.module.scss";
 import { CustomNavLink } from "./CustomNavLink/CustomNavLink";
 import { CollegeLogo } from "../CollegeLogo/CollegeLogo";
 import menuIcon from "../../assets/icons/mobileMenuIcon.svg";
+import cross from "../../assets/icons/cross.svg";
 import { INavigation } from "../../types/Navigation";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -17,9 +18,20 @@ export function NavigationBarBlock({
 
     return (
         <>
-            <div className={styles.mobileMenu}>
+            <div
+                className={
+                    showMenu
+                        ? `${styles.mobileMenu}`
+                        : `${styles.mobileMenu} ${styles.invisible} `
+                }
+            >
                 <div className={styles.listOfButtons}>
-                    <h2>Меню</h2>
+                    <div className={styles.menuHeader}>
+                        <h2>Меню</h2>
+                        <button onClick={() => setShowMenu(false)}>
+                            <img src={cross} alt="Close" />
+                        </button>
+                    </div>
                     {navigationData.map((item, index) => (
                         <Link key={index} to={item.url}>
                             {item.name}
@@ -37,7 +49,7 @@ export function NavigationBarBlock({
                     />
                 ))}
                 <div className={styles.mobileMenuButton}>
-                    <button onClick={() => setShowMenu(!showMenu)}>
+                    <button onClick={() => setShowMenu(true)}>
                         <img
                             className="max-w-10 max-h-10"
                             src={menuIcon}

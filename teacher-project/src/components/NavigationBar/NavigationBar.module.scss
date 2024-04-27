@@ -3,23 +3,52 @@
 
     .mobileMenuButton {
         @apply lg:hidden p-2;
+
+        button:focus {
+            outline: none;
+        }
     }
 }
 
 .mobileMenu {
-    @apply absolute bg-[#00000067] h-[100svh] w-[100svw] lg:hidden flex flex-row-reverse;
+    @apply absolute bg-[#00000067] h-[100svh] w-[100svw] lg:hidden flex flex-row-reverse left-0;
+    transition: 0.7s ease-in-out;
 
     .listOfButtons {
         @apply bg-[#EEEEEE] sm:w-[330px] h-full flex flex-col;
 
-        h2 {
-            @apply text-3xl font-bold px-4 pb-8 pt-4;
+        .menuHeader {
+            @apply flex flex-row justify-between items-center pb-8 pt-4 px-4;
+
+            button:focus {
+                outline: none;
+            }
+
+            img {
+                @apply w-8 h-8 cursor-pointer select-none;
+
+                &:active {
+                    @apply bg-[#D9D9D9] rounded-full;
+                }
+            }
+
+            h2 {
+                @apply text-3xl font-bold;
+            }
         }
 
         a {
-        @apply text-2xl px-4 py-2;
+            @apply text-2xl px-4 py-2 my-1 select-none;
+
+            &:active {
+                @apply bg-[#D9D9D9];
+            }
         }
     }
+}
+
+.invisible {
+    @apply left-full;
 }
 
 .navigationBar > a {
