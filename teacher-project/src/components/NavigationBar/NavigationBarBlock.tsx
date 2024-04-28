@@ -57,7 +57,7 @@ export function NavigationBarBlock({
                         name={item.name}
                     />
                 ))}
-                <NavLink to={ROUTES.PROFILE}>
+                <NavLink className={styles.avatarMargin} to={ROUTES.PROFILE}>
                     <img
                         className="w-[60px] h-[60px]"
                         src={avatarIcon}

@@ -1,10 +1,12 @@
+import { NavigationBarBlock } from "./NavigationBarBlock";
+
 import {
     adminNavigation,
     cCNavigation,
     userNavigation,
 } from "../../constants/navigationData";
+
 import { INavigation } from "../../types/Navigation";
-import { NavigationBarBlock } from "./NavigationBarBlock";
 
 interface INavigationBarProps {
     role: "CentralComision" | "Admin" | "User";

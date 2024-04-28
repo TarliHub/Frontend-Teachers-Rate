@@ -1,5 +1,9 @@
 .navigationBar {
-    @apply flex flex-row h-20 w-full bg-[#0582CA] items-center justify-between;
+    @apply flex flex-row h-20 w-full bg-[#0582CA] items-center justify-between lg:justify-start;
+
+    .avatarMargin {
+        @apply ml-auto;
+    }
 
     .mobileMenuButton {
         @apply lg:hidden p-2;
