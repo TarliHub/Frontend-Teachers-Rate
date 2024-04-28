@@ -1,11 +1,17 @@
 import styles from "./NavigationBar.module.scss";
+
 import { CustomNavLink } from "./CustomNavLink/CustomNavLink";
 import { CollegeLogo } from "../CollegeLogo/CollegeLogo";
+
 import menuIcon from "../../assets/icons/mobileMenuIcon.svg";
 import cross from "../../assets/icons/cross.svg";
+import avatarIcon from "../../assets/icons/avatar.svg";
+
 import { INavigation } from "../../types/Navigation";
+import { ROUTES } from "../../constants/routes";
+
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 interface INavigationBarBlockProps {
     navigationData: INavigation[];
@@ -38,6 +44,7 @@ export function NavigationBarBlock({
                                 {item.name}
                             </Link>
                         ))}
+                        <Link to={ROUTES.PROFILE}>Профіль</Link>
                     </div>
                 </div>
             </div>
@@ -50,6 +57,13 @@ export function NavigationBarBlock({
                         name={item.name}
                     />
                 ))}
+                <NavLink to={ROUTES.PROFILE}>
+                    <img
+                        className="w-[60px] h-[60px]"
+                        src={avatarIcon}
+                        alt="Avatar Icon"
+                    />
+                </NavLink>
                 <div className={styles.mobileMenuButton}>
                     <button onClick={() => setShowMenu(true)}>
                         <img

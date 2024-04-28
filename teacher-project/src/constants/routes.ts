@@ -3,6 +3,7 @@ export const ROUTES = {
     LOGIN: "/login",
     TASKS: "/tasks",
     REGISTRATION: "/registration",
+    PROFILE: "/profile",
     TEACHER_SCORES: "/teachers-scores",
     MY_RESULTS: "/my-results",
     SUBMIT_TASK: "/submit-task",

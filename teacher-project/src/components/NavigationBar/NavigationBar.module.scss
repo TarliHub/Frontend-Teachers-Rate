@@ -1,5 +1,5 @@
 .navigationBar {
-    @apply flex flex-row h-20 w-full bg-[#0582CA] items-center justify-between lg:justify-start;
+    @apply flex flex-row h-20 w-full bg-[#0582CA] items-center justify-between;
 
     .mobileMenuButton {
         @apply lg:hidden p-2;
@@ -52,7 +52,7 @@
 }
 
 .navigationBar > a {
-    @apply text-white text-lg items-center h-full mx-4 border-b-8 border-[#0582ca00] duration-300 hidden lg:flex;
+    @apply text-white text-center text-lg items-center h-full mx-3 border-b-8 border-[#0582ca00] duration-300 hidden lg:flex p-1;
 }
 
 a.active {
