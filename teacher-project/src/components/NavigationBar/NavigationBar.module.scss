@@ -10,8 +10,8 @@
     }
 }
 
-.mobileMenu {
-    @apply absolute bg-[#00000067] h-[100svh] w-[100svw] lg:hidden flex flex-row-reverse left-0;
+.mobileList {
+    @apply fixed bg-[#00000067] h-full w-full lg:hidden flex flex-row justify-end left-full;
     transition: 0.7s ease-in-out;
 
     .listOfButtons {
@@ -48,7 +48,7 @@
 }
 
 .invisible {
-    @apply left-full;
+    @apply left-0;
 }
 
 .navigationBar > a {

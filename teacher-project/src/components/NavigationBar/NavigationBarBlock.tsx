@@ -18,25 +18,27 @@ export function NavigationBarBlock({
 
     return (
         <>
-            <div
-                className={
-                    showMenu
-                        ? `${styles.mobileMenu}`
-                        : `${styles.mobileMenu} ${styles.invisible} `
-                }
-            >
-                <div className={styles.listOfButtons}>
-                    <div className={styles.menuHeader}>
-                        <h2>Меню</h2>
-                        <button onClick={() => setShowMenu(false)}>
-                            <img src={cross} alt="Close" />
-                        </button>
+            <div className={styles.mobileMenu}>
+                <div
+                    className={
+                        showMenu
+                            ? `${styles.mobileList} ${styles.invisible}`
+                            : `${styles.mobileList}`
+                    }
+                >
+                    <div className={styles.listOfButtons}>
+                        <div className={styles.menuHeader}>
+                            <h2>Меню</h2>
+                            <button onClick={() => setShowMenu(false)}>
+                                <img src={cross} alt="Close" />
+                            </button>
+                        </div>
+                        {navigationData.map((item, index) => (
+                            <Link key={index} to={item.url}>
+                                {item.name}
+                            </Link>
+                        ))}
                     </div>
-                    {navigationData.map((item, index) => (
-                        <Link key={index} to={item.url}>
-                            {item.name}
-                        </Link>
-                    ))}
                 </div>
             </div>
             <div className={styles.navigationBar}>
