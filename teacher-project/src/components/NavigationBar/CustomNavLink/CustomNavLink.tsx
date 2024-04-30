@@ -1,5 +1,6 @@
-import { useMemo } from "react";
 import styles from "../NavigationBar.module.scss";
+
+import { useMemo } from "react";
 import { NavLink } from "react-router-dom";
 
 interface ICustomNavLinkProps {

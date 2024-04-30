@@ -5,7 +5,8 @@ export function Main(): JSX.Element {
     return (
         <div>
             <NavigationBar role="Admin"/>
-            <AdminMain />
+            {/* <AdminMain /> */}
+            
         </div>
     );
 }
