@@ -1,5 +1,5 @@
 # Teachers Rate Frontend
-Welcome to our Teacher Rate, a powerful tool designed to help you assess and compare teacher's performance efficiently.
+Welcome to our Teachers Rate, a powerful tool designed to help you assess and compare teacher's performance efficiently.
 Our website provides a user-friendly interface for evaluating various teaching aspects, enabling students and administrators to make informed decisions.
 
 ## Here are the instructions on how to start the project in development or production:
