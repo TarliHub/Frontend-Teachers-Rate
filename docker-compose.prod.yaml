@@ -9,4 +9,3 @@ services:
       - "8080:80"
     environment:
       - NODE_ENV=development
-      - VITE_BASE_API_URL=https://localhost:8081/api
