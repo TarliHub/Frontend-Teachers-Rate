@@ -1,0 +1,16 @@
+FROM node:alpine AS build
+
+WORKDIR /teacher-project
+
+COPY package.json .
+
+RUN npm i
+
+COPY . .
+
+RUN npm run build
+
+
+FROM nginx
+
+COPY --from=build /teacher-project/build usr/share/nginx/html
