@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  teacher-project:
+    image: teacher-project-prod-i
+    build: 
+      dockerfile: Dockerfile.prod
+    container_name: teacher-project-prod-c
+    ports:
+      - "8080:80"
+    environment:
+      - NODE_ENV=development
+      - VITE_BASE_API_URL=https://localhost:8081/api

@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  teacher-project:
+    image: teacher-project-dev-i
+    build: 
+      dockerfile: Dockerfile.dev
+    container_name: teacher-project-dev-c
+    volumes:
+      - ./teacher-project:/teacher-project
+      - node_modules:/teacher-project/node_modules/
+    ports:
+      - "5173:5173"
+    environment:
+      - NODE_ENV=development
+      - VITE_BASE_API_URL=https://localhost:8081/api
+volumes:
+  node_modules:
