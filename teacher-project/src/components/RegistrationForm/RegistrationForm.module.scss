@@ -1,7 +1,7 @@
 @import "../../assets/styles/vars.scss";
 
 .registrationForm {
-    @apply flex flex-col items-center w-[500px] bg-formBgColor rounded h-[570px] overflow-hidden text-[#03071E] font-medium;
+    @apply flex flex-col items-center w-[500px] bg-formBgColor rounded h-[570px] overflow-hidden text-formTextColor font-medium;
     font-family: $main-font-family;
 
     .header {

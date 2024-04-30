@@ -1,7 +1,7 @@
 @import "../../assets/styles/vars.scss";
 
 .loginForm {
-    @apply flex flex-col items-center w-[500px] bg-formBgColor rounded h-[570px] overflow-hidden text-[#03071E] font-medium;
+    @apply flex flex-col items-center w-[500px] bg-formBgColor rounded h-[570px] overflow-hidden text-formTextColor font-medium;
     font-family: $main-font-family;
 
     .header {
@@ -26,7 +26,7 @@
         @apply w-full flex flex-col items-center h-64 justify-end;
 
         .button {
-            @apply p-7 bg-buttonColor cursor-pointer text-white font-medium text-2xl 
+            @apply p-7 bg-primaryBlue cursor-pointer text-white font-medium text-2xl 
         rounded text-center py-[6px] hover:bg-[#015281] transition-all duration-500;
         }
 
@@ -42,7 +42,7 @@
             }
 
             a {
-                @apply text-buttonColor text-2xl;
+                @apply text-primaryBlue text-2xl;
             }
         }
     }

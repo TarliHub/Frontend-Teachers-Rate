@@ -10,7 +10,10 @@ const config: Config = {
             colors: {
                 formBgColor: "rgba(217, 217, 217, 0.58)",
                 headerFormBgColor: "rgba(217, 217, 217)",
-                buttonColor: "#0582CA",
+                primaryBlue: "#0582CA",
+                secondaryBlue: "#00B7F3",
+                primaryBg: "#D9D9D9",
+                formTextColor: "#03071E",
             },
         },
     },
