@@ -2,7 +2,7 @@ export const ROUTES = {
     MAIN: "/",
     LOGIN: "/login",
     TASKS: "/tasks",
-    REGISTRATION: "/registration",
+    CREATE_USER: "/create-user",
     PROFILE: "/profile",
     TEACHER_SCORES: "/teachers-scores",
     MY_RESULTS: "/my-results",

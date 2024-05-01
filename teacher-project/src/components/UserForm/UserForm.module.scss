@@ -29,22 +29,6 @@
             @apply p-7 bg-primaryBlue cursor-pointer text-white font-medium text-2xl 
         rounded text-center py-[6px] hover:bg-[#015281] transition-all duration-500;
         }
-
-        .askText {
-            @apply text-xl;
-        }
-
-        .bottomNav {
-            @apply w-full flex justify-center items-end gap-2;
-
-            p {
-                @apply text-xl;
-            }
-
-            a {
-                @apply text-primaryBlue text-2xl;
-            }
-        }
     }
 }
 

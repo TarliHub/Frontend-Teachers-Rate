@@ -1,10 +1,13 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IRegisterFields } from "../../types/Authorization.interface.ts";
-import styles from "./CreateUserForm.module.scss";
-import { ROUTES } from "../../constants/routes.ts";
-import { Link } from "react-router-dom";
+import styles from "./UserForm.module.scss";
+import { useState } from "react";
 
-export function CreateUserForm(): JSX.Element {
+export function UserForm(): JSX.Element {
+    const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
+    const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
+        useState<boolean>(false);
+
     const {
         register,
         handleSubmit,
@@ -16,6 +19,7 @@ export function CreateUserForm(): JSX.Element {
 
     const onSubmit: SubmitHandler<IRegisterFields> = (data) => {
         console.log(data);
+        return data;
     };
 
     return (
@@ -24,21 +28,22 @@ export function CreateUserForm(): JSX.Element {
             className={styles.registrationForm}
         >
             <div className={styles.header}>
-                <h1>Створення користувача</h1>
+                <h1>Створити користувача</h1>
             </div>
             <div className={styles.email}>
-                <label>Електрона пошта</label>
+                <label>Електронна пошта</label>
                 <input
-                    placeholder="Введіть електрону пошту"
+                    placeholder="Введіть електронну пошту"
                     {...register("email", {
-                        required: "*email is required field",
+                        required: "*електронна пошта обов'язкове поле",
                         maxLength: {
                             value: 30,
-                            message: "*email cannot exceed 30 characters",
+                            message:
+                                "*електронна пошта не може мати більше 30 символів",
                         },
                         pattern: {
                             value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
-                            message: "*please enter vaild email",
+                            message: "*введіть правильну електронну пошту",
                         },
                     })}
                     type="text"
@@ -54,15 +59,29 @@ export function CreateUserForm(): JSX.Element {
                 <input
                     placeholder="Введіть пароль"
                     {...register("password", {
-                        required: "*password is required field",
+                        required: "*пароль обов'язкове поле",
                         minLength: {
-                            value: 5,
+                            value: 8,
+                            message: "*пароль має містити мінімум 8 символів",
+                        },
+                        maxLength: {
+                            value: 30,
+                            message: "*пароль не може мати більше 30 символів",
+                        },
+                        pattern: {
+                            value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]+$/,
                             message:
-                                "*password must be at least 5 characters long",
+                                "*пароль має містити великі і малі символи, латинські літери та числа",
                         },
                     })}
-                    type="password"
+                    type={isPasswordVisible ? "text" : "password"}
                 />
+                <button
+                    type="button"
+                    onClick={() => setIsPasswordVisible(!isPasswordVisible)}
+                >
+                    {isPasswordVisible ? "сховати" : "показати"}
+                </button>
                 {errors.password && (
                     <div className={styles.errorText}>
                         {errors.password.message}
@@ -75,10 +94,18 @@ export function CreateUserForm(): JSX.Element {
                     placeholder="Введіть пароль ще раз"
                     {...register("confirmPassword", {
                         validate: (value) =>
-                            value === password || "*passwords do not match",
+                            value === password || "*паролі не співпадають",
                     })}
-                    type="password"
+                    type={isConfirmPasswordVisible ? "text" : "password"}
                 />
+                <button
+                    type="button"
+                    onClick={() =>
+                        setIsConfirmPasswordVisible(!isConfirmPasswordVisible)
+                    }
+                >
+                    {isConfirmPasswordVisible ? "сховати" : "показати"}
+                </button>
                 {errors.confirmPassword && (
                     <div className={styles.errorText}>
                         {errors.confirmPassword.message}
@@ -87,11 +114,7 @@ export function CreateUserForm(): JSX.Element {
             </div>
             <div className={styles.bottomBlock}>
                 <div className={styles.button}>
-                    <button>Зареєструватися</button>
-                </div>
-                <p className={styles.askText}>у вас вже є акаунт?</p>
-                <div className={styles.bottomNav}>
-                    <Link to={ROUTES.LOGIN}>увійти</Link>
+                    <button>Створити</button>
                 </div>
             </div>
         </form>
