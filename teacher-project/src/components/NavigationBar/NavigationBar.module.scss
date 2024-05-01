@@ -1,10 +1,6 @@
 .navigationBar {
     @apply flex flex-row h-20 w-full bg-primaryBlue items-center justify-between lg:justify-start;
 
-    .avatarMargin {
-        @apply ml-auto;
-    }
-
     .mobileMenuButton {
         @apply lg:hidden p-2;
 
@@ -57,6 +53,10 @@
 
 .navigationBar > a {
     @apply text-white text-center text-lg items-center h-full mx-3 border-b-8 border-[#0582ca00] duration-300 hidden lg:flex p-1;
+}
+
+.navigationBar > a:last-of-type {
+    @apply ml-auto;
 }
 
 a.active {

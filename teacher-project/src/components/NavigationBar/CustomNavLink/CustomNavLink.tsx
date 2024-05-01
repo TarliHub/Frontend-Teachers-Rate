@@ -5,10 +5,15 @@ import { NavLink } from "react-router-dom";
 
 interface ICustomNavLinkProps {
     url: string;
-    name: string;
+    name?: string;
+    logo?: string;
 }
 
-export function CustomNavLink({ url, name }: ICustomNavLinkProps): JSX.Element {
+export function CustomNavLink({
+    url,
+    name,
+    logo,
+}: ICustomNavLinkProps): JSX.Element {
     const activeClassName = useMemo(() => styles.active, []);
 
     return (
@@ -16,7 +21,15 @@ export function CustomNavLink({ url, name }: ICustomNavLinkProps): JSX.Element {
             to={url}
             className={({ isActive }) => (isActive ? activeClassName : "")}
         >
-            {name}
+            {name ? (
+                name
+            ) : (
+                <img
+                    className="w-[60px] h-[60px]"
+                    src={logo}
+                    alt="Avatar Icon"
+                />
+            )}
         </NavLink>
     );
 }

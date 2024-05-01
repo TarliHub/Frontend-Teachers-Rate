@@ -11,7 +11,7 @@ import { INavigation } from "../../types/Navigation";
 import { ROUTES } from "../../constants/routes";
 
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface INavigationBarBlockProps {
     navigationData: INavigation[];
@@ -57,13 +57,7 @@ export function NavigationBarBlock({
                         name={item.name}
                     />
                 ))}
-                <NavLink className={styles.avatarMargin} to={ROUTES.PROFILE}>
-                    <img
-                        className="w-[60px] h-[60px]"
-                        src={avatarIcon}
-                        alt="Avatar Icon"
-                    />
-                </NavLink>
+                <CustomNavLink url={ROUTES.PROFILE} logo={avatarIcon} />
                 <div className={styles.mobileMenuButton}>
                     <button onClick={() => setShowMenu(true)}>
                         <img
