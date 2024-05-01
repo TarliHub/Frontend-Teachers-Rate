@@ -1,9 +1,3 @@
-export interface IRegisterFields {
-    email: string;
-    password: string;
-    confirmPassword: string;
-}
-
 export interface ILoginFields {
     email: string;
     password: string;

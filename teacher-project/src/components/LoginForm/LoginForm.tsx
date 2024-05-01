@@ -12,7 +12,7 @@ export function LoginForm(): JSX.Element {
     } = useForm<ILoginFields>();
 
     const onSubmit: SubmitHandler<ILoginFields> = (data) => {
-        // handleAuth(data as ICredentials);
+        console.log(data);
     };
 
     return (
@@ -21,18 +21,18 @@ export function LoginForm(): JSX.Element {
                 <h1>Увійти</h1>
             </div>
             <div className={styles.email}>
-                <label>Електрона пошта</label>
+                <label>Електронна пошта</label>
                 <input
-                    placeholder="Введіть електрону пошту"
+                    placeholder="Введіть електронну пошту"
                     {...register("email", {
                         required: "*email is required field",
                         maxLength: {
                             value: 30,
-                            message: "*email cannot exceed 30 characters",
+                            message: "*електронна пошта не може мати більше 30 символів",
                         },
                         pattern: {
                             value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
-                            message: "*please enter vaild email",
+                            message: "*введіть правильну електронну пошту",
                         },
                     })}
                     type="text"

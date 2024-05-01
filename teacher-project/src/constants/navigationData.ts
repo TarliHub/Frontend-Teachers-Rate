@@ -25,10 +25,6 @@ export const adminNavigation = [
         name: "Рейтинги вчителів",
     },
     {
-        url: ROUTES.CREATE_USER,
-        name: "Створити користувача",
-    },
-    {
         url: ROUTES.TASKS,
         name: "Перевірити завдання",
     },

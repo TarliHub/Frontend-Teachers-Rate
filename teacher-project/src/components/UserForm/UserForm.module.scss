@@ -1,37 +1,29 @@
 @import "../../assets/styles/vars.scss";
 
 .registrationForm {
-    @apply flex flex-col items-center w-[500px] bg-formBgColor rounded h-[570px] overflow-hidden text-formTextColor font-medium;
-    font-family: $main-font-family;
-
-    .header {
-        @apply text-center w-full text-4xl p-3 bg-headerFormBgColor;
-    }
+    @apply flex flex-col border-2 border-primaryBlue font-medium text-lg rounded-lg md:w-[400px] md:m-2 md:px-2 lg:w-[500px] lg:text-xl lg:m-4 lg:px-4;
 
     .email,
-    .password {
-        @apply text-2xl w-11/12 pb-4 pt-4;
+    .password,
+    .patronymic,
+    .name,
+    .surname {
+        @apply flex flex-col w-full my-2;
 
-        input {
-            @apply bg-[#f8f8f8] border-2 border-[#CCCCCC] rounded-sm w-full h-11 pl-2 outline-none;
+        .input {
+            @apply h-[44px] flex flex-col mb-4;
 
-            &::placeholder {
-                @apply text-xl text-[#03071e88];
-                font-family: $main-font-family;
+            button {
+                @apply h-11 w-11 relative flex items-center justify-center self-end bottom-[52px] py-[18px];
             }
         }
-    }
 
-    .bottomBlock {
-        @apply w-full flex flex-col items-center h-40 justify-end;
-
-        .button {
-            @apply p-7 bg-primaryBlue cursor-pointer text-white font-medium text-2xl 
-        rounded text-center py-[6px] hover:bg-[#015281] transition-all duration-500;
+        input {
+            @apply w-full p-2 my-2 outline-none border-2 border-secondaryBlue rounded-md;
         }
     }
 }
 
 .errorText {
-    @apply text-xl font-medium text-[#FF0000];
+    @apply text-base lg:text-lg font-medium text-[#FF0000];
 }
