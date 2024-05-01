@@ -8,6 +8,7 @@ import { Registration } from "./pages/Registration";
 import { Login } from "./pages/Login";
 import { Main } from "./pages/Main";
 import { Tasks } from "./pages/Tasks";
+import { Profile } from "./pages/Profile";
 
 function App(): JSX.Element {
     return (
@@ -15,6 +16,7 @@ function App(): JSX.Element {
             <Routes>
                 <Route element={<Main />} path={ROUTES.MAIN} />
                 <Route element={<Tasks />} path={ROUTES.TASKS} />
+                <Route element={<Profile />} path={ROUTES.PROFILE} />
                 <Route element={<Login />} path={ROUTES.LOGIN} />
                 <Route element={<Registration />} path={ROUTES.REGISTRATION} />
             </Routes>
