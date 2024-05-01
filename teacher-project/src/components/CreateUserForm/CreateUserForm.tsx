@@ -1,10 +1,10 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IRegisterFields } from "../../types/Authorization.interface.ts";
-import styles from "./RegistrationForm.module.scss";
-import { ROUTES } from "../../constants/routes";
+import styles from "./CreateUserForm.module.scss";
+import { ROUTES } from "../../constants/routes.ts";
 import { Link } from "react-router-dom";
 
-export function RegistrationForm(): JSX.Element {
+export function CreateUserForm(): JSX.Element {
     const {
         register,
         handleSubmit,
@@ -15,7 +15,7 @@ export function RegistrationForm(): JSX.Element {
     const password = watch("password");
 
     const onSubmit: SubmitHandler<IRegisterFields> = (data) => {
-        // handleAuth(data as ICredentials);
+        console.log(data);
     };
 
     return (
@@ -24,7 +24,7 @@ export function RegistrationForm(): JSX.Element {
             className={styles.registrationForm}
         >
             <div className={styles.header}>
-                <h1>Зареєструватися</h1>
+                <h1>Створення користувача</h1>
             </div>
             <div className={styles.email}>
                 <label>Електрона пошта</label>

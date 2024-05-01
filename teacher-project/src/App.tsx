@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { ROUTES } from "./constants/routes";
 
-import { Registration } from "./pages/Registration";
+import { CreateUser } from "./pages/CreateUser";
 import { Login } from "./pages/Login";
 import { Main } from "./pages/Main";
 import { Tasks } from "./pages/Tasks";
@@ -18,7 +18,7 @@ function App(): JSX.Element {
                 <Route element={<Tasks />} path={ROUTES.TASKS} />
                 <Route element={<Profile />} path={ROUTES.PROFILE} />
                 <Route element={<Login />} path={ROUTES.LOGIN} />
-                <Route element={<Registration />} path={ROUTES.REGISTRATION} />
+                <Route element={<CreateUser />} path={ROUTES.REGISTRATION} />
             </Routes>
         </BrowserRouter>
     );
