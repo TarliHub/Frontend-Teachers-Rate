@@ -1,7 +1,7 @@
 @import "../../assets/styles/vars.scss";
 
 .registrationForm {
-    @apply flex flex-col border-2 border-primaryBlue font-medium text-lg rounded-lg md:w-[400px] md:m-2 md:px-2 lg:w-[500px] lg:text-xl lg:m-4 lg:px-4;
+    @apply flex flex-col border-2 border-primaryBlue font-medium text-lg rounded-lg sm:w-[400px] m-2 px-2 lg:w-[500px] lg:text-xl lg:m-4 lg:px-4;
 
     .email,
     .password,
@@ -20,6 +20,14 @@
 
         input {
             @apply w-full p-2 my-2 outline-none border-2 border-secondaryBlue rounded-md;
+        }
+    }
+
+    .button {
+        @apply self-center m-3;
+
+        button {
+            @apply bg-primaryBlue text-white p-2 rounded-lg cursor-pointer;
         }
     }
 }

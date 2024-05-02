@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import showIcon from "../../assets/icons/visible.png";
 import hideIcon from "../../assets/icons/invisible.png";
+
 import { ICreateUserFields } from "../../types/UserFields";
 
 export function UserForm(): JSX.Element {
@@ -34,7 +35,7 @@ export function UserForm(): JSX.Element {
             <div className={styles.surname}>
                 <label>Прізвище</label>
                 <input
-                    placeholder="Прізвище"
+                    placeholder="Введіть прізвище"
                     {...register("surname", {
                         required: "*прізвище обов'язкове поле",
                         pattern: {
@@ -54,7 +55,7 @@ export function UserForm(): JSX.Element {
             <div className={styles.name}>
                 <label>Ім&apos;я</label>
                 <input
-                    placeholder="Ім'я"
+                    placeholder="Введіть ім'я"
                     {...register("name", {
                         required: "*ім'я обов'язкове поле",
                         pattern: {
@@ -72,15 +73,15 @@ export function UserForm(): JSX.Element {
                 )}
             </div>
             <div className={styles.patronymic}>
-                <label>По-батькові</label>
+                <label>Ім&apos;я по-батькові</label>
                 <input
-                    placeholder="По-батькові"
+                    placeholder="Введіть ім'я по-батькові"
                     {...register("patronymic", {
-                        required: "*по-батькові обов'язкове поле",
+                        required: "*ім'я по-батькові обов'язкове поле",
                         pattern: {
                             value: /^[А-ЩЬЮЯҐЄІЇ][а-щьюяґєії']{0,14}$/,
                             message:
-                                "*по-батькові має починатися з великої літери і містити максимум 15 символів",
+                                "*ім'я по-батькові має починатися з великої літери і містити максимум 15 символів",
                         },
                     })}
                     type="text"
