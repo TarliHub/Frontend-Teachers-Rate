@@ -10,6 +10,7 @@ import { Tasks } from "./pages/Tasks";
 import { Profile } from "./pages/Profile";
 import { NavigationBar } from "./components/NavigationBar/NavigationBar";
 import { ManageTeachers } from "./pages/ManageTeachers";
+import { CreateUser } from "./components/CreateUser/CreateUser";
 
 function App(): JSX.Element {
     return (
@@ -23,6 +24,10 @@ function App(): JSX.Element {
                 <Route
                     element={<ManageTeachers />}
                     path={ROUTES.MANAGE_TEACHERS}
+                />
+                <Route
+                    path={`${ROUTES.MANAGE_TEACHERS}/create-user`}
+                    element={<CreateUser />}
                 />
             </Routes>
         </BrowserRouter>
