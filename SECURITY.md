@@ -2,8 +2,5 @@
 
 ## Supported Versions
 
-| Version                | Supported          |
+| Version                | Working            |
 | -------                | ------------------ |
-| 0.2.0 - production     | :x:                |
-| 0.2.0 - develop mode   | :white_check_mark: |
-
