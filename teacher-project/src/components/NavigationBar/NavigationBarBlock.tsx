@@ -23,7 +23,7 @@ export function NavigationBarBlock({
     const [showMenu, setShowMenu] = useState<boolean>(false);
 
     return (
-        <>
+        <header>
             <div className={styles.mobileMenu}>
                 <div
                     className={
@@ -68,6 +68,6 @@ export function NavigationBarBlock({
                     </button>
                 </div>
             </div>
-        </>
+        </header>
     );
 }
