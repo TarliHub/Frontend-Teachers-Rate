@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 import { ROUTES } from "../constants/routes";
+
 import { UsersList } from "../components/UsersList/UsersList";
 import { usersData } from "../constants/fakeData";
 
@@ -13,7 +14,7 @@ export function Teachers(): JSX.Element {
                 </Link>
                 {/* Search block */}
             </div>
-            <div>
+            <div className="flex flex-row">
                 <UsersList usersData={usersData} />
             </div>
         </div>

@@ -1,5 +1,5 @@
 .usersList {
-    @apply flex flex-col;
+    @apply flex flex-col flex-[2] border-2 border-primaryBlue rounded-lg m-2;
 
     .userBlock {
         @apply flex flex-row;
