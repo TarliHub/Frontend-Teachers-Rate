@@ -9,7 +9,7 @@ import { Main } from "./pages/Main";
 import { Tasks } from "./pages/Tasks";
 import { Profile } from "./pages/Profile";
 import { NavigationBar } from "./components/NavigationBar/NavigationBar";
-import { ManageTeachers } from "./pages/ManageTeachers";
+import { Teachers } from "./pages/Teachers";
 import { CreateUser } from "./components/CreateUser/CreateUser";
 
 function App(): JSX.Element {
@@ -21,12 +21,9 @@ function App(): JSX.Element {
                 <Route element={<Tasks />} path={ROUTES.TASKS} />
                 <Route element={<Profile />} path={ROUTES.PROFILE} />
                 <Route element={<Login />} path={ROUTES.LOGIN} />
+                <Route element={<Teachers />} path={ROUTES.TEACHERS} />
                 <Route
-                    element={<ManageTeachers />}
-                    path={ROUTES.MANAGE_TEACHERS}
-                />
-                <Route
-                    path={`${ROUTES.MANAGE_TEACHERS}/create-user`}
+                    path={`${ROUTES.TEACHERS}/create-user`}
                     element={<CreateUser />}
                 />
             </Routes>

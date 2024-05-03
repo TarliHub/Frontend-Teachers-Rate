@@ -17,16 +17,12 @@ export const adminNavigation = [
         name: "Головна",
     },
     {
-        url: ROUTES.MANAGE_TEACHERS,
-        name: "Редагувати вчителів",
-    },
-    {
-        url: ROUTES.TEACHER_SCORES,
-        name: "Рейтинги вчителів",
+        url: ROUTES.TEACHERS,
+        name: "Вчителі",
     },
     {
         url: ROUTES.TASKS,
-        name: "Перевірити завдання",
+        name: "Завдання",
     },
 ];
 
@@ -37,10 +33,10 @@ export const cCNavigation = [
     },
     {
         url: ROUTES.TASKS,
-        name: "Перевірити завдання",
+        name: "Завдання",
     },
     {
-        url: ROUTES.MANAGE_TEACHERS,
-        name: "Редагувати вчителів",
+        url: ROUTES.TEACHERS,
+        name: "Вчителі",
     },
 ];

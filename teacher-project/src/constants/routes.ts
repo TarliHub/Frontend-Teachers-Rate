@@ -11,5 +11,5 @@ export const ROUTES = {
     ADD_TEACHER: "/add-teacher",
     TEACHER_REQUESTS: "/teacher-requests",
     ALL_USERS: "/all-users",
-    MANAGE_TEACHERS: "/manage-teachers",
+    TEACHERS: "/teachers",
 };

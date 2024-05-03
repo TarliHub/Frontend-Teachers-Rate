@@ -5,7 +5,7 @@ import { ROUTES } from "../../constants/routes";
 export function CreateUser(): JSX.Element {
     return (
         <div>
-            <Link to={ROUTES.MANAGE_TEACHERS}>Назад</Link>
+            <Link to={ROUTES.TEACHERS}>Назад</Link>
             <UserForm />
         </div>
     );
