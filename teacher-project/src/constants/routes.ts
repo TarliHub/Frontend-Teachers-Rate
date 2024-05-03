@@ -12,4 +12,5 @@ export const ROUTES = {
     TEACHER_REQUESTS: "/teacher-requests",
     ALL_USERS: "/all-users",
     TEACHERS: "/teachers",
+    TEACHER: "/teacher",
 };

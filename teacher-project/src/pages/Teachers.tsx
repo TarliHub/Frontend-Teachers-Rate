@@ -15,6 +15,7 @@ export function Teachers(): JSX.Element {
                 {/* Search block */}
             </div>
             <div className="flex flex-row">
+                <div className="bg-black flex-1"></div>
                 <UsersList usersData={usersData} />
             </div>
         </div>

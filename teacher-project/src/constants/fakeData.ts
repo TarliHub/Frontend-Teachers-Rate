@@ -41,7 +41,7 @@ export const usersData = [
     },
     {
         items: [
-            { lastName: "Brown", name: "Emma", rating: 4.2 },
+            { lastName: "Паркуновка", name: "Володимир", rating: 4.2 },
             { lastName: "Wilson", name: "Michael", rating: 4.0 },
         ],
         nextPage: null,

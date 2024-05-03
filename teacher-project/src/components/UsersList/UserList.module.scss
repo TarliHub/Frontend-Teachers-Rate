@@ -1,7 +1,16 @@
 .usersList {
-    @apply flex flex-col flex-[2] border-2 border-primaryBlue rounded-lg m-2;
+    @apply flex flex-col flex-1 lg:flex-[2] border-2 rounded-2xl border-primaryBlue m-2 p-2 font-medium;
 
-    .userBlock {
-        @apply flex flex-row;
+    .header {
+        @apply flex flex-row text-xl p-3 pb-5 border-b-[2px] border-slate-300 text-secondaryBlue;
+    }
+
+    .userContainer {
+        @apply flex flex-row justify-between text-lg p-3 border-b-[2px] border-slate-300;
+
+        a:hover {
+            @apply text-primaryBlue;
+            transition: 0.5s;
+        }
     }
 }
