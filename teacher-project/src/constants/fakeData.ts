@@ -30,3 +30,20 @@ export const fakeTasks = [
         grade: 55,
     },
 ];
+
+export const usersData = [
+    {
+        items: [
+            { lastName: "Doe", name: "John", rating: 4.5 },
+            { lastName: "Smith", name: "Alice", rating: 3.8 },
+        ],
+        nextPage: 2,
+    },
+    {
+        items: [
+            { lastName: "Brown", name: "Emma", rating: 4.2 },
+            { lastName: "Wilson", name: "Michael", rating: 4.0 },
+        ],
+        nextPage: null,
+    },
+];

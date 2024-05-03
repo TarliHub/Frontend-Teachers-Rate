@@ -1,0 +1,7 @@
+.usersList {
+    @apply flex flex-col;
+
+    .userBlock {
+        @apply flex flex-row;
+    }
+}
