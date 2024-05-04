@@ -15,7 +15,7 @@
     transition: 0.7s ease-in-out;
 
     .listOfButtons {
-        @apply bg-[#EEEEEE] sm:w-[330px] h-full flex flex-col;
+        @apply bg-[#EEEEEE] w-[60%] sm:w-[330px] h-full flex flex-col;
 
         .menuHeader {
             @apply flex flex-row justify-between items-center pb-8 pt-4 px-4;
