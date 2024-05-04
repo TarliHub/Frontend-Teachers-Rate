@@ -14,8 +14,9 @@ export function UsersList({ usersData }: IUsersListProps): JSX.Element {
     return (
         <div className={styles.usersList}>
             <div className={styles.header}>
-                <p className="flex-[1.75]">Викладач</p>
+                <p className="flex-[3]">Викладач</p>
                 <p className="flex-[2]">Рейтинг</p>
+                <div className="flex-1"></div>
             </div>
             {usersData?.map((item, index) => (
                 <React.Fragment key={index}>

@@ -12,10 +12,9 @@ export function Teachers(): JSX.Element {
                 <Link to={`${ROUTES.TEACHERS}/create-user`}>
                     Створити користувача
                 </Link>
-                {/* Search block */}
             </div>
             <div className="flex flex-row">
-                <div className="bg-black flex-1"></div>
+                <div className="lg:bg-black lg:flex-1"></div>
                 <UsersList usersData={usersData} />
             </div>
         </div>
