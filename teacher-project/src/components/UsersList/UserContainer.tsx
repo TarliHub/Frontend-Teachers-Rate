@@ -17,9 +17,12 @@ export function UserContainer({ userData }) {
             <p className="flex-1">{userData.rating}</p>
 
             <div className={styles.buttonContainer}>
-                <button title="Змінити дані акаунта">
+                <Link
+                    to={`${ROUTES.TEACHERS}${ROUTES.UPDATE_USER}`}
+                    title="Змінити дані акаунта"
+                >
                     <span className="material-symbols-outlined">edit</span>
-                </button>
+                </Link>
                 <button title="Видалити акаунт">
                     <span className="material-symbols-outlined">delete</span>
                 </button>

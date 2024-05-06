@@ -47,3 +47,12 @@ export const usersData = [
         nextPage: null,
     },
 ];
+
+export const fakeUser = {
+    surname: "Bobrov",
+    name: "Kapusta",
+    patronymic: "Oleksiov",
+    email: "Jenga@gmail.com",
+    password: "Povroznik64",
+    confirmPassword: "Povroznik64",
+};

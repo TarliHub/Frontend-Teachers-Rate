@@ -6,14 +6,12 @@ export interface IUsersList {
 }
 
 export interface IUser {
-    id: number;
-    lastName: string;
-    login: string;
-    name: string;
-    password: string;
-    rating: number;
-    registeredAt: Date;
-    role: number;
+    surname?: string;
+    name?: string;
+    patronymic?: string;
+    email?: string;
+    password?: string;
+    confirmPassword?: string;
 }
 
 export interface IUserUpdate {

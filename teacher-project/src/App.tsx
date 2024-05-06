@@ -10,7 +10,8 @@ import { Tasks } from "./pages/Tasks";
 import { Profile } from "./pages/Profile";
 import { NavigationBar } from "./components/NavigationBar/NavigationBar";
 import { Teachers } from "./pages/Teachers";
-import { CreateUser } from "./components/CreateUser/CreateUser";
+import { CreateUser } from "./pages/CreateUser";
+import { UpdateUser } from "./pages/UpdateUser";
 
 function App(): JSX.Element {
     return (
@@ -23,8 +24,12 @@ function App(): JSX.Element {
                 <Route element={<Login />} path={ROUTES.LOGIN} />
                 <Route element={<Teachers />} path={ROUTES.TEACHERS} />
                 <Route
-                    path={`${ROUTES.TEACHERS}/create-user`}
                     element={<CreateUser />}
+                    path={`${ROUTES.TEACHERS}${ROUTES.CREATE_USER}`}
+                />
+                <Route
+                    element={<UpdateUser />}
+                    path={`${ROUTES.TEACHERS}${ROUTES.UPDATE_USER}`}
                 />
             </Routes>
         </BrowserRouter>

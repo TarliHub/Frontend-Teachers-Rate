@@ -2,7 +2,7 @@ import { useInView } from "react-intersection-observer";
 import { useUsersList } from "../../../hooks/useUsersList";
 import { UsersList } from "../../UsersList/UsersList";
 import { useEffect } from "react";
-import { UpdateUser } from "../../UpdateUser/UpdateUser";
+import { UpdateUser } from "../../../pages/UpdateUser";
 
 export function AdminMain(): JSX.Element {
     const { ref, inView } = useInView();

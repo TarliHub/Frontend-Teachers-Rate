@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { UserForm } from "../UserForm/UserForm";
-import { ROUTES } from "../../constants/routes";
+import { UserForm } from "../components/UserForm/UserForm";
+import { ROUTES } from "../constants/routes";
 
 export function CreateUser(): JSX.Element {
     return (

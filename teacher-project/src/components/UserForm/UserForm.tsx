@@ -7,8 +7,13 @@ import showIcon from "../../assets/icons/visible.png";
 import hideIcon from "../../assets/icons/invisible.png";
 
 import { ICreateUserFields } from "../../types/UserFields";
+import { IUser } from "../../types/User.interface";
 
-export function UserForm(): JSX.Element {
+export interface IUserFormProps {
+    userData: IUser;
+}
+
+export function UserForm({ userData }: IUserFormProps): JSX.Element {
     const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
     const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
         useState<boolean>(false);
@@ -35,6 +40,7 @@ export function UserForm(): JSX.Element {
             <div className={styles.surname}>
                 <label>Прізвище</label>
                 <input
+                    defaultValue={userData && userData.surname}
                     placeholder="Введіть прізвище"
                     {...register("surname", {
                         required: "*прізвище обов'язкове поле",
@@ -55,6 +61,7 @@ export function UserForm(): JSX.Element {
             <div className={styles.name}>
                 <label>Ім&apos;я</label>
                 <input
+                    defaultValue={userData && userData.name}
                     placeholder="Введіть ім'я"
                     {...register("name", {
                         required: "*ім'я обов'язкове поле",
@@ -75,6 +82,7 @@ export function UserForm(): JSX.Element {
             <div className={styles.patronymic}>
                 <label>Ім&apos;я по-батькові</label>
                 <input
+                    defaultValue={userData && userData.patronymic}
                     placeholder="Введіть ім'я по-батькові"
                     {...register("patronymic", {
                         required: "*ім'я по-батькові обов'язкове поле",
@@ -95,6 +103,7 @@ export function UserForm(): JSX.Element {
             <div className={styles.email}>
                 <label>Електронна пошта</label>
                 <input
+                    defaultValue={userData && userData.email}
                     placeholder="Введіть електронну пошту"
                     {...register("email", {
                         required: "*електронна пошта обов'язкове поле",
@@ -120,6 +129,7 @@ export function UserForm(): JSX.Element {
                 <label>Пароль</label>
                 <div className={styles.input}>
                     <input
+                        defaultValue={userData && userData.password}
                         placeholder="Введіть пароль"
                         {...register("password", {
                             required: "*пароль обов'язкове поле",
@@ -170,6 +180,7 @@ export function UserForm(): JSX.Element {
                 <label>Підтвердіть пароль</label>
                 <div className={styles.input}>
                     <input
+                        defaultValue={userData && userData.confirmPassword}
                         placeholder="Введіть пароль ще раз"
                         {...register("confirmPassword", {
                             validate: (value) =>

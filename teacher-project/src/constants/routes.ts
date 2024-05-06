@@ -2,7 +2,6 @@ export const ROUTES = {
     MAIN: "/",
     LOGIN: "/login",
     TASKS: "/tasks",
-    CREATE_USER: "/create-user",
     PROFILE: "/profile",
     TEACHER_SCORES: "/teachers-scores",
     MY_RESULTS: "/my-results",
@@ -13,4 +12,6 @@ export const ROUTES = {
     ALL_USERS: "/all-users",
     TEACHERS: "/teachers",
     TEACHER: "/teacher",
+    CREATE_USER: "/create-user",
+    UPDATE_USER: "/update-user"
 };
