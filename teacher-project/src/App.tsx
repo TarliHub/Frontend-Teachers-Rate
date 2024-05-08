@@ -29,7 +29,7 @@ function App(): JSX.Element {
                 />
                 <Route
                     element={<UpdateUser />}
-                    path={`${ROUTES.TEACHERS}${ROUTES.UPDATE_USER}`}
+                    path={`${ROUTES.TEACHERS}${ROUTES.UPDATE_USER}/:id`}
                 />
             </Routes>
         </BrowserRouter>

@@ -3,10 +3,10 @@ import { BASE_API_URL } from "../constants/api";
 import { IUser, IUserFields } from "../types/User.interface";
 
 class UserService {
-    static getUser(userId: number): Promise<IUser> {
+    static getOne<T>(id: number, route: string): Promise<T> {
         return axios
-            .get(`${BASE_API_URL}/User/${userId}`)
-            .then((response: AxiosResponse<IUser>) => {
+            .get(`${BASE_API_URL}/${route}/${id}`)
+            .then((response: AxiosResponse<T>) => {
                 return response.data;
             })
             .catch((error) => {
@@ -57,12 +57,12 @@ class UserService {
             });
     }
 
-    static deleteUser(userId: number): Promise<T> {
+    static deleteOne<T>(id: number, route: string): Promise<T> {
         return axios
-            .delete(`${BASE_API_URL}/User/${userId}`)
-            .then((response: AxiosResponse<T, D>) => {
+            .delete(`${BASE_API_URL}/${route}/${id}`)
+            .then((response: AxiosResponse<T>) => {
                 console.log(response);
-                return response;
+                return response.data;
             })
             .catch((error) => {
                 console.error(error);

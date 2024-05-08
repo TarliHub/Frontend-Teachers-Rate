@@ -2,10 +2,11 @@ import React from "react";
 
 import styles from "./UserList.module.scss";
 
+import { InfiniteData } from "@tanstack/react-query";
+
 import { IUsersList } from "../../types/User.interface";
 
 import { UserContainer } from "./UserContainer";
-import { InfiniteData } from "@tanstack/react-query";
 
 interface IUsersListProps {
     usersData?: InfiniteData<IUsersList>;

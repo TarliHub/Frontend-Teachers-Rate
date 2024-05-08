@@ -7,12 +7,12 @@ import { useLocation, useNavigate } from "react-router-dom";
 import showIcon from "../../assets/icons/visible.png";
 import hideIcon from "../../assets/icons/invisible.png";
 
-import { IUserFields } from "../../types/User.interface";
+import { IUser, IUserFields } from "../../types/User.interface";
 
 import { ROUTES } from "../../constants/routes";
 
 export interface IUserFormProps {
-    userData?: IUserFields;
+    userData?: IUser;
     handleUser: (data: IUserFields) => void;
 }
 

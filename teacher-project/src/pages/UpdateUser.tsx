@@ -1,14 +1,21 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useGetOne } from "../hooks/useGetOne";
+
 import { UserForm } from "../components/UserForm/UserForm";
+
 import { ROUTES } from "../constants/routes";
-import { fakeUser } from "../constants/fakeData";
+
+import { IUser } from "../types/User.interface";
 
 export function UpdateUser(): JSX.Element {
-    /*TODO: Add GetOne User method with React Query */
+    const { id } = useParams();
+
+    const GetOneUser = useGetOne<IUser>(id ? parseInt(id) : 0, "head-teachers");
+
     return (
         <div>
             <Link to={ROUTES.TEACHERS}>Назад</Link>
-            <UserForm userData={fakeUser} />
+            <UserForm userData={GetOneUser.data} />
         </div>
     );
 }
