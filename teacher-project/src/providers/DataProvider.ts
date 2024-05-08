@@ -1,8 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { BASE_API_URL } from "../constants/api";
-import { IUser, IUserFields } from "../types/User.interface";
 
-class UserService {
+class DataProvider {
     static getOne<T>(id: number, route: string): Promise<T> {
         return axios
             .get(`${BASE_API_URL}/${route}/${id}`)
@@ -32,10 +31,10 @@ class UserService {
             });
     }
 
-    static createUser(userData: IUserFields, route: string): Promise<IUser> {
+    static createOne<T>(data: T, route: string): Promise<T> {
         return axios
-            .post(`${BASE_API_URL}/${route}`, userData)
-            .then((response: AxiosResponse<IUser>) => {
+            .post(`${BASE_API_URL}/${route}`, data)
+            .then((response: AxiosResponse<T>) => {
                 console.log(response);
                 return response.data;
             })
@@ -45,10 +44,10 @@ class UserService {
             });
     }
 
-    static updateUser(userData: IUserUpdate): Promise<IUser> {
+    static updateOne<T>(data: T, id: number, route: string): Promise<T> {
         return axios
-            .put(`${BASE_API_URL}/User/${userData.id}`, userData)
-            .then((response: AxiosResponse<IUser>) => {
+            .put(`${BASE_API_URL}/${route}/${id}`, data)
+            .then((response: AxiosResponse<T>) => {
                 return response.data;
             })
             .catch((error) => {
@@ -71,4 +70,4 @@ class UserService {
     }
 }
 
-export default UserService;
+export default DataProvider;

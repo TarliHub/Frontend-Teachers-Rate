@@ -13,15 +13,6 @@ export interface IUser {
     createdAt: string;
     points: number;
     password?: string;
-    headTeacher?: IUser;
-}
-
-export interface IUserFields {
-    id?: number;
-    lastName: string;
-    name: string;
-    middleName: string;
-    email: string;
-    password: string;
     confirmPassword?: string;
+    headTeacher?: IUser;
 }

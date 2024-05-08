@@ -1,18 +1,18 @@
 import { Link } from "react-router-dom";
 
-import { useCreateUser } from "../hooks/useCreateUser";
+import { useCreateOne } from "../hooks/useCreateOne";
 
 import { UserForm } from "../components/UserForm/UserForm";
 
 import { ROUTES } from "../constants/routes";
 
-import { IUserFields } from "../types/User.interface";
+import { IUser } from "../types/User.interface";
 
 export function CreateUser(): JSX.Element {
-    const CreateUser = useCreateUser();
+    const CreateUser = useCreateOne<IUser>();
 
-    const handleCreateUser = (userData: IUserFields) => {
-        CreateUser.mutate({ userData, route: "head-teachers" });
+    const handleCreateUser = (data: IUser) => {
+        CreateUser.mutate({ data, route: "head-teachers" });
     };
 
     return (

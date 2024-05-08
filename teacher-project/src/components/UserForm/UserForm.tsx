@@ -7,13 +7,13 @@ import { useLocation, useNavigate } from "react-router-dom";
 import showIcon from "../../assets/icons/visible.png";
 import hideIcon from "../../assets/icons/invisible.png";
 
-import { IUser, IUserFields } from "../../types/User.interface";
+import { IUser } from "../../types/User.interface";
 
 import { ROUTES } from "../../constants/routes";
 
 export interface IUserFormProps {
     userData?: IUser;
-    handleUser: (data: IUserFields) => void;
+    handleUser: (data: IUser) => void;
 }
 
 export function UserForm({
@@ -31,11 +31,11 @@ export function UserForm({
         handleSubmit,
         formState: { errors },
         watch,
-    } = useForm<IUserFields>();
+    } = useForm<IUser>();
 
     const password = watch("password");
 
-    const onSubmit: SubmitHandler<IUserFields> = (data) => {
+    const onSubmit: SubmitHandler<IUser> = (data) => {
         handleUser(data);
         try {
             navigate("/teachers");
