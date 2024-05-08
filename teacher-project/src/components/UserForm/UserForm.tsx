@@ -21,9 +21,6 @@ export function UserForm({ userData }: IUserFormProps): JSX.Element {
     const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
         useState<boolean>(false);
 
-    const location = useLocation();
-    const isCreateUser = location.pathname === `${ROUTES.TEACHERS}${ROUTES.CREATE_USER}`;
-
     const {
         register,
         handleSubmit,
@@ -182,7 +179,8 @@ export function UserForm({ userData }: IUserFormProps): JSX.Element {
                     </div>
                 )}
             </div>
-            {isCreateUser && (
+            {useLocation().pathname ===
+                `${ROUTES.TEACHERS}${ROUTES.CREATE_USER}` && (
                 <div className={styles.password}>
                     <label>Підтвердіть пароль</label>
                     <div className={styles.input}>
