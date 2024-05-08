@@ -137,102 +137,107 @@ export function UserForm({
                     </div>
                 )}
             </div>
-            <div className={styles.password}>
-                <label>Пароль</label>
-                <div className={styles.input}>
-                    <input
-                        defaultValue={userData && userData.password}
-                        placeholder="Введіть пароль"
-                        {...register("password", {
-                            required: "*пароль обов'язкове поле",
-                            minLength: {
-                                value: 8,
-                                message:
-                                    "*пароль має містити мінімум 8 символів",
-                            },
-                            maxLength: {
-                                value: 30,
-                                message:
-                                    "*пароль не може мати більше 30 символів",
-                            },
-                            pattern: {
-                                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]+$/,
-                                message:
-                                    "*пароль має містити великі і малі символи, латинські літери та числа",
-                            },
-                        })}
-                        type={isPasswordVisible ? "text" : "password"}
-                    />
-                    <button
-                        type="button"
-                        onClick={() => setIsPasswordVisible(!isPasswordVisible)}
-                    >
-                        {isPasswordVisible ? (
-                            <img
-                                className="w-[26px]"
-                                src={hideIcon}
-                                alt="Hide Icon"
-                            />
-                        ) : (
-                            <img
-                                className="w-[26px]"
-                                src={showIcon}
-                                alt="Show Icon"
-                            />
-                        )}
-                    </button>
-                </div>
-                {errors.password && (
-                    <div className={styles.errorText}>
-                        {errors.password.message}
-                    </div>
-                )}
-            </div>
             {useLocation().pathname ===
                 `${ROUTES.TEACHERS}${ROUTES.CREATE_USER}` && (
-                <div className={styles.password}>
-                    <label>Підтвердіть пароль</label>
-                    <div className={styles.input}>
-                        <input
-                            placeholder="Введіть пароль ще раз"
-                            {...register("confirmPassword", {
-                                validate: (value) =>
-                                    value === password ||
-                                    "*паролі не співпадають",
-                            })}
-                            type={
-                                isConfirmPasswordVisible ? "text" : "password"
-                            }
-                        />
-                        <button
-                            type="button"
-                            onClick={() =>
-                                setIsConfirmPasswordVisible(
-                                    !isConfirmPasswordVisible
-                                )
-                            }
-                        >
-                            {isConfirmPasswordVisible ? (
-                                <img
-                                    className="w-[26px]"
-                                    src={hideIcon}
-                                    alt="Hide Icon"
-                                />
-                            ) : (
-                                <img
-                                    className="w-[26px]"
-                                    src={showIcon}
-                                    alt="Show Icon"
-                                />
-                            )}
-                        </button>
-                    </div>
-                    {errors.confirmPassword && (
-                        <div className={styles.errorText}>
-                            {errors.confirmPassword.message}
+                <>
+                    <div className={styles.password}>
+                        <label>Пароль</label>
+                        <div className={styles.input}>
+                            <input
+                                placeholder="Введіть пароль"
+                                {...register("password", {
+                                    required: "*пароль обов'язкове поле",
+                                    minLength: {
+                                        value: 8,
+                                        message:
+                                            "*пароль має містити мінімум 8 символів",
+                                    },
+                                    maxLength: {
+                                        value: 30,
+                                        message:
+                                            "*пароль не може мати більше 30 символів",
+                                    },
+                                    pattern: {
+                                        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]+$/,
+                                        message:
+                                            "*пароль має містити великі і малі символи, латинські літери та числа",
+                                    },
+                                })}
+                                type={isPasswordVisible ? "text" : "password"}
+                            />
+                            <button
+                                type="button"
+                                onClick={() =>
+                                    setIsPasswordVisible(!isPasswordVisible)
+                                }
+                            >
+                                {isPasswordVisible ? (
+                                    <img
+                                        className="w-[26px]"
+                                        src={hideIcon}
+                                        alt="Hide Icon"
+                                    />
+                                ) : (
+                                    <img
+                                        className="w-[26px]"
+                                        src={showIcon}
+                                        alt="Show Icon"
+                                    />
+                                )}
+                            </button>
                         </div>
-                    )}
-                </div>
+                        {errors.password && (
+                            <div className={styles.errorText}>
+                                {errors.password.message}
+                            </div>
+                        )}
+                    </div>
+                    <div className={styles.password}>
+                        <label>Підтвердіть пароль</label>
+                        <div className={styles.input}>
+                            <input
+                                placeholder="Введіть пароль ще раз"
+                                {...register("confirmPassword", {
+                                    validate: (value) =>
+                                        value === password ||
+                                        "*паролі не співпадають",
+                                })}
+                                type={
+                                    isConfirmPasswordVisible
+                                        ? "text"
+                                        : "password"
+                                }
+                            />
+                            <button
+                                type="button"
+                                onClick={() =>
+                                    setIsConfirmPasswordVisible(
+                                        !isConfirmPasswordVisible
+                                    )
+                                }
+                            >
+                                {isConfirmPasswordVisible ? (
+                                    <img
+                                        className="w-[26px]"
+                                        src={hideIcon}
+                                        alt="Hide Icon"
+                                    />
+                                ) : (
+                                    <img
+                                        className="w-[26px]"
+                                        src={showIcon}
+                                        alt="Show Icon"
+                                    />
+                                )}
+                            </button>
+                        </div>
+                        {errors.confirmPassword && (
+                            <div className={styles.errorText}>
+                                {errors.confirmPassword.message}
+                            </div>
+                        )}
+                    </div>
+                </>
             )}
             <div className={styles.button}>
                 <button>Створити</button>
