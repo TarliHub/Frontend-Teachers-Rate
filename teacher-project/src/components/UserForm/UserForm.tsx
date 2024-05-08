@@ -2,12 +2,15 @@ import styles from "./UserForm.module.scss";
 
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 import showIcon from "../../assets/icons/visible.png";
 import hideIcon from "../../assets/icons/invisible.png";
 
 import { ICreateUserFields } from "../../types/UserFields";
 import { IUser } from "../../types/User.interface";
+
+import { ROUTES } from "../../constants/routes";
 
 export interface IUserFormProps {
     userData: IUser;
@@ -17,6 +20,9 @@ export function UserForm({ userData }: IUserFormProps): JSX.Element {
     const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
     const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
         useState<boolean>(false);
+
+    const location = useLocation();
+    const isCreateUser = location.pathname === `${ROUTES.TEACHERS}${ROUTES.CREATE_USER}`;
 
     const {
         register,
@@ -45,7 +51,7 @@ export function UserForm({ userData }: IUserFormProps): JSX.Element {
                     {...register("surname", {
                         required: "*прізвище обов'язкове поле",
                         pattern: {
-                            value: /^[А-ЩЬЮЯҐЄІЇ][а-щьюяґєії']{0,14}$/,
+                            value: /^[А-ЩЬЮЯҐЄІЇA-Z][а-щьюяґєіїA-Za-z']{0,14}$/,
                             message:
                                 "*прізвище має починатися з великої літери і містити максимум 15 символів",
                         },
@@ -66,7 +72,7 @@ export function UserForm({ userData }: IUserFormProps): JSX.Element {
                     {...register("name", {
                         required: "*ім'я обов'язкове поле",
                         pattern: {
-                            value: /^[А-ЩЬЮЯҐЄІЇ][а-щьюяґєії']{0,14}$/,
+                            value: /^[А-ЩЬЮЯҐЄІЇA-Z][а-щьюяґєіїA-Za-z']{0,14}$/,
                             message:
                                 "*ім'я має починатися з великої літери і містити максимум 15 символів",
                         },
@@ -87,7 +93,7 @@ export function UserForm({ userData }: IUserFormProps): JSX.Element {
                     {...register("patronymic", {
                         required: "*ім'я по-батькові обов'язкове поле",
                         pattern: {
-                            value: /^[А-ЩЬЮЯҐЄІЇ][а-щьюяґєії']{0,14}$/,
+                            value: /^[А-ЩЬЮЯҐЄІЇA-Z][а-щьюяґєіїA-Za-z']{0,14}$/,
                             message:
                                 "*ім'я по-батькові має починатися з великої літери і містити максимум 15 символів",
                         },
@@ -176,47 +182,51 @@ export function UserForm({ userData }: IUserFormProps): JSX.Element {
                     </div>
                 )}
             </div>
-            <div className={styles.password}>
-                <label>Підтвердіть пароль</label>
-                <div className={styles.input}>
-                    <input
-                        defaultValue={userData && userData.confirmPassword}
-                        placeholder="Введіть пароль ще раз"
-                        {...register("confirmPassword", {
-                            validate: (value) =>
-                                value === password || "*паролі не співпадають",
-                        })}
-                        type={isConfirmPasswordVisible ? "text" : "password"}
-                    />
-                    <button
-                        type="button"
-                        onClick={() =>
-                            setIsConfirmPasswordVisible(
-                                !isConfirmPasswordVisible
-                            )
-                        }
-                    >
-                        {isConfirmPasswordVisible ? (
-                            <img
-                                className="w-[26px]"
-                                src={hideIcon}
-                                alt="Hide Icon"
-                            />
-                        ) : (
-                            <img
-                                className="w-[26px]"
-                                src={showIcon}
-                                alt="Show Icon"
-                            />
-                        )}
-                    </button>
-                </div>
-                {errors.confirmPassword && (
-                    <div className={styles.errorText}>
-                        {errors.confirmPassword.message}
+            {isCreateUser && (
+                <div className={styles.password}>
+                    <label>Підтвердіть пароль</label>
+                    <div className={styles.input}>
+                        <input
+                            placeholder="Введіть пароль ще раз"
+                            {...register("confirmPassword", {
+                                validate: (value) =>
+                                    value === password ||
+                                    "*паролі не співпадають",
+                            })}
+                            type={
+                                isConfirmPasswordVisible ? "text" : "password"
+                            }
+                        />
+                        <button
+                            type="button"
+                            onClick={() =>
+                                setIsConfirmPasswordVisible(
+                                    !isConfirmPasswordVisible
+                                )
+                            }
+                        >
+                            {isConfirmPasswordVisible ? (
+                                <img
+                                    className="w-[26px]"
+                                    src={hideIcon}
+                                    alt="Hide Icon"
+                                />
+                            ) : (
+                                <img
+                                    className="w-[26px]"
+                                    src={showIcon}
+                                    alt="Show Icon"
+                                />
+                            )}
+                        </button>
                     </div>
-                )}
-            </div>
+                    {errors.confirmPassword && (
+                        <div className={styles.errorText}>
+                            {errors.confirmPassword.message}
+                        </div>
+                    )}
+                </div>
+            )}
             <div className={styles.button}>
                 <button>Створити</button>
             </div>
