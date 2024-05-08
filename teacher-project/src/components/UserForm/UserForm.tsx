@@ -2,50 +2,59 @@ import styles from "./UserForm.module.scss";
 
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import showIcon from "../../assets/icons/visible.png";
 import hideIcon from "../../assets/icons/invisible.png";
 
-import { ICreateUserFields } from "../../types/UserFields";
-import { IUser } from "../../types/User.interface";
+import { IUserFields } from "../../types/User.interface";
 
 import { ROUTES } from "../../constants/routes";
 
 export interface IUserFormProps {
-    userData: IUser;
+    userData?: IUserFields;
+    handleUser: (data: IUserFields) => void;
 }
 
-export function UserForm({ userData }: IUserFormProps): JSX.Element {
+export function UserForm({
+    userData,
+    handleUser,
+}: IUserFormProps): JSX.Element {
     const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
     const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
         useState<boolean>(false);
+
+    const navigate = useNavigate();
 
     const {
         register,
         handleSubmit,
         formState: { errors },
         watch,
-    } = useForm<ICreateUserFields>();
+    } = useForm<IUserFields>();
 
     const password = watch("password");
 
-    const onSubmit: SubmitHandler<ICreateUserFields> = (data) => {
-        console.log(data);
-        return data;
+    const onSubmit: SubmitHandler<IUserFields> = (data) => {
+        handleUser(data);
+        try {
+            navigate("/teachers");
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     return (
         <form
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={(event) => void handleSubmit(onSubmit)(event)}
             className={styles.registrationForm}
         >
             <div className={styles.surname}>
                 <label>Прізвище</label>
                 <input
-                    defaultValue={userData && userData.surname}
+                    defaultValue={userData && userData.lastName}
                     placeholder="Введіть прізвище"
-                    {...register("surname", {
+                    {...register("lastName", {
                         required: "*прізвище обов'язкове поле",
                         pattern: {
                             value: /^[А-ЩЬЮЯҐЄІЇA-Z][а-щьюяґєіїA-Za-z']{0,14}$/,
@@ -55,9 +64,9 @@ export function UserForm({ userData }: IUserFormProps): JSX.Element {
                     })}
                     type="text"
                 />
-                {errors.surname && (
+                {errors.lastName && (
                     <div className={styles.errorText}>
-                        {errors.surname.message}
+                        {errors.lastName.message}
                     </div>
                 )}
             </div>
@@ -85,9 +94,9 @@ export function UserForm({ userData }: IUserFormProps): JSX.Element {
             <div className={styles.patronymic}>
                 <label>Ім&apos;я по-батькові</label>
                 <input
-                    defaultValue={userData && userData.patronymic}
+                    defaultValue={userData && userData.middleName}
                     placeholder="Введіть ім'я по-батькові"
-                    {...register("patronymic", {
+                    {...register("middleName", {
                         required: "*ім'я по-батькові обов'язкове поле",
                         pattern: {
                             value: /^[А-ЩЬЮЯҐЄІЇA-Z][а-щьюяґєіїA-Za-z']{0,14}$/,
@@ -97,9 +106,9 @@ export function UserForm({ userData }: IUserFormProps): JSX.Element {
                     })}
                     type="text"
                 />
-                {errors.patronymic && (
+                {errors.middleName && (
                     <div className={styles.errorText}>
-                        {errors.patronymic.message}
+                        {errors.middleName.message}
                     </div>
                 )}
             </div>

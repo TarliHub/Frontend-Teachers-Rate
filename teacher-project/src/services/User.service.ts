@@ -1,6 +1,11 @@
 import axios, { AxiosResponse } from "axios";
 import { BASE_API_URL } from "../constants/api";
-import { IUser, IUserUpdate, IUsersList } from "../types/User.interface";
+import {
+    IUser,
+    IUserFields,
+    IUserUpdate,
+    IUsersList,
+} from "../types/User.interface";
 
 class UserService {
     static getUser(userId: number): Promise<IUser> {
@@ -15,15 +20,15 @@ class UserService {
             });
     }
 
-    static getUsersList(pageParam?: number): Promise<IUsersList> {
+    static getList<T>(pageParam?: number, route?: string): Promise<T> {
         return axios
-            .get(`${BASE_API_URL}/User`, {
+            .get(`${BASE_API_URL}/${route}`, {
                 params: {
-                    PageIndex: pageParam,
-                    PageSize: 10,
+                    Page: pageParam,
+                    Size: 10,
                 },
             })
-            .then((response: AxiosResponse<IUsersList>) => {
+            .then((response: AxiosResponse<T>) => {
                 return response.data;
             })
             .catch((error) => {
@@ -32,10 +37,11 @@ class UserService {
             });
     }
 
-    static createUser(userData: IUser): Promise<IUser> {
+    static createUser(userData: IUserFields, route: string): Promise<IUser> {
         return axios
-            .post(`${BASE_API_URL}/User`, userData)
+            .post(`${BASE_API_URL}/${route}`, userData)
             .then((response: AxiosResponse<IUser>) => {
+                console.log(response);
                 return response.data;
             })
             .catch((error) => {
