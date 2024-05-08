@@ -5,9 +5,10 @@ import styles from "./UserList.module.scss";
 import { IUsersList } from "../../types/User.interface";
 
 import { UserContainer } from "./UserContainer";
+import { InfiniteData } from "@tanstack/react-query";
 
 interface IUsersListProps {
-    usersData?: IUsersList[];
+    usersData?: InfiniteData<IUsersList>;
 }
 
 export function UsersList({ usersData }: IUsersListProps): JSX.Element {
@@ -18,13 +19,15 @@ export function UsersList({ usersData }: IUsersListProps): JSX.Element {
                 <p className="flex-[2]">Рейтинг</p>
                 <div className="flex-1"></div>
             </div>
-            {usersData?.map((item, index) => (
-                <React.Fragment key={index}>
-                    {item.items.map((item, index) => (
-                        <UserContainer key={index} userData={item} />
-                    ))}
-                </React.Fragment>
-            ))}
+            <React.Fragment>
+                {usersData?.pages.map((item, index) => (
+                    <React.Fragment key={index}>
+                        {item.items.map((item, index) => (
+                            <UserContainer key={index} userData={item} />
+                        ))}
+                    </React.Fragment>
+                ))}
+            </React.Fragment>
         </div>
     );
 }

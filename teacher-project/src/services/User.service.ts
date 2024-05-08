@@ -1,11 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { BASE_API_URL } from "../constants/api";
-import {
-    IUser,
-    IUserFields,
-    IUserUpdate,
-    IUsersList,
-} from "../types/User.interface";
+import { IUser, IUserFields } from "../types/User.interface";
 
 class UserService {
     static getUser(userId: number): Promise<IUser> {

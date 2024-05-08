@@ -1,11 +1,12 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import UserService from "../services/User.service";
+import { IUsersList } from "../types/User.interface";
 
-export const useUsersList = () => {
+export const useUsersList = (route: string) => {
     return useInfiniteQuery({
         queryKey: ["users-list"],
         queryFn: async ({ pageParam }: { pageParam: number }) => {
-            return await UserService.getUsersList(pageParam);
+            return await UserService.getList<IUsersList>(pageParam, route);
         },
         initialPageParam: 0,
         getNextPageParam: (lastPage, allPages) => {

@@ -3,9 +3,12 @@ import { Link } from "react-router-dom";
 import { ROUTES } from "../constants/routes";
 
 import { UsersList } from "../components/UsersList/UsersList";
-import { usersData } from "../constants/fakeData";
+
+import { useUsersList } from "../hooks/useUsersList";
 
 export function Teachers(): JSX.Element {
+    const HeadTeachersList = useUsersList("head-teachers");
+
     return (
         <div>
             <div className="flex justify-end m-4">
@@ -21,7 +24,7 @@ export function Teachers(): JSX.Element {
             </div>
             <div className="flex flex-row">
                 <div className="lg:bg-black lg:flex-1"></div>
-                <UsersList usersData={usersData} />
+                <UsersList usersData={HeadTeachersList.data} />
             </div>
         </div>
     );

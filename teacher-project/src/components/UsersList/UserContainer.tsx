@@ -3,10 +3,13 @@ import styles from "./UserList.module.scss";
 import { Link } from "react-router-dom";
 
 import { ROUTES } from "../../constants/routes";
+import { IUser } from "../../types/User.interface";
 
-//TODO: Interface
+interface IUserContainer {
+    userData: IUser;
+}
 
-export function UserContainer({ userData }) {
+export function UserContainer({ userData }: IUserContainer) {
     return (
         <div className={styles.userContainer}>
             <div className="flex-[3]">
@@ -14,7 +17,7 @@ export function UserContainer({ userData }) {
                     {`${userData.lastName} ${userData.name}`}
                 </Link>
             </div>
-            <p className="flex-1">{userData.rating}</p>
+            <p className="flex-1">{userData.points}</p>
 
             <div className={styles.buttonContainer}>
                 <Link
