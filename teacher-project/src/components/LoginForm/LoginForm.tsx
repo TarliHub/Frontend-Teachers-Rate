@@ -1,8 +1,6 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import { ILoginFields } from "../../types/Authorization.interface.ts";
+import { ILoginFields } from "../../types/auth.types.ts";
 import styles from "./LoginForm.module.scss";
-import { Link } from "react-router-dom";
-import { ROUTES } from "../../constants/routes";
 
 export function LoginForm(): JSX.Element {
     const {
@@ -28,7 +26,8 @@ export function LoginForm(): JSX.Element {
                         required: "*email is required field",
                         maxLength: {
                             value: 30,
-                            message: "*електронна пошта не може мати більше 30 символів",
+                            message:
+                                "*електронна пошта не може мати більше 30 символів",
                         },
                         pattern: {
                             value: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
@@ -66,17 +65,6 @@ export function LoginForm(): JSX.Element {
                         {errors.password.message}
                     </div>
                 )}
-            </div>
-            <div className={styles.bottomBlock}>
-                <div className={styles.button}>
-                    <button>Увійти</button>
-                </div>
-                <p className={styles.askText}>
-                    у вас ще немає облікового запису?
-                </p>
-                <div className={styles.bottomNav}>
-                    <Link to={ROUTES.REGISTRATION}>зареєструватися</Link>
-                </div>
             </div>
         </form>
     );
