@@ -1,18 +1,22 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
-import AuthProvider from "../providers/authProvider";
+import { ILoginFields, IUserData } from "../types/Auth.interface";
 
-import { ILoginFields } from "../types/auth.types";
+import AuthenticationProvider from "../providers/AuthenticationProvider";
 
-export const useLoginUser = <T>() => {
-    const queryClient = useQueryClient();
+export const useLoginUser = () => {
+    const navigate = useNavigate();
 
-    return useMutation<T, Error, { data: ILoginFields }>({
+    return useMutation<IUserData, Error, { data: ILoginFields }>({
         mutationFn: async ({ data }) => {
-            return await AuthProvider.loginUser(data);
+            return await AuthenticationProvider.loginUser(data);
         },
-        onSuccess: async () => {
-            await queryClient.invalidateQueries({ queryKey: ["users-list"] });
+        onSuccess: (data) => {
+            navigate("/");
+            Cookies.set("token", data.token, { path: "/" });
+            Cookies.set("role", data.role, { path: "/" });
         },
     });
 };

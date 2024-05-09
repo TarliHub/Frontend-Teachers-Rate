@@ -2,9 +2,9 @@ import axios, { AxiosResponse } from "axios";
 
 import { BASE_API_URL } from "../constants/api";
 
-import { ILoginFields } from "../types/auth.types";
+import { ILoginFields } from "../types/Auth.interface";
 
-class AuthProvider {
+class AuthenticationProvider {
     static loginUser<T>(data: ILoginFields): Promise<T> {
         return axios
             .post(`${BASE_API_URL}/auth/login`, data)
@@ -19,4 +19,4 @@ class AuthProvider {
     }
 }
 
-export default AuthProvider;
+export default AuthenticationProvider;
