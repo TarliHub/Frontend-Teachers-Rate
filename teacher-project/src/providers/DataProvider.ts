@@ -1,23 +1,15 @@
 import axios, { AxiosResponse } from "axios";
+
 import { BASE_API_URL } from "../constants/api";
-import useCookie from "../hooks/useCookie";
 
 class DataProvider {
-    static useCookie = useCookie;
-
-    static getRequestConfig() {
-        const { token } = this.useCookie(["token"]);
-        const config = {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        };
-        return config;
-    }
-
-    static getOne<T>(id: number, route: string): Promise<T> {
+    static getOne<T>(id: number, route: string, token?: string): Promise<T> {
         return axios
-            .get(`${BASE_API_URL}/${route}/${id}`, this.getRequestConfig())
+            .get(`${BASE_API_URL}/${route}/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
             .then((response: AxiosResponse<T>) => {
                 return response.data;
             })
@@ -27,14 +19,20 @@ class DataProvider {
             });
     }
 
-    static getList<T>(pageParam?: number, route?: string): Promise<T> {
+    static getList<T>(
+        pageParam?: number,
+        route?: string,
+        token?: string
+    ): Promise<T> {
         return axios
             .get(`${BASE_API_URL}/${route}`, {
                 params: {
                     Page: pageParam,
                     Size: 10,
                 },
-                ...this.getRequestConfig(),
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
             })
             .then((response: AxiosResponse<T>) => {
                 return response.data;
@@ -45,9 +43,13 @@ class DataProvider {
             });
     }
 
-    static createOne<T>(data: T, route: string): Promise<T> {
+    static createOne<T>(data: T, route: string, token?: string): Promise<T> {
         return axios
-            .post(`${BASE_API_URL}/${route}`, data, this.getRequestConfig())
+            .post(`${BASE_API_URL}/${route}`, data, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
             .then((response: AxiosResponse<T>) => {
                 return response.data;
             })
@@ -57,13 +59,18 @@ class DataProvider {
             });
     }
 
-    static updateOne<T>(data: T, id: number, route: string): Promise<T> {
+    static updateOne<T>(
+        data: T,
+        id: number,
+        route: string,
+        token?: string
+    ): Promise<T> {
         return axios
-            .put(
-                `${BASE_API_URL}/${route}/${id}`,
-                data,
-                this.getRequestConfig()
-            )
+            .put(`${BASE_API_URL}/${route}/${id}`, data, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
             .then((response: AxiosResponse<T>) => {
                 return response.data;
             })
@@ -73,9 +80,13 @@ class DataProvider {
             });
     }
 
-    static deleteOne<T>(id: number, route: string): Promise<T> {
+    static deleteOne<T>(id: number, route: string, token?: string): Promise<T> {
         return axios
-            .delete(`${BASE_API_URL}/${route}/${id}`, this.getRequestConfig())
+            .delete(`${BASE_API_URL}/${route}/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
             .then((response: AxiosResponse<T>) => {
                 return response.data;
             })

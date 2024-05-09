@@ -1,6 +1,6 @@
 import "./App.scss";
 
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { ROUTES } from "./constants/routes";
 
@@ -41,7 +41,6 @@ function App(): JSX.Element {
             ) : (
                 <Routes>
                     <Route element={<Login />} path={ROUTES.LOGIN} />
-                    <Route path="*" element={<Navigate to={ROUTES.LOGIN} />} />
                 </Routes>
             )}
         </BrowserRouter>

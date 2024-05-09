@@ -1,12 +1,19 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import DataProvider from "../providers/DataProvider";
 import { IUsersList } from "../types/User.interface";
+import useCookie from "./useCookie";
 
 export const useUsersList = (route: string) => {
+    const { token } = useCookie(["token"]);
+
     return useInfiniteQuery({
         queryKey: ["users-list"],
         queryFn: async ({ pageParam }: { pageParam: number }) => {
-            return await DataProvider.getList<IUsersList>(pageParam, route);
+            return await DataProvider.getList<IUsersList>(
+                pageParam,
+                route,
+                token
+            );
         },
         initialPageParam: 0,
         getNextPageParam: (lastPage, allPages) => {

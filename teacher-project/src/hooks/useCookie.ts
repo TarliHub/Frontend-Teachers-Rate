@@ -1,20 +1,12 @@
-import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 
 const useCookie = (cookieNames: string[]) => {
-    const [cookieValues, setCookieValues] = useState<Record<string, string>>(
-        {}
-    );
+    const cookies: Record<string, string> = {};
 
-    useEffect(() => {
-        const cookies: Record<string, string> = {};
-        cookieNames.forEach((cookieName) => {
-            cookies[cookieName] = Cookies.get(cookieName) || "";
-        });
-        setCookieValues(cookies);
-    }, []);
-
-    return cookieValues;
+    cookieNames.forEach((cookieName) => {
+        cookies[cookieName] = Cookies.get(cookieName) || "";
+    });
+    return cookies;
 };
 
 export default useCookie;
