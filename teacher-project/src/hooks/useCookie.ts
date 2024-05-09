@@ -12,7 +12,7 @@ const useCookies = (cookieNames: string[]) => {
             cookies[cookieName] = Cookies.get(cookieName) || "";
         });
         setCookieValues(cookies);
-    }, [cookieNames]);
+    }, []);
 
     return cookieValues;
 };
