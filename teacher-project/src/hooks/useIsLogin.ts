@@ -1,7 +1,7 @@
-import useCookies from "./useCookie";
+import useCookie from "./useCookie";
 
 export const useIsLogin = () => {
-    const { token, role } = useCookies(["token", "role"]);
+    const { token, role } = useCookie(["token", "role"]);
 
     return !!token && !!role;
 };

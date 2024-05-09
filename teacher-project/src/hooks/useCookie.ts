@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 
-const useCookies = (cookieNames: string[]) => {
+const useCookie = (cookieNames: string[]) => {
     const [cookieValues, setCookieValues] = useState<Record<string, string>>(
         {}
     );
@@ -17,4 +17,4 @@ const useCookies = (cookieNames: string[]) => {
     return cookieValues;
 };
 
-export default useCookies;
+export default useCookie;
