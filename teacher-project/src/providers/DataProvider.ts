@@ -35,7 +35,6 @@ class DataProvider {
         return axios
             .post(`${BASE_API_URL}/${route}`, data)
             .then((response: AxiosResponse<T>) => {
-                console.log(response);
                 return response.data;
             })
             .catch((error) => {
@@ -60,7 +59,6 @@ class DataProvider {
         return axios
             .delete(`${BASE_API_URL}/${route}/${id}`)
             .then((response: AxiosResponse<T>) => {
-                console.log(response);
                 return response.data;
             })
             .catch((error) => {
