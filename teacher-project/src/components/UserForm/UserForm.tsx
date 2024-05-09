@@ -2,7 +2,7 @@ import styles from "./UserForm.module.scss";
 
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import showIcon from "../../assets/icons/visible.png";
 import hideIcon from "../../assets/icons/invisible.png";
@@ -24,8 +24,6 @@ export function UserForm({
     const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
         useState<boolean>(false);
 
-    const navigate = useNavigate();
-
     const {
         register,
         handleSubmit,
@@ -37,11 +35,6 @@ export function UserForm({
 
     const onSubmit: SubmitHandler<IUser> = (data) => {
         handleUser(data);
-        try {
-            navigate("/teachers");
-        } catch (error) {
-            console.error(error);
-        }
     };
 
     return (
