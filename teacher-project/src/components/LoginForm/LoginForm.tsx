@@ -1,15 +1,14 @@
-import { SubmitHandler, useForm } from "react-hook-form";
-import { ILoginFields } from "../../types/auth.types.ts";
 import styles from "./LoginForm.module.scss";
-import { useNavigate } from "react-router-dom";
+
+import { SubmitHandler, useForm } from "react-hook-form";
+
+import { ILoginFields } from "../../types/Auth.interface.ts";
 
 interface ILoginFormProps {
     handleLoginUser: (data: ILoginFields) => void;
 }
 
 export function LoginForm({ handleLoginUser }: ILoginFormProps): JSX.Element {
-    const navigate = useNavigate();
-
     const {
         register,
         handleSubmit,
@@ -18,11 +17,6 @@ export function LoginForm({ handleLoginUser }: ILoginFormProps): JSX.Element {
 
     const onSubmit: SubmitHandler<ILoginFields> = (data) => {
         handleLoginUser(data);
-        try {
-            navigate("/");
-        } catch (error) {
-            console.error(error);
-        }
     };
 
     return (
@@ -80,6 +74,9 @@ export function LoginForm({ handleLoginUser }: ILoginFormProps): JSX.Element {
                         {errors.password.message}
                     </div>
                 )}
+                <div className={styles.button}>
+                    <button>Увійти</button>
+                </div>
             </div>
         </form>
     );

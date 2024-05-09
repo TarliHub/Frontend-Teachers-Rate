@@ -12,16 +12,18 @@
     "dependencies": {
         "@tanstack/react-query": "^5.25.0",
         "axios": "^1.6.7",
+        "eslint-plugin-react": "^7.33.2",
+        "js-cookie": "^3.0.5",
         "postcss-import": "^16.0.1",
         "react": "^18.2.0",
-        "eslint-plugin-react": "^7.33.2",
         "react-dom": "^18.2.0",
-        "react-intersection-observer": "^9.8.1",
         "react-hook-form": "^7.51.0",
+        "react-intersection-observer": "^9.8.1",
         "react-router-dom": "^6.22.3",
         "sass": "^1.71.1"
     },
     "devDependencies": {
+        "@types/js-cookie": "^3.0.6",
         "@types/react": "^18.2.56",
         "@types/react-dom": "^18.2.19",
         "@typescript-eslint/eslint-plugin": "^7.0.2",

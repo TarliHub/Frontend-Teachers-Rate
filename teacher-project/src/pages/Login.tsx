@@ -1,6 +1,8 @@
 import { LoginForm } from "../components/LoginForm/LoginForm";
+
 import { useLoginUser } from "../hooks/useLoginUser";
-import { ILoginFields } from "../types/auth.types";
+
+import { ILoginFields } from "../types/Auth.interface";
 
 export function Login(): JSX.Element {
     const LoginUser = useLoginUser();

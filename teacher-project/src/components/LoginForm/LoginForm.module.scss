@@ -21,6 +21,12 @@
             }
         }
     }
+
+    .button {
+        button {
+            @apply bg-primaryBlue text-white p-2 rounded-lg cursor-pointer focus:outline-none;
+        }
+    }
 }
 
 .errorText {
