@@ -1,6 +1,6 @@
 import { ReactNode, createContext } from "react";
 
-import useCookie from "../hooks/useCookie";
+import { useSession } from "../hooks/useSession";
 
 interface AuthContextType {
     token: string;
@@ -21,8 +21,8 @@ export const AuthContext = createContext<AuthContextType>({
 });
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-    const [token, setToken, deleteToken] = useCookie("token", "");
-    const [role, setRole, deleteRole] = useCookie("role", "");
+    const [token, setToken, deleteToken] = useSession("token", "");
+    const [role, setRole, deleteRole] = useSession("role", "");
 
     return (
         <AuthContext.Provider
