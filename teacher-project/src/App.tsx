@@ -1,28 +1,31 @@
 import "./App.scss";
 
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
-import useCookie from "./hooks/useCookie";
+import { useContext } from "react";
 
 import { ROUTES } from "./constants/routes";
+
+import { NavigationBar } from "./components/NavigationBar/NavigationBar";
+
+import { AuthContext } from "./context/AuthContext";
 
 import { Login } from "./pages/Login";
 import { Main } from "./pages/Main";
 import { Tasks } from "./pages/Tasks";
 import { Profile } from "./pages/Profile";
-import { NavigationBar } from "./components/NavigationBar/NavigationBar";
 import { Teachers } from "./pages/Teachers";
 import { CreateUser } from "./pages/CreateUser";
 import { UpdateUser } from "./pages/UpdateUser";
 
 function App(): JSX.Element {
-    const token = useCookie("token", "")[0];
+    const { token, role, deleteToken } = useContext(AuthContext);
 
     return (
         <BrowserRouter>
             {token ? (
                 <>
-                    <NavigationBar role="Admin" />
+                    <NavigationBar role={role} />
                     <Routes>
                         <Route element={<Main />} path={ROUTES.MAIN} />
                         <Route element={<Tasks />} path={ROUTES.TASKS} />
@@ -36,11 +39,17 @@ function App(): JSX.Element {
                             element={<UpdateUser />}
                             path={`${ROUTES.TEACHERS}${ROUTES.UPDATE_USER}/:id`}
                         />
+                        <Route
+                            path="*"
+                            element={<Navigate to={ROUTES.MAIN} />}
+                        />
                     </Routes>
+                    <button onClick={deleteToken}>Вийти з акаунта</button>
                 </>
             ) : (
                 <Routes>
                     <Route element={<Login />} path={ROUTES.LOGIN} />
+                    <Route path="*" element={<Navigate to={ROUTES.LOGIN} />} />
                 </Routes>
             )}
         </BrowserRouter>

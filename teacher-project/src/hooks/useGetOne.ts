@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-
-import useCookie from "./useCookie";
+import { AuthContext } from "../context/AuthContext";
+import { useContext } from "react";
 
 import DataProvider from "../providers/DataProvider";
 
 export const useGetOne = <T>(id: number, route: string) => {
-    const token = useCookie("token", "")[0];
+    const { token } = useContext(AuthContext);
 
     return useQuery<T, Error>({
         queryKey: ["user"],

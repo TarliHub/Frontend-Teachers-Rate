@@ -6,25 +6,14 @@ import {
     userNavigation,
 } from "../../constants/navigationData";
 
-import { INavigation } from "../../types/Navigation";
-
 interface INavigationBarProps {
-    role: "CentralComision" | "Admin" | "User";
+    role?: string;
 }
-
-interface IRoleNavigation {
-    CentralComision: INavigation[];
-    Admin: INavigation[];
-    User: INavigation[];
-}
-
-const roleProps: IRoleNavigation = {
-    CentralComision: cCNavigation,
-    Admin: adminNavigation,
-    User: userNavigation,
-};
 
 export function NavigationBar({ role }: INavigationBarProps): JSX.Element {
-    const navigationData = roleProps[role as keyof IRoleNavigation];
-    return <NavigationBarBlock navigationData={navigationData} />;
+    if (role === "0") {
+        return <NavigationBarBlock navigationData={adminNavigation} />;
+    }
+
+    return <NavigationBarBlock navigationData={cCNavigation} />;
 }
