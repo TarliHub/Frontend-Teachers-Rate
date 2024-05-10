@@ -4,7 +4,7 @@ import { IUsersList } from "../types/User.interface";
 import useCookie from "./useCookie";
 
 export const useUsersList = (route: string) => {
-    const { token } = useCookie(["token"]);
+    const token = useCookie("token", "")[0];
 
     return useInfiniteQuery({
         queryKey: ["users-list"],

@@ -2,6 +2,8 @@ import "./App.scss";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+import useCookie from "./hooks/useCookie";
+
 import { ROUTES } from "./constants/routes";
 
 import { Login } from "./pages/Login";
@@ -13,14 +15,12 @@ import { Teachers } from "./pages/Teachers";
 import { CreateUser } from "./pages/CreateUser";
 import { UpdateUser } from "./pages/UpdateUser";
 
-import { useIsLogin } from "./hooks/useIsLogin";
-
 function App(): JSX.Element {
-    const isLogin = useIsLogin();
+    const token = useCookie("token", "")[0];
 
     return (
         <BrowserRouter>
-            {isLogin ? (
+            {token ? (
                 <>
                     <NavigationBar role="Admin" />
                     <Routes>

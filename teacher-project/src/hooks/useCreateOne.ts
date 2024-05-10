@@ -1,14 +1,14 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 
+import useCookie from "./useCookie";
+
 import DataProvider from "../providers/DataProvider";
 
 import { ROUTES } from "../constants/routes";
 
-import useCookie from "./useCookie";
-
 export const useCreateOne = <T>() => {
-    const { token } = useCookie(["token"]);
+    const token = useCookie("token", "")[0];
 
     const navigate = useNavigate();
 

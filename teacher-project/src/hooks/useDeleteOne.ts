@@ -1,11 +1,11 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import DataProvider from "../providers/DataProvider";
-
 import useCookie from "./useCookie";
 
+import DataProvider from "../providers/DataProvider";
+
 export const useDeleteOne = <T>() => {
-    const { token } = useCookie(["token"]);
+    const token = useCookie("token", "")[0];
 
     const queryClient = useQueryClient();
 
