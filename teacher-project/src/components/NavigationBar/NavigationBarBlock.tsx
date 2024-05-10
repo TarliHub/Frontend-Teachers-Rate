@@ -7,7 +7,7 @@ import menuIcon from "../../assets/icons/mobileMenuIcon.svg";
 import cross from "../../assets/icons/cross.svg";
 import avatarIcon from "../../assets/icons/avatar.svg";
 
-import { INavigation } from "../../types/Navigation";
+import { INavigation } from "../../types/Navigation.interface";
 import { ROUTES } from "../../constants/routes";
 
 import { useState } from "react";
