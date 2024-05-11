@@ -19,13 +19,13 @@ import { CreateUser } from "./pages/CreateUser";
 import { UpdateUser } from "./pages/UpdateUser";
 
 function App(): JSX.Element {
-    const { token, role, deleteToken } = useContext(AuthContext);
+    const { token, deleteToken } = useContext(AuthContext);
 
     return (
         <BrowserRouter>
             {token ? (
                 <>
-                    <NavigationBar role={role} />
+                    <NavigationBar />
                     <Routes>
                         <Route element={<Main />} path={ROUTES.MAIN} />
                         <Route element={<Tasks />} path={ROUTES.TASKS} />
