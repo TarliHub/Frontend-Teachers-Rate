@@ -12,9 +12,13 @@ export function UpdateUser(): JSX.Element {
     const { id } = useParams();
     const userId = id !== undefined ? parseInt(id) : 0;
 
-    const GetOneUser = useGetOne<IUser>(id ? parseInt(id) : 0, "head-teachers");
+    const GetOneUser = useGetOne<IUser>(
+        id ? parseInt(id) : 0,
+        "head-teachers",
+        "central-comision"
+    );
 
-    const UpdateUser = useUpdateOne<IUser>();
+    const UpdateUser = useUpdateOne<IUser>("central-comision");
 
     const handleUpdateUser = (data: IUser) => {
         UpdateUser.mutate({ data, id: userId, route: "head-teachers" });
