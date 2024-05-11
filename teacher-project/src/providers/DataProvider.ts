@@ -20,14 +20,14 @@ class DataProvider {
     }
 
     static getList<T>(
-        pageParam?: number,
+        page?: number,
         route?: string,
         token?: string
     ): Promise<T> {
         return axios
             .get(`${BASE_API_URL}/${route}`, {
                 params: {
-                    Page: pageParam,
+                    Page: page,
                     Size: 10,
                 },
                 headers: {
