@@ -9,7 +9,7 @@ import { ROUTES } from "../constants/routes";
 import { IUser } from "../types/User.interface";
 
 export function CreateUser(): JSX.Element {
-    const CreateUser = useCreateOne<IUser>();
+    const CreateUser = useCreateOne<IUser>("central-comision");
 
     const handleCreateUser = (data: IUser) => {
         CreateUser.mutate({ data, route: "head-teachers" });

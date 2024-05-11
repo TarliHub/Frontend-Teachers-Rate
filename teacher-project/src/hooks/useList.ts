@@ -4,11 +4,11 @@ import { useContext } from "react";
 
 import DataProvider from "../providers/DataProvider";
 
-export const useList = <T>(route: string, page: number) => {
+export const useList = <T>(route: string, page: number, key: string) => {
     const { token } = useContext(AuthContext);
 
     return useQuery({
-        queryKey: ["users-list", page],
+        queryKey: [key, page],
         queryFn: async () => {
             return await DataProvider.getList<T>(page, route, token);
         },

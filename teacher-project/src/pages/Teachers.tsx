@@ -13,7 +13,11 @@ import { useState } from "react";
 export function Teachers(): JSX.Element {
     const [page, setPage] = useState<number>(0);
 
-    const UsersData = useList<IUsersList>("head-teachers", page);
+    const UsersData = useList<IUsersList>(
+        "head-teachers",
+        page,
+        "central-comision"
+    );
     console.log(UsersData.data?.count);
 
     return (

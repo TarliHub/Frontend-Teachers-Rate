@@ -7,7 +7,7 @@ import DataProvider from "../providers/DataProvider";
 
 import { ROUTES } from "../constants/routes";
 
-export const useCreateOne = <T>() => {
+export const useCreateOne = <T>(key: string) => {
     const { token } = useContext(AuthContext);
 
     const navigate = useNavigate();
@@ -20,7 +20,7 @@ export const useCreateOne = <T>() => {
         },
         onSuccess: async () => {
             navigate(`${ROUTES.TEACHERS}`);
-            await queryClient.invalidateQueries({ queryKey: ["users-list"] });
+            await queryClient.invalidateQueries({ queryKey: [key] });
         },
     });
 };

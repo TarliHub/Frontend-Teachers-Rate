@@ -12,7 +12,7 @@ interface IUserContainer {
 }
 
 export function UserContainer({ userData }: IUserContainer) {
-    const DeleteUser = useDeleteOne<void>();
+    const DeleteUser = useDeleteOne<void>("central-comision");
 
     return (
         <div className={styles.userContainer}>

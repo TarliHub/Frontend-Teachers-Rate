@@ -4,7 +4,7 @@ import { useContext } from "react";
 
 import DataProvider from "../providers/DataProvider";
 
-export const useDeleteOne = <T>() => {
+export const useDeleteOne = <T>(key: string) => {
     const { token } = useContext(AuthContext);
 
     const queryClient = useQueryClient();
@@ -14,7 +14,7 @@ export const useDeleteOne = <T>() => {
             return await DataProvider.deleteOne<T>(id, route, token);
         },
         onSuccess: async () => {
-            await queryClient.invalidateQueries({ queryKey: ["users-list"] });
+            await queryClient.invalidateQueries({ queryKey: [key] });
         },
     });
 };
