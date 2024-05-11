@@ -1,7 +1,7 @@
 @import "../../assets/styles/vars.scss";
 
 .loginForm {
-    @apply flex flex-col items-center w-[500px] bg-formBgColor rounded h-[570px] overflow-hidden text-formTextColor font-medium;
+    @apply flex flex-col items-center w-[500px] bg-formBgColor rounded overflow-hidden text-formTextColor font-medium;
     font-family: $main-font-family;
 
     .header {
@@ -23,6 +23,7 @@
     }
 
     .button {
+        @apply m-4 flex justify-center;
         button {
             @apply bg-primaryBlue text-white p-2 rounded-lg cursor-pointer focus:outline-none;
         }

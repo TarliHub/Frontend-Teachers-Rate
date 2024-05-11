@@ -32,7 +32,7 @@ export function LoginForm({ handleLoginUser }: ILoginFormProps): JSX.Element {
                 <input
                     placeholder="Введіть електронну пошту"
                     {...register("email", {
-                        required: "*email is required field",
+                        required: "*електронна пошта обов'язкове поле",
                         maxLength: {
                             value: 30,
                             message:
@@ -56,15 +56,19 @@ export function LoginForm({ handleLoginUser }: ILoginFormProps): JSX.Element {
                 <input
                     placeholder="Введіть пароль"
                     {...register("password", {
-                        required: "*password is required field",
+                        required: "*пароль обов'язкове поле",
+                        minLength: {
+                            value: 8,
+                            message: "*пароль має містити мінімум 8 символів",
+                        },
                         maxLength: {
                             value: 30,
-                            message: "*password cannot exceed 30 characters",
+                            message: "*пароль не може мати більше 30 символів",
                         },
-                        minLength: {
-                            value: 5,
+                        pattern: {
+                            value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]+$/,
                             message:
-                                "*password must be at least 5 characters long",
+                                "*пароль має містити великі і малі символи, латинські літери та числа",
                         },
                     })}
                     type="text"
