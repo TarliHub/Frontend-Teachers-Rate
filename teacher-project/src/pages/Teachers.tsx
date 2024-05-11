@@ -18,7 +18,6 @@ export function Teachers(): JSX.Element {
         page,
         "central-comision"
     );
-    console.log(UsersData.data?.count);
 
     return (
         <div>
@@ -34,7 +33,6 @@ export function Teachers(): JSX.Element {
                 </Link>
             </div>
             <div className="flex flex-row">
-                <div className="lg:bg-black lg:flex-1"></div>
                 <UsersList usersData={UsersData.data} />
             </div>
             <div>

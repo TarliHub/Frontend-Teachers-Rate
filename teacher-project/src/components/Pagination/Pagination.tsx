@@ -13,7 +13,6 @@ export function Pagination({ totalPages, page, setPage }: IPaginationProps) {
         { length: totalPages },
         (_, index) => index + 1
     );
-    console.log(totalPages);
 
     return (
         <ul className={styles.pagination}>
