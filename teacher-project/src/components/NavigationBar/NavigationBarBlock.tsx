@@ -1,5 +1,8 @@
 import styles from "./NavigationBar.module.scss";
 
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
 import { CustomNavLink } from "./CustomNavLink/CustomNavLink";
 import { CollegeLogo } from "../CollegeLogo/CollegeLogo";
 
@@ -9,9 +12,6 @@ import avatarIcon from "../../assets/icons/avatar.svg";
 
 import { INavigation } from "../../types/Navigation.interface";
 import { ROUTES } from "../../constants/routes";
-
-import { useState } from "react";
-import { Link } from "react-router-dom";
 
 interface INavigationBarBlockProps {
     navigationData: INavigation[];
