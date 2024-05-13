@@ -19,7 +19,7 @@ import { CreateUser } from "./pages/CreateUser";
 import { UpdateUser } from "./pages/UpdateUser";
 
 function App(): JSX.Element {
-    const { token, deleteToken } = useContext(AuthContext);
+    const { token } = useContext(AuthContext);
 
     return (
         <BrowserRouter>
@@ -44,7 +44,6 @@ function App(): JSX.Element {
                             element={<Navigate to={ROUTES.MAIN} />}
                         />
                     </Routes>
-                    <button onClick={deleteToken}>Вийти з акаунта</button>
                 </>
             ) : (
                 <Routes>
