@@ -9,7 +9,6 @@ class AuthenticationProvider {
         return axios
             .post(`${BASE_API_URL}/auth/login`, data)
             .then((response: AxiosResponse<T>) => {
-                console.log(response);
                 return response.data;
             })
             .catch((error) => {
