@@ -6,7 +6,7 @@ export function Profile(): JSX.Element {
 
     return (
         <div>
-            <button onClick={() => deleteToken}>Вийти з акаунта</button>
+            <button onClick={() => deleteToken("token")}>Вийти з акаунта</button>
         </div>
     );
 }
