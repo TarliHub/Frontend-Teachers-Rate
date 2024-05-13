@@ -1,10 +1,6 @@
 import { NavigationBarBlock } from "./NavigationBarBlock";
 
-import {
-    adminNavigation,
-    cCNavigation,
-    userNavigation,
-} from "../../constants/navigationData";
+import { adminNavigation, cCNavigation } from "../../constants/navigationData";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
 
