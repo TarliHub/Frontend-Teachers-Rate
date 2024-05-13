@@ -11,11 +11,7 @@ git clone https://github.com/TarliHub/Frontend-Teachers-Rate
 ```
 VITE_BASE_API_URL=YOUR_API_URL
 ```
-### 3. Go to /bin folder
-```
-cd bin
-```
-### 4. Run the script
+### 3. Run the script
 
 ### Bash Commands:
 ```
