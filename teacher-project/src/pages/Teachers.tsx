@@ -11,11 +11,11 @@ import { IUsersList } from "../types/User.interface";
 import { useState } from "react";
 
 export function Teachers(): JSX.Element {
-    const [page, setPage] = useState<number>(0);
+    const [currentPage, setCurrentPage] = useState(0);
 
     const UsersData = useList<IUsersList>(
         "head-teachers",
-        page,
+        currentPage,
         "central-comision"
     );
 
@@ -33,13 +33,13 @@ export function Teachers(): JSX.Element {
                 </Link>
             </div>
             <div className="flex flex-row">
-                <UsersList usersData={UsersData.data} />
+                <UsersList usersData={UsersData.data?.items} />
             </div>
             <div>
                 <Pagination
-                    totalPages={UsersData.data?.count}
-                    setPage={setPage}
-                    page={page}
+                    totalPages={UsersData.data?.totalPages}
+                    currentPage={currentPage}
+                    setPage={setCurrentPage}
                 />
             </div>
         </div>

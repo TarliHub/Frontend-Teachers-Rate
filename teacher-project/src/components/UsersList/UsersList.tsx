@@ -2,12 +2,12 @@ import React from "react";
 
 import styles from "./UserList.module.scss";
 
-import { IUsersList } from "../../types/User.interface";
+import { IUser } from "../../types/User.interface";
 
 import { UserContainer } from "./UserContainer";
 
 interface IUsersListProps {
-    usersData?: IUsersList;
+    usersData?: IUser[];
 }
 
 export function UsersList({ usersData }: IUsersListProps): JSX.Element {
@@ -19,7 +19,7 @@ export function UsersList({ usersData }: IUsersListProps): JSX.Element {
                 <div className="flex-1"></div>
             </div>
             <React.Fragment>
-                {usersData?.items.map((item, index) => (
+                {usersData?.map((item, index) => (
                     <UserContainer key={index} userData={item} />
                 ))}
             </React.Fragment>
