@@ -13,4 +13,4 @@ RUN npm run build
 
 FROM nginx
 
-COPY --from=build /teacher-project/build usr/share/nginx/html
+COPY --from=build /teacher-project/dist usr/share/nginx/html

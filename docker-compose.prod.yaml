@@ -6,6 +6,6 @@ services:
       dockerfile: Dockerfile.prod
     container_name: teacher-project-prod-c
     ports:
-      - "8080:80"
+      - "5173:80"
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=production
