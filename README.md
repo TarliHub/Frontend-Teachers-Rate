@@ -11,12 +11,11 @@ git clone https://github.com/TarliHub/Frontend-Teachers-Rate
 ```
 VITE_BASE_API_URL=YOUR_API_URL
 ```
-### 3. Go to /bin folder
+### 3. Go to the bin folder
 ```
 cd bin
 ```
 ### 4. Run the script
-
 ### Bash Commands:
 ```
 ./deploy.sh dev up // To start project in development mode
