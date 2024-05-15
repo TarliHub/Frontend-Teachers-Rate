@@ -1,19 +1,23 @@
 import { useState, useCallback } from "react";
 
-export function useSession<T extends string | number>(
+export function useSession<T>(
     name: string,
     defaultValue: T
 ): [T, (newValue: T) => void, () => void] {
     const [value, setValue] = useState<T>(() => {
         const sessionValue = sessionStorage.getItem(name);
-        if (sessionValue !== null) return sessionValue as T;
-        sessionStorage.setItem(name, defaultValue.toString());
+        if (sessionValue !== null) {
+            return typeof defaultValue === "number"
+                ? (Number(sessionValue) as T)
+                : (sessionValue as T);
+        }
+        sessionStorage.setItem(name, String(defaultValue));
         return defaultValue;
     });
 
     const updateSession = useCallback(
         (newValue: T) => {
-            sessionStorage.setItem(name, newValue.toString());
+            sessionStorage.setItem(name, String(newValue));
             setValue(newValue);
         },
         [name]

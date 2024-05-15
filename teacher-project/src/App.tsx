@@ -20,13 +20,15 @@ import { UpdateUser } from "./pages/UpdateUser";
 import { Teacher } from "./pages/Teacher";
 
 function App(): JSX.Element {
-    const { token } = useContext(AuthContext);
+    const { token, role } = useContext(AuthContext);
+
+    console.log(typeof role);
 
     return (
         <BrowserRouter>
             {token ? (
                 <>
-                    <NavigationBar />
+                    <NavigationBar role={role} />
                     <Routes>
                         <Route element={<Main />} path={ROUTES.MAIN} />
                         <Route element={<Tasks />} path={ROUTES.TASKS} />
@@ -36,7 +38,10 @@ function App(): JSX.Element {
                             element={<CreateUser />}
                             path={`${ROUTES.TEACHERS}${ROUTES.CREATE_USER}`}
                         />
-                        <Route element={<Teacher />} path={`${ROUTES.TEACHER}/:id`} />
+                        <Route
+                            element={<Teacher />}
+                            path={`${ROUTES.TEACHER}/:id`}
+                        />
                         <Route
                             element={<UpdateUser />}
                             path={`${ROUTES.TEACHERS}${ROUTES.UPDATE_USER}/:id`}

@@ -5,12 +5,12 @@ import {
     cCNavigation,
     userNavigation,
 } from "../../constants/navigationData";
-import { AuthContext } from "../../context/AuthContext";
-import { useContext } from "react";
 
-export function NavigationBar(): JSX.Element {
-    const { role } = useContext(AuthContext);
+interface INavigationBarProps {
+    role: number;
+}
 
+export function NavigationBar({ role }: INavigationBarProps): JSX.Element {
     if (role === 0) {
         return <NavigationBarBlock navigationData={adminNavigation} />;
     }
