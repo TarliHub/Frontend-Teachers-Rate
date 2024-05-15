@@ -36,7 +36,10 @@ export function Teachers(): JSX.Element {
                 </Link>
             </div>
             <div className="flex flex-row">
-                <UsersList usersData={UsersData.data?.items} />
+                <UsersList
+                    usersData={UsersData.data?.items}
+                    customLinkRoute={role === 0 ? ROUTES.CENTRAL_COMISION : ""}
+                />
             </div>
             <div>
                 <Pagination

@@ -8,9 +8,14 @@ import { UserContainer } from "./UserContainer";
 
 interface IUsersListProps {
     usersData?: IUser[];
+    customLinkRoute?: string;
 }
 
-export function UsersList({ usersData }: IUsersListProps): JSX.Element {
+export function UsersList({
+    usersData,
+    customLinkRoute,
+}: IUsersListProps): JSX.Element {
+
     return (
         <div className={styles.usersList}>
             <div className={styles.header}>
@@ -20,7 +25,11 @@ export function UsersList({ usersData }: IUsersListProps): JSX.Element {
             </div>
             <React.Fragment>
                 {usersData?.map((item, index) => (
-                    <UserContainer key={index} userData={item} />
+                    <UserContainer
+                        customLinkRoute={customLinkRoute}
+                        key={index}
+                        userData={item}
+                    />
                 ))}
             </React.Fragment>
         </div>

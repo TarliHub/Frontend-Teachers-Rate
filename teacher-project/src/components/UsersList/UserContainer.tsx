@@ -11,9 +11,10 @@ import { useContext } from "react";
 
 interface IUserContainer {
     userData: IUser;
+    customLinkRoute?: string;
 }
 
-export function UserContainer({ userData }: IUserContainer) {
+export function UserContainer({ userData, customLinkRoute }: IUserContainer) {
     const { role } = useContext(AuthContext);
 
     const DeleteUser = useDeleteOne<void>(
@@ -23,7 +24,9 @@ export function UserContainer({ userData }: IUserContainer) {
     return (
         <div className={styles.userContainer}>
             <div className="flex-[3]">
-                <Link to={`${ROUTES.TEACHER}/${userData.id}`}>
+                <Link
+                    to={`${ROUTES.TEACHERS}${customLinkRoute}/${userData.id}`}
+                >
                     {`${userData.lastName} ${userData.name}`}
                 </Link>
             </div>

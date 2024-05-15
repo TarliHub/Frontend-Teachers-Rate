@@ -18,7 +18,7 @@ export const adminNavigation = [
     },
     {
         url: ROUTES.TEACHERS,
-        name: "Голови центральної комісії",
+        name: "Голови центральних комісій",
     },
     {
         url: ROUTES.TASKS,
