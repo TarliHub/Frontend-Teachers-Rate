@@ -13,7 +13,10 @@ export interface IUser {
     email: string;
     createdAt: string;
     points: number;
+    role?: number;
     password?: string;
     confirmPassword?: string;
+    commissionName?: string;
+    teachers?: IUser[];
     headTeacher?: IUser;
 }
