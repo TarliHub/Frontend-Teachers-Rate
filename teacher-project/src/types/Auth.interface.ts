@@ -4,7 +4,7 @@ export interface ILoginFields {
 }
 
 export interface IUserData {
-    role: string;
+    role: number;
     token: string;
 }
 

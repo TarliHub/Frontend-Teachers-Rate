@@ -18,7 +18,7 @@ export const adminNavigation = [
     },
     {
         url: ROUTES.TEACHERS,
-        name: "Вчителі",
+        name: "Голови центральної комісії",
     },
     {
         url: ROUTES.TASKS,
@@ -32,11 +32,11 @@ export const cCNavigation = [
         name: "Головна",
     },
     {
-        url: ROUTES.TASKS,
-        name: "Завдання",
-    },
-    {
         url: ROUTES.TEACHERS,
         name: "Вчителі",
+    },
+    {
+        url: ROUTES.TASKS,
+        name: "Завдання",
     },
 ];
