@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import { ROUTES } from "../constants/routes";
 
 import { useList } from "../hooks/useList";
+import { useContext, useState } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 import { UsersList } from "../components/UsersList/UsersList";
 import { Pagination } from "../components/Pagination/Pagination";
 
 import { IUsersList } from "../types/User.interface";
-import { useContext, useState } from "react";
-import { AuthContext } from "../context/AuthContext";
 
 export function Teachers(): JSX.Element {
     const [currentPage, setCurrentPage] = useState(0);

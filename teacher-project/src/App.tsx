@@ -17,6 +17,7 @@ import { Profile } from "./pages/Profile";
 import { Teachers } from "./pages/Teachers";
 import { CreateUser } from "./pages/CreateUser";
 import { UpdateUser } from "./pages/UpdateUser";
+import { Teacher } from "./pages/Teacher";
 
 function App(): JSX.Element {
     const { token } = useContext(AuthContext);
@@ -35,6 +36,7 @@ function App(): JSX.Element {
                             element={<CreateUser />}
                             path={`${ROUTES.TEACHERS}${ROUTES.CREATE_USER}`}
                         />
+                        <Route element={<Teacher />} path={`${ROUTES.TEACHER}/:id`} />
                         <Route
                             element={<UpdateUser />}
                             path={`${ROUTES.TEACHERS}${ROUTES.UPDATE_USER}/:id`}
