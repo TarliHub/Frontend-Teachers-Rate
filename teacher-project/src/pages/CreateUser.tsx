@@ -7,12 +7,21 @@ import { UserForm } from "../components/UserForm/UserForm";
 import { ROUTES } from "../constants/routes";
 
 import { IUser } from "../types/User.interface";
+import { AuthContext } from "../context/AuthContext";
+import { useContext } from "react";
 
 export function CreateUser(): JSX.Element {
-    const CreateUser = useCreateOne<IUser>("central-comision");
+    const { role } = useContext(AuthContext);
+
+    const CreateUser = useCreateOne<IUser>(
+        role === 1 ? "teachers" : "central-comision"
+    );
 
     const handleCreateUser = (data: IUser) => {
-        CreateUser.mutate({ data, route: "head-teachers" });
+        CreateUser.mutate({
+            data,
+            route: role === 1 ? "teachers" : "head-teachers",
+        });
     };
 
     return (

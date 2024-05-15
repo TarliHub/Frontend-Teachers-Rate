@@ -6,13 +6,19 @@ import { ROUTES } from "../../constants/routes";
 
 import { IUser } from "../../types/User.interface";
 import { useDeleteOne } from "../../hooks/useDeleteOne";
+import { AuthContext } from "../../context/AuthContext";
+import { useContext } from "react";
 
 interface IUserContainer {
     userData: IUser;
 }
 
 export function UserContainer({ userData }: IUserContainer) {
-    const DeleteUser = useDeleteOne<void>("central-comision");
+    const { role } = useContext(AuthContext);
+
+    const DeleteUser = useDeleteOne<void>(
+        role === 1 ? "teachers" : "central-comision"
+    );
 
     return (
         <div className={styles.userContainer}>
@@ -32,9 +38,10 @@ export function UserContainer({ userData }: IUserContainer) {
                 </Link>
                 <button
                     onClick={() => {
+                        const route = role === 1 ? "teachers" : "head-teachers";
                         DeleteUser.mutate({
                             id: userData.id,
-                            route: "head-teachers",
+                            route: route,
                         });
                     }}
                     title="Видалити акаунт"

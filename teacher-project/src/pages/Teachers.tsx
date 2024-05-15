@@ -8,15 +8,18 @@ import { UsersList } from "../components/UsersList/UsersList";
 import { Pagination } from "../components/Pagination/Pagination";
 
 import { IUsersList } from "../types/User.interface";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 export function Teachers(): JSX.Element {
     const [currentPage, setCurrentPage] = useState(0);
 
+    const { role } = useContext(AuthContext);
+
     const UsersData = useList<IUsersList>(
-        "head-teachers",
+        role === 1 ? "teachers" : "head-teachers",
         currentPage,
-        "central-comision"
+        role === 1 ? "teachers" : "central-comision"
     );
 
     return (

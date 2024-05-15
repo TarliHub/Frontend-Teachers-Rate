@@ -7,21 +7,31 @@ import { ROUTES } from "../constants/routes";
 
 import { IUser } from "../types/User.interface";
 import { useUpdateOne } from "../hooks/useUpdateOne";
+import { AuthContext } from "../context/AuthContext";
+import { useContext } from "react";
 
 export function UpdateUser(): JSX.Element {
+    const { role } = useContext(AuthContext);
+
     const { id } = useParams();
     const userId = id !== undefined ? parseInt(id) : 0;
 
     const GetOneUser = useGetOne<IUser>(
         id ? parseInt(id) : 0,
-        "head-teachers",
-        "central-comision"
+        role === 1 ? "teachers" : "head-teachers",
+        role === 1 ? "teachers" : "central-comision"
     );
 
-    const UpdateUser = useUpdateOne<IUser>("central-comision");
+    const UpdateUser = useUpdateOne<IUser>(
+        role === 1 ? "teachers" : "central-comision"
+    );
 
     const handleUpdateUser = (data: IUser) => {
-        UpdateUser.mutate({ data, id: userId, route: "head-teachers" });
+        UpdateUser.mutate({
+            data,
+            id: userId,
+            route: role === 1 ? "teachers" : "head-teachers",
+        });
     };
     return (
         <div>
