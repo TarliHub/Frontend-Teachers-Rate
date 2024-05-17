@@ -22,8 +22,6 @@ import { CentralComision } from "./pages/CentralComision";
 function App(): JSX.Element {
     const { token, role } = useContext(AuthContext);
 
-    console.log(typeof role);
-
     return (
         <BrowserRouter>
             {token ? (
@@ -38,13 +36,11 @@ function App(): JSX.Element {
                             element={<CreateUser />}
                             path={`${ROUTES.TEACHERS}${ROUTES.CREATE_USER}`}
                         />
-                        {role === 0 ? (
+                        {role === 0 && (
                             <Route
                                 element={<CentralComision />}
                                 path={`${ROUTES.TEACHERS}${ROUTES.CENTRAL_COMISION}/:id`}
                             />
-                        ) : (
-                            <></>
                         )}
                         <Route
                             element={<UpdateUser />}

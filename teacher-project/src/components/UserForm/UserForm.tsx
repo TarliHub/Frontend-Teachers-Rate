@@ -1,7 +1,8 @@
 import styles from "./UserForm.module.scss";
 
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../context/AuthContext";
 import { useLocation } from "react-router-dom";
 
 import showIcon from "../../assets/icons/visible.png";
@@ -20,6 +21,8 @@ export function UserForm({
     userData,
     handleUser,
 }: IUserFormProps): JSX.Element {
+    const { role } = useContext(AuthContext);
+
     const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
     const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
         useState<boolean>(false);
@@ -42,6 +45,24 @@ export function UserForm({
             onSubmit={(event) => void handleSubmit(onSubmit)(event)}
             className={styles.registrationForm}
         >
+            {role === 0 && (
+                <div className={styles.surname}>
+                    <label>Назва циклової комісії</label>
+                    <input
+                        defaultValue={userData && userData.commissionName}
+                        placeholder="Введіть назву циклової комісії"
+                        {...register("commissionName", {
+                            required: "*циклова комісія обов'язкове поле",
+                        })}
+                        type="text"
+                    />
+                    {errors.commissionName && (
+                        <div className={styles.errorText}>
+                            {errors.commissionName.message}
+                        </div>
+                    )}
+                </div>
+            )}
             <div className={styles.surname}>
                 <label>Прізвище</label>
                 <input
