@@ -4,21 +4,21 @@
     .header {
         @apply flex flex-row text-xl p-3 pb-5 border-b-[2px] border-slate-300 text-secondaryBlue;
     }
+}
 
-    .userContainer {
-        @apply flex flex-row justify-between text-lg p-3 border-b-[2px] border-slate-300;
+.userContainer {
+    @apply flex flex-row justify-between text-lg p-3 border-b-[2px] border-slate-300;
 
-        .buttonContainer {
-            @apply flex-[2] flex flex-row gap-4 lg:gap-8 justify-end;
+    .buttonContainer {
+        @apply flex-[2] flex flex-row gap-4 lg:gap-8 justify-end;
 
-            button,
-            a {
-                @apply flex flex-row items-center hover:text-primaryBlue;
-                transition: 0.3s;
+        button,
+        a {
+            @apply flex flex-row items-center hover:text-primaryBlue;
+            transition: 0.3s;
 
-                span {
-                    @apply text-2xl;
-                }
+            span {
+                @apply text-2xl;
             }
         }
     }

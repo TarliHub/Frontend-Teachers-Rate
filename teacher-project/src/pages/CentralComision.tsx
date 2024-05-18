@@ -21,6 +21,7 @@ export function CentralComision(): JSX.Element {
             <CentralComisionInfo
                 name={`${data?.lastName} ${data?.name} ${data?.middleName}`}
                 comissionName={data?.commissionName}
+                id={data?.id}
             />
             <UsersList
                 usersData={data?.teachers}
