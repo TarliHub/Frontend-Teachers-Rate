@@ -38,19 +38,22 @@ function App(): JSX.Element {
                             path={`${ROUTES.TEACHERS}${ROUTES.CREATE_USER}`}
                         />
                         {role === 0 && (
-                            <Route
-                                element={<CentralComision />}
-                                path={`${ROUTES.TEACHERS}${ROUTES.CENTRAL_COMISION}/:id`}
-                            />
+                            <>
+                                <Route
+                                    element={<CentralComision />}
+                                    path={`${ROUTES.TEACHERS}${ROUTES.CENTRAL_COMISION}/:id`}
+                                />
+                                <Route
+                                    element={<CreateTask />}
+                                    path={`${ROUTES.TASKS}/create-task`}
+                                />
+                            </>
                         )}
                         <Route
                             element={<UpdateUser />}
                             path={`${ROUTES.TEACHERS}${ROUTES.UPDATE_USER}/:id`}
                         />
-                        <Route
-                            element={<CreateTask />}
-                            path={`${ROUTES.TASKS}/create-task`}
-                        />
+
                         <Route
                             path="*"
                             element={<Navigate to={ROUTES.MAIN} />}

@@ -1,0 +1,25 @@
+.taskList {
+    @apply flex flex-col flex-1 lg:flex-[2] border-2 rounded-2xl border-primaryBlue m-2 p-2 font-medium;
+
+    .header {
+        @apply flex flex-row text-xl p-3 pb-5 border-b-[2px] border-slate-300 text-secondaryBlue;
+    }
+}
+
+.taskContainer {
+    @apply flex flex-row justify-between text-lg p-3 border-b-[2px] border-slate-300;
+
+    .buttonContainer {
+        @apply flex-[2] flex flex-row gap-4 lg:gap-8 justify-end;
+
+        button,
+        a {
+            @apply flex flex-row items-center hover:text-primaryBlue;
+            transition: 0.3s;
+
+            span {
+                @apply text-2xl;
+            }
+        }
+    }
+}

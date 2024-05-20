@@ -1,13 +1,20 @@
-import { TaskCreator } from "../components/TaskCreator/TaskCreator";
+import { TaskForm } from "../components/TaskForm/TaskForm";
+import { useCreateOne } from "../hooks/useCreateOne";
+import { ITask } from "../types/Task.interface";
 
 export function CreateTask() {
-    const onSubmit = (taskData) => {
-        console.log(taskData);
+    const CreateTask = useCreateOne<ITask>("tasks");
+
+    const handleCreateTask = (data: ITask) => {
+        CreateTask.mutate({
+            data,
+            route: "tasks",
+        });
     };
 
     return (
         <div>
-            <TaskCreator onSubmit={onSubmit} />
+            <TaskForm handleCreateTask={handleCreateTask} />
         </div>
     );
 }
