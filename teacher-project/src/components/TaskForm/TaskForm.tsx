@@ -1,65 +1,107 @@
+import styles from "./TaskForm.module.scss";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ITask } from "../../types/Task.interface";
+import { ICategory } from "../../types/Category.interface";
 
-interface ITaskFormProps {
+export interface IUserFormProps {
+    taskData?: ITask;
     handleCreateTask: (data: ITask) => void;
+    categories?: ICategory[];
 }
 
-export function TaskForm({ handleCreateTask }: ITaskFormProps) {
+export function TaskForm({
+    taskData,
+    handleCreateTask,
+    categories,
+}: IUserFormProps): JSX.Element {
     const {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm();
-    const onSubmit: SubmitHandler<ITask> = (data) => handleCreateTask(data);
+    } = useForm<ITask>();
+
+    const onSubmit: SubmitHandler<ITask> = (data) => {
+        data.points = [10];
+        handleCreateTask(data);
+    };
 
     return (
-        <form onSubmit={(event) => void handleSubmit(onSubmit)(event)}>
-            <div>
-                <label>Title</label>
-                <input {...register("title", { required: true })} type="text" />
-                {errors.title && <span>This field is required</span>}
-            </div>
-
-            <div>
-                <label>Points Description</label>
+        <form
+            onSubmit={(event) => void handleSubmit(onSubmit)(event)}
+            className={styles.registrationForm}
+        >
+            <div className={styles.title}>
+                <label>Назва</label>
                 <input
-                    {...register("pointsDescription", { required: true })}
+                    defaultValue={taskData && taskData.title}
+                    placeholder="Введіть назву завдання"
+                    {...register("title", {
+                        required: "*назва обов'язкове поле",
+                    })}
                     type="text"
                 />
-                {errors.pointsDescription && (
-                    <span>This field is required</span>
+                {errors.title && (
+                    <div className={styles.errorText}>
+                        {errors.title.message}
+                    </div>
                 )}
             </div>
-
-            <div>
-                <label>Approval</label>
+            <div className={styles.pointsDescription}>
+                <label>Опис</label>
                 <input
-                    {...register("approval", { required: true })}
+                    defaultValue={taskData && taskData.pointsDescription}
+                    placeholder="Введіть опис завдання"
                     type="text"
+                    {...register("pointsDescription", {
+                        required: "*опис обов'язкове поле",
+                    })}
                 />
-                {errors.approval && <span>This field is required</span>}
+                {errors.pointsDescription && (
+                    <div className={styles.errorText}>
+                        {errors.pointsDescription.message}
+                    </div>
+                )}
             </div>
-
-            <div>
-                <label>Category Id</label>
+            <div className={styles.approval}>
+                <label>Умова виконання завдання</label>
                 <input
-                    {...register("category.id", { required: true })}
-                    type="number"
-                />
-                {errors.category?.id && <span>This field is required</span>}
-            </div>
-
-            <div>
-                <label>Category Name</label>
-                <input
-                    {...register("category.name", { required: true })}
+                    defaultValue={taskData && taskData.approval}
+                    placeholder="Введіть умову завдання"
                     type="text"
+                    {...register("approval", {
+                        required: "*умова обов'язкове поле",
+                    })}
                 />
-                {errors.category?.name && <span>This field is required</span>}
+                {errors.approval && (
+                    <div className={styles.errorText}>
+                        {errors.approval.message}
+                    </div>
+                )}
             </div>
-
-            <button type="submit">Submit</button>
+            <div className={styles.category}>
+                <label>Категорія</label>
+                <select
+                    defaultValue={taskData && taskData.category?.id}
+                    {...register("categoryId", {
+                        required: "*категорія обов'язкове поле",
+                    })}
+                >
+                    <option value="">Виберіть категорію</option>
+                    {categories?.map((category) => (
+                        <option key={category.id} value={category.id}>
+                            {category.name}
+                        </option>
+                    ))}
+                </select>
+                {errors.categoryId && (
+                    <div className={styles.errorText}>
+                        {errors.categoryId?.message}
+                    </div>
+                )}
+            </div>
+            <div className={styles.button}>
+                <button type="submit">Створити</button>
+            </div>
         </form>
     );
 }

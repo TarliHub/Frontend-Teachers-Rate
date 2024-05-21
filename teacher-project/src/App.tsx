@@ -19,6 +19,8 @@ import { CreateUser } from "./pages/CreateUser";
 import { UpdateUser } from "./pages/UpdateUser";
 import { CentralComision } from "./pages/CentralComision";
 import { CreateTask } from "./pages/CreateTask";
+import { Category } from "./pages/Category";
+import { CreateCategory } from "./pages/CreateCategory";
 
 function App(): JSX.Element {
     const { token, role } = useContext(AuthContext);
@@ -43,6 +45,18 @@ function App(): JSX.Element {
                                     element={<CreateTask />}
                                     path={`${ROUTES.TASKS}/create-task`}
                                 />
+                                <Route
+                                    path={`${ROUTES.TASKS}/update-task/:id`}
+                                />
+                                <Route
+                                    path="/category"
+                                    element={<Category />}
+                                />
+                                <Route
+                                    path="/category/create-category"
+                                    element={<CreateCategory />}
+                                />
+                                <Route path="/category/update-category/:id" />
                             </>
                         )}
                         {role !== 2 && (

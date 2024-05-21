@@ -24,6 +24,10 @@ export const adminNavigation = [
         url: ROUTES.TASKS,
         name: "Завдання",
     },
+    {
+        url: "/category",
+        name: "Категорії",
+    },
 ];
 
 export const cCNavigation = [

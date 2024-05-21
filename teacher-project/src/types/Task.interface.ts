@@ -4,6 +4,7 @@ export interface ITask {
     pointsDescription: string;
     points: number[];
     approval: string;
+    categoryId: number;
     category: {
         id: number;
         name: string;

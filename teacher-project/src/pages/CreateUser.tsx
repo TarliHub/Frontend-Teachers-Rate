@@ -14,7 +14,8 @@ export function CreateUser(): JSX.Element {
     const { role } = useContext(AuthContext);
 
     const CreateUser = useCreateOne<IUser>(
-        role === 1 ? "teachers" : "central-comision"
+        role === 1 ? "teachers" : "central-comision",
+        "teachers"
     );
 
     const handleCreateUser = (data: IUser) => {

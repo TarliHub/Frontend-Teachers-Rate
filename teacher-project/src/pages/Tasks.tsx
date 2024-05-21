@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useList } from "../hooks/useList";
 import { ITaskList } from "../types/Task.interface";
-import { TaskList } from "../components/TaksList/TaskList";
+import { TaskList } from "../components/TaskList/TaskList";
 
 export function Tasks(): JSX.Element {
     const [taskFilter, setTaskFilter] = useState("tasks");

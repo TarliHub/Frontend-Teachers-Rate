@@ -5,11 +5,11 @@ import { ROUTES } from "../../constants/routes";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
 
-interface ITaskList {
+interface ITaskListProps {
     list?: ITask[];
 }
 
-export function TaskList({ list }: ITaskList) {
+export function TaskList({ list }: ITaskListProps) {
     const { role } = useContext(AuthContext);
 
     return (

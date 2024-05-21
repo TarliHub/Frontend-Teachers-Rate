@@ -5,9 +5,7 @@ import { useContext } from "react";
 
 import DataProvider from "../providers/DataProvider";
 
-import { ROUTES } from "../constants/routes";
-
-export const useCreateOne = <T>(key: string) => {
+export const useCreateOne = <T>(key: string, routing: string) => {
     const { token } = useContext(AuthContext);
 
     const navigate = useNavigate();
@@ -19,7 +17,7 @@ export const useCreateOne = <T>(key: string) => {
             return await DataProvider.createOne(data, route, token);
         },
         onSuccess: async () => {
-            navigate(`${ROUTES.TEACHERS}`);
+            navigate(`/${routing}`);
             await queryClient.invalidateQueries({ queryKey: [key] });
         },
     });
