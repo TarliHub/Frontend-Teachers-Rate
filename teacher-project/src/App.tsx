@@ -32,11 +32,7 @@ function App(): JSX.Element {
                         <Route element={<Main />} path={ROUTES.MAIN} />
                         <Route element={<Tasks />} path={ROUTES.TASKS} />
                         <Route element={<Profile />} path={ROUTES.PROFILE} />
-                        <Route element={<Teachers />} path={ROUTES.TEACHERS} />
-                        <Route
-                            element={<CreateUser />}
-                            path={`${ROUTES.TEACHERS}${ROUTES.CREATE_USER}`}
-                        />
+                        <Route path={`${ROUTES.TASKS}/submit/:id`} />
                         {role === 0 && (
                             <>
                                 <Route
@@ -49,10 +45,23 @@ function App(): JSX.Element {
                                 />
                             </>
                         )}
-                        <Route
-                            element={<UpdateUser />}
-                            path={`${ROUTES.TEACHERS}${ROUTES.UPDATE_USER}/:id`}
-                        />
+                        {role !== 2 && (
+                            <>
+                                <Route
+                                    element={<Teachers />}
+                                    path={ROUTES.TEACHERS}
+                                />
+                                <Route
+                                    element={<CreateUser />}
+                                    path={`${ROUTES.TEACHERS}${ROUTES.CREATE_USER}`}
+                                />
+                                <Route path={`${ROUTES.TEACHERS}/:id`} />
+                                <Route
+                                    element={<UpdateUser />}
+                                    path={`${ROUTES.TEACHERS}${ROUTES.UPDATE_USER}/:id`}
+                                />
+                            </>
+                        )}
 
                         <Route
                             path="*"

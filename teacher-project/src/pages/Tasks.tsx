@@ -14,10 +14,10 @@ export function Tasks(): JSX.Element {
     const { role } = useContext(AuthContext);
 
     const { data } = useList<ITaskList>(taskFilter, currentPage, taskFilter);
-    console.log(data);
+
     return (
         <div>
-            <div>
+            <div className="flex justify-end m-4">
                 {role === 0 && (
                     <Link
                         className=" flex items-center gap-1 text-secondaryBlue cursor-pointer"
@@ -29,12 +29,20 @@ export function Tasks(): JSX.Element {
                         <p className="text-lg font-medium">СТВОРИТИ</p>
                     </Link>
                 )}
-                <button onClick={() => setTaskFilter("tasks")}>
-                    Не виконані завдання
-                </button>
-                <button onClick={() => setTaskFilter("tasks/completed-tasks")}>
-                    Виконані завдання
-                </button>
+                {role !== 0 && (
+                    <>
+                        <button onClick={() => setTaskFilter("tasks")}>
+                            Не виконані завдання
+                        </button>
+                        <button
+                            onClick={() =>
+                                setTaskFilter("tasks/completed-tasks")
+                            }
+                        >
+                            Виконані завдання
+                        </button>
+                    </>
+                )}
             </div>
             <TaskList list={data?.items} />
             <div>
