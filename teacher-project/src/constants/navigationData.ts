@@ -13,10 +13,6 @@ export const userNavigation = [
 
 export const adminNavigation = [
     {
-        url: "/",
-        name: "Головна",
-    },
-    {
         url: ROUTES.TEACHERS,
         name: "Голови центральних комісій",
     },
@@ -28,13 +24,13 @@ export const adminNavigation = [
         url: "/category",
         name: "Категорії",
     },
+    {
+        url: "/",
+        name: "Налаштування",
+    },
 ];
 
 export const cCNavigation = [
-    {
-        url: "/",
-        name: "Головна",
-    },
     {
         url: ROUTES.TEACHERS,
         name: "Вчителі",

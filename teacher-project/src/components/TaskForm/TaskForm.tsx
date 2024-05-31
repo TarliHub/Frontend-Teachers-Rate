@@ -1,3 +1,4 @@
+import { ChangeEvent, useState } from "react";
 import styles from "./TaskForm.module.scss";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ITask } from "../../types/Task.interface";
@@ -20,14 +21,45 @@ export function TaskForm({
         formState: { errors },
     } = useForm<ITask>();
 
+    const [points, setPoints] = useState<number[]>(taskData?.points || []);
+
+    const handleRemovePoint = (index: number) => {
+        if (points.length > 1) {
+            const newPoints = [...points];
+            newPoints.splice(index, 1);
+            setPoints(newPoints);
+        }
+    };
+
     const onSubmit: SubmitHandler<ITask> = (data) => {
-        data.points = [10];
-        handleCreateTask(data);
+        const taskWithPoints: ITask = {
+            ...data,
+            points: points,
+        };
+        handleCreateTask(taskWithPoints);
+    };
+
+    const handlePointsChange = (
+        event: ChangeEvent<HTMLInputElement>,
+        index: number
+    ) => {
+        if (index === points.length - 1) {
+            const newPoints = [...points];
+            newPoints[index] = parseInt(event.target.value);
+            setPoints(newPoints);
+        } else {
+            const newPoints = [...points];
+            newPoints[index] = parseInt(event.target.value);
+            setPoints(newPoints);
+        }
     };
 
     return (
         <form
-            onSubmit={(event) => void handleSubmit(onSubmit)(event)}
+            onSubmit={(event) => {
+                event.preventDefault();
+                void handleSubmit(onSubmit)(event);
+            }}
             className={styles.registrationForm}
         >
             <div className={styles.title}>
@@ -95,10 +127,37 @@ export function TaskForm({
                 </select>
                 {errors.categoryId && (
                     <div className={styles.errorText}>
-                        {errors.categoryId?.message}
+                        {errors.categoryId.message}
                     </div>
                 )}
             </div>
+            <div className="flex flex-col">
+                <label>Оцінки</label>
+                {points.map((point, index) => (
+                    <div key={index} className={styles.pointInput}>
+                        <input
+                            type="number"
+                            value={point}
+                            onChange={(event) =>
+                                handlePointsChange(event, index)
+                            }
+                            placeholder={`Оцінка ${index + 1}`}
+                            min={0}
+                            max={100}
+                        />
+                        <button
+                            type="button"
+                            onClick={() => handleRemovePoint(index)}
+                        >
+                            Видалити
+                        </button>
+                    </div>
+                ))}
+                <button type="button" onClick={() => setPoints([...points, 0])}>
+                    Додати оцінку
+                </button>
+            </div>
+
             <div className={styles.button}>
                 <button type="submit">Створити</button>
             </div>

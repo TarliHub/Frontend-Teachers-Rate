@@ -1,6 +1,6 @@
 import styles from "./NavigationBar.module.scss";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { CustomNavLink } from "./CustomNavLink/CustomNavLink";
@@ -12,6 +12,7 @@ import avatarIcon from "../../assets/icons/avatar.svg";
 
 import { INavigation } from "../../types/Navigation.interface";
 import { ROUTES } from "../../constants/routes";
+import { AuthContext } from "../../context/AuthContext";
 
 interface INavigationBarBlockProps {
     navigationData: INavigation[];
@@ -21,6 +22,8 @@ export function NavigationBarBlock({
     navigationData,
 }: INavigationBarBlockProps): JSX.Element {
     const [showMenu, setShowMenu] = useState<boolean>(false);
+
+    const { role } = useContext(AuthContext);
 
     return (
         <header>
@@ -44,7 +47,11 @@ export function NavigationBarBlock({
                                 {item.name}
                             </Link>
                         ))}
-                        <Link to={ROUTES.PROFILE}>Профіль</Link>
+                        {role === 0 ? (
+                            <></>
+                        ) : (
+                            <Link to={ROUTES.MAIN}>Профіль</Link>
+                        )}
                     </div>
                 </div>
             </div>
@@ -57,7 +64,11 @@ export function NavigationBarBlock({
                         name={item.name}
                     />
                 ))}
-                <CustomNavLink url={ROUTES.PROFILE} logo={avatarIcon} />
+                {role === 0 ? (
+                    <></>
+                ) : (
+                    <CustomNavLink url={ROUTES.MAIN} logo={avatarIcon} />
+                )}
                 <div className={styles.mobileMenuButton}>
                     <button onClick={() => setShowMenu(true)}>
                         <img

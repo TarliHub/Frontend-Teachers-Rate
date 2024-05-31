@@ -11,7 +11,6 @@ import { NavigationBar } from "./components/NavigationBar/NavigationBar";
 import { AuthContext } from "./context/AuthContext";
 
 import { Login } from "./pages/Login";
-import { Main } from "./pages/Main";
 import { Tasks } from "./pages/Tasks";
 import { Profile } from "./pages/Profile";
 import { Teachers } from "./pages/Teachers";
@@ -21,6 +20,9 @@ import { CentralComision } from "./pages/CentralComision";
 import { CreateTask } from "./pages/CreateTask";
 import { Category } from "./pages/Category";
 import { CreateCategory } from "./pages/CreateCategory";
+import { SubmitTask } from "./pages/SubmitTask";
+import { OtherProfile } from "./pages/OtherProfile";
+import { OtherProfileCH } from "./pages/OtherProfileCH";
 
 function App(): JSX.Element {
     const { token, role } = useContext(AuthContext);
@@ -31,12 +33,18 @@ function App(): JSX.Element {
                 <>
                     <NavigationBar role={role} />
                     <Routes>
-                        <Route element={<Main />} path={ROUTES.MAIN} />
+                        <Route element={<Profile />} path={ROUTES.MAIN} />
                         <Route element={<Tasks />} path={ROUTES.TASKS} />
-                        <Route element={<Profile />} path={ROUTES.PROFILE} />
-                        <Route path={`${ROUTES.TASKS}/submit/:id`} />
+                        <Route
+                            element={<SubmitTask />}
+                            path={`${ROUTES.TASKS}/submit/:id`}
+                        />
                         {role === 0 && (
                             <>
+                                <Route
+                                    element={<OtherProfileCH />}
+                                    path={`${ROUTES.TEACHERS}/head-teacher/:id`}
+                                />
                                 <Route
                                     element={<CentralComision />}
                                     path={`${ROUTES.TEACHERS}${ROUTES.CENTRAL_COMISION}/:id`}
@@ -69,7 +77,11 @@ function App(): JSX.Element {
                                     element={<CreateUser />}
                                     path={`${ROUTES.TEACHERS}${ROUTES.CREATE_USER}`}
                                 />
-                                <Route path={`${ROUTES.TEACHERS}/:id`} />
+                                <Route
+                                    element={<OtherProfile />}
+                                    path={`${ROUTES.TEACHERS}/teacher/:id`}
+                                />
+
                                 <Route
                                     element={<UpdateUser />}
                                     path={`${ROUTES.TEACHERS}${ROUTES.UPDATE_USER}/:id`}

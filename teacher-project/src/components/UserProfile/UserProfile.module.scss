@@ -1,0 +1,18 @@
+.taskList {
+    @apply flex flex-col flex-1 lg:flex-[2] border-2 rounded-2xl border-primaryBlue m-2 p-2 font-medium;
+
+    .header {
+        @apply flex flex-row text-xl p-3 pb-5 border-b-[2px] border-slate-300 text-secondaryBlue;
+    }
+
+    .taskContainer {
+        @apply flex flex-row justify-between text-lg p-3 border-b-[2px] border-slate-300;
+    }
+}
+.header {
+    @apply flex flex-row text-2xl p-3 pb-5 border-b-[2px] border-slate-300 text-secondaryBlue;
+}
+
+.info {
+    @apply flex flex-col text-2xl p-3 text-primaryBlue;
+}

@@ -16,7 +16,7 @@ export function TaskList({ list }: ITaskListProps) {
         <div className={styles.taskList}>
             <div className={styles.header}>
                 <p className="flex-[3]">Завдання</p>
-                <p className="flex-[2]">approval</p>
+                <p className="flex-[2]">Умова</p>
                 <div className="flex-1"></div>
             </div>
             {list?.map((item) => {

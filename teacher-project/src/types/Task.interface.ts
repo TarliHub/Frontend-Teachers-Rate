@@ -11,6 +11,13 @@ export interface ITask {
     };
 }
 
+export interface ISubmitTask {
+    taskId: number;
+    approvalLink: string;
+    description: string;
+    points: number;
+}
+
 export interface ITaskList {
     currentPage: number;
     totalPages: number;
