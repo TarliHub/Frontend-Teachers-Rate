@@ -2,10 +2,6 @@ import { ROUTES } from "./routes";
 
 export const userNavigation = [
     {
-        url: "/",
-        name: "Головна",
-    },
-    {
         url: ROUTES.TASKS,
         name: "Завдання",
     },

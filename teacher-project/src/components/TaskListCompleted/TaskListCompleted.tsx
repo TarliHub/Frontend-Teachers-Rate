@@ -17,10 +17,10 @@ export function TaskListCompleted({ list }: ITaskListCompletedProps) {
                 return (
                     <div className={styles.taskContainer} key={item.id}>
                         <div className="flex-[3]">
-                            <p>{item.task.title}</p>
+                            <p>{item?.task.title}</p>
                         </div>
-                        <p className="flex-[2]">{item.task.approval}</p>
-                        <p className="flex-1">{item.points}</p>
+                        <p className="flex-[2]">{item?.task.approval}</p>
+                        <p className="flex-1">{item?.points}</p>
                     </div>
                 );
             })}

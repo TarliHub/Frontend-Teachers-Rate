@@ -23,6 +23,7 @@ import { CreateCategory } from "./pages/CreateCategory";
 import { SubmitTask } from "./pages/SubmitTask";
 import { OtherProfile } from "./pages/OtherProfile";
 import { OtherProfileCH } from "./pages/OtherProfileCH";
+import { AdminProfile } from "./pages/AdminProfile";
 
 function App(): JSX.Element {
     const { token, role } = useContext(AuthContext);
@@ -33,14 +34,13 @@ function App(): JSX.Element {
                 <>
                     <NavigationBar role={role} />
                     <Routes>
-                        <Route element={<Profile />} path={ROUTES.MAIN} />
                         <Route element={<Tasks />} path={ROUTES.TASKS} />
-                        <Route
-                            element={<SubmitTask />}
-                            path={`${ROUTES.TASKS}/submit/:id`}
-                        />
                         {role === 0 && (
                             <>
+                                <Route
+                                    element={<AdminProfile />}
+                                    path={ROUTES.MAIN}
+                                />
                                 <Route
                                     element={<OtherProfileCH />}
                                     path={`${ROUTES.TEACHERS}/head-teacher/:id`}
@@ -94,10 +94,20 @@ function App(): JSX.Element {
                         )}
 
                         {role !== 0 && (
-                            <Route
-                                path="*"
-                                element={<Navigate to={ROUTES.MAIN} />}
-                            />
+                            <>
+                                <Route
+                                    element={<SubmitTask />}
+                                    path={`${ROUTES.TASKS}/submit/:id`}
+                                />
+                                <Route
+                                    element={<Profile />}
+                                    path={ROUTES.MAIN}
+                                />
+                                <Route
+                                    path="*"
+                                    element={<Navigate to={ROUTES.MAIN} />}
+                                />
+                            </>
                         )}
                     </Routes>
                 </>

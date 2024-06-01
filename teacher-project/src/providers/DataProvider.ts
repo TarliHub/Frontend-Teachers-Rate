@@ -35,7 +35,6 @@ class DataProvider {
                 },
             })
             .then((response: AxiosResponse<T>) => {
-                console.log(response);
                 return response.data;
             })
             .catch((error) => {

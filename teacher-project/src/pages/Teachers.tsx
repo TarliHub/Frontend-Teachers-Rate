@@ -10,6 +10,7 @@ import { UsersList } from "../components/UsersList/UsersList";
 import { Pagination } from "../components/Pagination/Pagination";
 
 import { IUsersList } from "../types/User.interface";
+import downloadExcel from "../misc/downloadExcel";
 
 export function Teachers(): JSX.Element {
     const [currentPage, setCurrentPage] = useState(0);
@@ -34,6 +35,13 @@ export function Teachers(): JSX.Element {
                     </span>
                     <p className="text-lg font-medium">СТВОРИТИ</p>
                 </Link>
+                {role === 0 && (
+                    <button
+                        onClick={() => {
+                            void downloadExcel();
+                        }}
+                    >Скачати Excel</button>
+                )}
             </div>
             <div className="flex flex-row">
                 <UsersList

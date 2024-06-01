@@ -16,6 +16,15 @@ export function Tasks(): JSX.Element {
 
     const { data } = useList<ITaskList>(taskFilter, currentPage, taskFilter);
 
+    const CompletedTasks =
+        role !== 0
+            ? useList<ITaskList>(
+                "tasks/completed-tasks",
+                currentPage,
+                "tasks/completed-tasks"
+            )
+            : null;
+
     return (
         <div>
             <div className="flex justify-end m-4">
@@ -59,7 +68,7 @@ export function Tasks(): JSX.Element {
             </div>
             {taskFilter === "tasks" && <TaskList list={data?.items} />}
             {taskFilter === "tasks/completed-tasks" && (
-                <TaskListCompleted list={data?.items} />
+                <TaskListCompleted list={CompletedTasks?.data?.items} />
             )}
             <div>
                 <Pagination
