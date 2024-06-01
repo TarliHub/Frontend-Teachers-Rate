@@ -6,7 +6,7 @@ export function Profile(): JSX.Element {
 
     return (
         <div>
-            <button onClick={() => deleteToken()}>Вийти з акаунта</button>
+            <button className="bg-primaryBlue p-2 m-4 rounded-md text-white hover:bg-secondaryBlue text-center" onClick={() => deleteToken()}>Вийти з акаунта</button>
         </div>
     );
 }

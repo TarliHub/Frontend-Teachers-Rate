@@ -11,7 +11,6 @@ export function OtherProfileCH() {
         "head-teachers",
         "central-commision"
     );
-    console.log(GetOneUser.data);
 
     return (
         <div>

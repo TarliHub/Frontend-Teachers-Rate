@@ -6,6 +6,7 @@ import { AuthContext } from "../context/AuthContext";
 import { useList } from "../hooks/useList";
 import { ITaskList } from "../types/Task.interface";
 import { TaskList } from "../components/TaskList/TaskList";
+import { TaskListCompleted } from "../components/TaskListCompleted/TaskListCompleted";
 
 export function Tasks(): JSX.Element {
     const [taskFilter, setTaskFilter] = useState("tasks");
@@ -30,21 +31,36 @@ export function Tasks(): JSX.Element {
                     </Link>
                 )}
                 {role !== 0 && (
-                    <>
-                        <button onClick={() => setTaskFilter("tasks")}>
+                    <div className="flex gap-4">
+                        <button
+                            className={`px-4 py-2 text-xl rounded-md ${
+                                taskFilter === "tasks"
+                                    ? "bg-primaryBlue text-white"
+                                    : "bg-gray-200 text-black"
+                            }`}
+                            onClick={() => setTaskFilter("tasks")}
+                        >
                             Не виконані завдання
                         </button>
                         <button
+                            className={`px-4 py-2 text-xl rounded-md ${
+                                taskFilter === "tasks/completed-tasks"
+                                    ? "bg-primaryBlue text-white"
+                                    : "bg-gray-200 text-black"
+                            }`}
                             onClick={() =>
                                 setTaskFilter("tasks/completed-tasks")
                             }
                         >
                             Виконані завдання
                         </button>
-                    </>
+                    </div>
                 )}
             </div>
-            <TaskList list={data?.items} />
+            {taskFilter === "tasks" && <TaskList list={data?.items} />}
+            {taskFilter === "tasks/completed-tasks" && (
+                <TaskListCompleted list={data?.items} />
+            )}
             <div>
                 <Pagination
                     totalPages={data?.totalPages}

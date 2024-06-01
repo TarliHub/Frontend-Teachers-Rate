@@ -11,7 +11,6 @@ export function OtherProfile() {
         "teachers",
         "teachers"
     );
-    console.log(GetOneUser.data);
 
     return (
         <div>

@@ -2,13 +2,22 @@ export interface ITask {
     id: number;
     title: string;
     pointsDescription: string;
-    points: number[];
+    points: number[] | number;
+    task: ITask;
+    teacherId: number;
     approval: string;
     categoryId: number;
     category: {
         id: number;
         name: string;
     };
+}
+
+export interface ICompletedTask {
+    id: number;
+    teacherId: number;
+    task: ITask;
+    points: number;
 }
 
 export interface ISubmitTask {
@@ -23,5 +32,5 @@ export interface ITaskList {
     totalPages: number;
     pageSize: number;
     totalCount: number;
-    items: ITask[];
+    items?: ITask[];
 }

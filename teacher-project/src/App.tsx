@@ -65,6 +65,10 @@ function App(): JSX.Element {
                                     element={<CreateCategory />}
                                 />
                                 <Route path="/category/update-category/:id" />
+                                <Route
+                                    path="*"
+                                    element={<Navigate to={ROUTES.TEACHERS} />}
+                                />
                             </>
                         )}
                         {role !== 2 && (
@@ -89,10 +93,12 @@ function App(): JSX.Element {
                             </>
                         )}
 
-                        <Route
-                            path="*"
-                            element={<Navigate to={ROUTES.MAIN} />}
-                        />
+                        {role !== 0 && (
+                            <Route
+                                path="*"
+                                element={<Navigate to={ROUTES.MAIN} />}
+                            />
+                        )}
                     </Routes>
                 </>
             ) : (
