@@ -1,13 +1,14 @@
 import axios from "axios";
+import { BASE_API_URL } from "../constants/api";
 
-const downloadExcel = async () => {
+const downloadExcel = async (token: string) => {
     try {
-        const response = await axios.get(
-            "https://your-api-url/api/excel/generate",
-            {
-                responseType: "blob",
-            }
-        );
+        const response = await axios.get(`${BASE_API_URL}/excel/rates`, {
+            responseType: "blob",
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
 
         const url = window.URL.createObjectURL(new Blob([response.data]));
         const link = document.createElement("a");

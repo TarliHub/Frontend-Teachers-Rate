@@ -15,7 +15,7 @@ import downloadExcel from "../misc/downloadExcel";
 export function Teachers(): JSX.Element {
     const [currentPage, setCurrentPage] = useState(0);
 
-    const { role } = useContext(AuthContext);
+    const { role, token } = useContext(AuthContext);
 
     const UsersData = useList<IUsersList>(
         role === 1 ? "teachers" : "head-teachers",
@@ -37,10 +37,13 @@ export function Teachers(): JSX.Element {
                 </Link>
                 {role === 0 && (
                     <button
+                        className="p-2 ml-8 text-center flex items-center justify-center text-xl rounded-md bg-primaryBlue text-white"
                         onClick={() => {
-                            void downloadExcel();
+                            void downloadExcel(token);
                         }}
-                    >Скачати Excel</button>
+                    >
+                        Скачати Excel
+                    </button>
                 )}
             </div>
             <div className="flex flex-row">
