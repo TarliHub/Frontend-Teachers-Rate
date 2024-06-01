@@ -69,6 +69,10 @@ function App(): JSX.Element {
                                     path="*"
                                     element={<Navigate to={ROUTES.TEACHERS} />}
                                 />
+                                <Route
+                                    element={<OtherProfile />}
+                                    path={`${ROUTES.TEACHERS}/teacher/:id`}
+                                />
                             </>
                         )}
                         {role !== 2 && (
@@ -83,7 +87,7 @@ function App(): JSX.Element {
                                 />
                                 <Route
                                     element={<OtherProfile />}
-                                    path={`${ROUTES.TEACHERS}/teacher/:id`}
+                                    path={`${ROUTES.TEACHERS}/:id`}
                                 />
 
                                 <Route

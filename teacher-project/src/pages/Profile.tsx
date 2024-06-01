@@ -13,7 +13,6 @@ export function Profile(): JSX.Element {
                 <p>{`${data?.lastName} ${data?.name} ${data?.middleName}`}</p>
                 <p>Email: {data?.email}</p>
                 <p>Рейтинг: {data?.points}</p>
-                <p>Role: {data?.role}</p>
             </div>
             <h3 className="flex flex-row text-2xl p-3 pb-5 border-b-[2px] border-slate-300 text-secondaryBlue">
                 Виконані завдання
