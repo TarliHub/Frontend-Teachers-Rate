@@ -34,3 +34,18 @@ export interface ITaskList {
     totalCount: number;
     items?: ITask[];
 }
+
+export interface ITaskOne {
+    id: number;
+    title: string;
+    pointsDescription: string;
+    points: number[];
+    task: ITask;
+    teacherId: number;
+    approval: string;
+    categoryId: number;
+    category: {
+        id: number;
+        name: string;
+    };
+}

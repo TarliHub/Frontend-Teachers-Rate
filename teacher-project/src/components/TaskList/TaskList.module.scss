@@ -7,7 +7,7 @@
 }
 
 .taskContainer {
-    @apply flex flex-row justify-between text-lg p-3 border-b-[2px] border-slate-300;
+    @apply flex flex-row justify-between text-lg border-b-[2px] border-slate-300;
 
     .buttonContainer {
         @apply flex-[2] flex flex-row gap-4 lg:gap-8 justify-end;

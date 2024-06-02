@@ -24,6 +24,7 @@ import { SubmitTask } from "./pages/SubmitTask";
 import { OtherProfile } from "./pages/OtherProfile";
 import { OtherProfileCH } from "./pages/OtherProfileCH";
 import { AdminProfile } from "./pages/AdminProfile";
+import { Task } from "./pages/Task";
 
 function App(): JSX.Element {
     const { token, role } = useContext(AuthContext);
@@ -107,6 +108,7 @@ function App(): JSX.Element {
                                     element={<Profile />}
                                     path={ROUTES.MAIN}
                                 />
+                                <Route path="/tasks/:id" element={<Task />} />
                                 <Route
                                     path="*"
                                     element={<Navigate to={ROUTES.MAIN} />}
