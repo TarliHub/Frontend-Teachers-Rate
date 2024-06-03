@@ -1,6 +1,7 @@
 import styles from "./SubmitTaskForm.module.scss";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ISubmitTask } from "../../types/Task.interface";
+import { useState } from "react";
 
 interface ISubmitTaskFormProps {
     handleSubmitTask: (data: ISubmitTask) => void;
@@ -18,6 +19,8 @@ export function SubmitTaskForm({
         handleSubmit,
         formState: { errors },
     } = useForm<ISubmitTask>();
+
+    const [select, setSelect] = useState<boolean>(false);
 
     const onSubmit: SubmitHandler<ISubmitTask> = (data) => {
         const dataWithTaskId: ISubmitTask = {
@@ -62,20 +65,39 @@ export function SubmitTaskForm({
                     </div>
                 )}
             </div>
+            <div className={styles.toggleSelect}>
+                <button
+                    className="bg-primaryBlue p-2 rounded-md text-white hover:bg-secondaryBlue"
+                    type="button"
+                    onClick={() => setSelect(!select)}
+                >
+                    {select ? "Вибрати оцінку" : "Вписати оцінку"}
+                </button>
+            </div>
             <div className={styles.points}>
                 <label>Оцінка</label>
-                <select
-                    {...register("points", {
-                        required: "*бал обов'язкове поле",
-                    })}
-                >
-                    <option value="">Виберіть бал</option>
-                    {points?.map((point, value) => (
-                        <option key={value} value={point}>
-                            {point}
-                        </option>
-                    ))}
-                </select>
+                {select ? (
+                    <input
+                        placeholder="Введіть бал"
+                        type="text"
+                        {...register("points", {
+                            required: "*бал обов'язкове поле",
+                        })}
+                    />
+                ) : (
+                    <select
+                        {...register("points", {
+                            required: "*бал обов'язкове поле",
+                        })}
+                    >
+                        <option value="">Виберіть бал</option>
+                        {points?.map((point, value) => (
+                            <option key={value} value={point}>
+                                {point}
+                            </option>
+                        ))}
+                    </select>
+                )}
                 {errors.points && (
                     <div className={styles.errorText}>
                         {errors.points?.message}
