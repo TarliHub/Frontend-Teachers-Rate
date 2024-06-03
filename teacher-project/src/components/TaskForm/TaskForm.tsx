@@ -1,12 +1,12 @@
 import { ChangeEvent, useState } from "react";
 import styles from "./TaskForm.module.scss";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { ITask } from "../../types/Task.interface";
+import { ITaskOne } from "../../types/Task.interface";
 import { ICategory } from "../../types/Category.interface";
 
 export interface IUserFormProps {
-    taskData?: ITask;
-    handleCreateTask: (data: ITask) => void;
+    taskData?: ITaskOne;
+    handleCreateTask: (data: ITaskOne) => void;
     categories?: ICategory[];
 }
 
@@ -19,7 +19,7 @@ export function TaskForm({
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm<ITask>();
+    } = useForm<ITaskOne>();
 
     const [points, setPoints] = useState<number[]>(taskData?.points || []);
 
@@ -31,8 +31,8 @@ export function TaskForm({
         }
     };
 
-    const onSubmit: SubmitHandler<ITask> = (data) => {
-        const taskWithPoints: ITask = {
+    const onSubmit: SubmitHandler<ITaskOne> = (data) => {
+        const taskWithPoints: ITaskOne = {
             ...data,
             points: points,
         };
