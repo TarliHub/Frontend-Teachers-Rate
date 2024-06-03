@@ -35,7 +35,7 @@ export function SubmitTaskForm({
             <div className={styles.description}>
                 <label>Опис</label>
                 <input
-                    placeholder="Введіть опис завдання"
+                    placeholder="Введіть опис показника"
                     type="text"
                     {...register("description", {
                         required: "*опис обов'язкове поле",
@@ -48,12 +48,12 @@ export function SubmitTaskForm({
                 )}
             </div>
             <div className={styles.approvalLink}>
-                <label>Посилання на підтвердження</label>
+                <label>Підтвердження</label>
                 <input
-                    placeholder="Введіть посилання на підтвердження"
+                    placeholder="Введіть підтвердження"
                     type="text"
                     {...register("approvalLink", {
-                        required: "*посилання на підтвердження поле",
+                        required: "*підтвердження обов'язкове поле",
                     })}
                 />
                 {errors.approvalLink && (
@@ -66,10 +66,10 @@ export function SubmitTaskForm({
                 <label>Оцінка</label>
                 <select
                     {...register("points", {
-                        required: "*оцінка обов'язкове поле",
+                        required: "*бал обов'язкове поле",
                     })}
                 >
-                    <option value="">Виберіть оцінку</option>
+                    <option value="">Виберіть бал</option>
                     {points?.map((point, value) => (
                         <option key={value} value={point}>
                             {point}

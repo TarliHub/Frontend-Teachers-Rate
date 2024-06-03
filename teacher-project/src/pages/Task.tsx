@@ -55,7 +55,7 @@ export function Task() {
                     ))}
                 </ul>
             </div>
-            <p className="text-lg mb-4">Умова: {data?.approval}</p>
+            <p className="text-lg mb-4">Підтвердження: {data?.approval}</p>
             <div>
                 <h2 className="text-2xl font-semibold mb-2">Категорія</h2>
                 <p className="text-lg">{data?.category.name}</p>

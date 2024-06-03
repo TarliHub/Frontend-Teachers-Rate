@@ -66,7 +66,7 @@ export function TaskForm({
                 <label>Назва</label>
                 <input
                     defaultValue={taskData && taskData.title}
-                    placeholder="Введіть назву завдання"
+                    placeholder="Введіть назву показника"
                     {...register("title", {
                         required: "*назва обов'язкове поле",
                     })}
@@ -82,7 +82,7 @@ export function TaskForm({
                 <label>Опис</label>
                 <input
                     defaultValue={taskData && taskData.pointsDescription}
-                    placeholder="Введіть опис завдання"
+                    placeholder="Введіть опис показника"
                     type="text"
                     {...register("pointsDescription", {
                         required: "*опис обов'язкове поле",
@@ -95,10 +95,10 @@ export function TaskForm({
                 )}
             </div>
             <div className={styles.approval}>
-                <label>Умова виконання завдання</label>
+                <label>Умова виконання показника</label>
                 <input
                     defaultValue={taskData && taskData.approval}
-                    placeholder="Введіть умову завдання"
+                    placeholder="Введіть умову показника"
                     type="text"
                     {...register("approval", {
                         required: "*умова обов'язкове поле",
@@ -132,7 +132,7 @@ export function TaskForm({
                 )}
             </div>
             <div className="flex flex-col">
-                <label>Оцінки</label>
+                <label>Бали</label>
                 {points.map((point, index) => (
                     <div key={index} className={styles.pointInput}>
                         <input
@@ -141,7 +141,7 @@ export function TaskForm({
                             onChange={(event) =>
                                 handlePointsChange(event, index)
                             }
-                            placeholder={`Оцінка ${index + 1}`}
+                            placeholder={`Бал ${index + 1}`}
                             min={0}
                             max={100}
                         />
@@ -154,7 +154,7 @@ export function TaskForm({
                     </div>
                 ))}
                 <button type="button" onClick={() => setPoints([...points, 0])}>
-                    Додати оцінку
+                    Додати бал
                 </button>
             </div>
 

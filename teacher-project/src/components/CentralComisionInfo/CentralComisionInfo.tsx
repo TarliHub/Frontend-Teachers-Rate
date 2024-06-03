@@ -16,7 +16,7 @@ export function CentralComisionInfo({
     return (
         <div className={styles.info}>
             <p>Назва комісії: {comissionName}</p>
-            <p>Голова комісії</p>
+            <p>Голова циклової комісії</p>
             <Link to={`${ROUTES.TEACHERS}/head-teacher/${id}`}>{name}</Link>
         </div>
     );

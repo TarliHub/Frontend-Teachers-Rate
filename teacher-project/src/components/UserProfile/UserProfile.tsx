@@ -14,12 +14,12 @@ export function UserProfile({ data }: IUserProfileProps) {
                 <p>Рейтинг: {data?.points}</p>
                 <p>Назва комісії: {data?.commissionName}</p>
             </div>
-            <h3 className={styles.header}>Виконані завдання</h3>
+            <h3 className={styles.header}>Виконані показники</h3>
             <div className={styles.taskList}>
                 <div className={styles.header}>
-                    <p className="flex-[3]">Завдання</p>
-                    <p className="flex-[2]">Умова</p>
-                    <div className="flex-1">Оцінка</div>
+                    <p className="flex-[3]">Показник</p>
+                    <p className="flex-[2]">Підтвердження</p>
+                    <div className="flex-1">Бал</div>
                 </div>
                 {data?.tasks.map((item) => {
                     return (

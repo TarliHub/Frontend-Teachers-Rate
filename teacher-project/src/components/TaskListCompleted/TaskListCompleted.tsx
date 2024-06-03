@@ -9,9 +9,9 @@ export function TaskListCompleted({ list }: ITaskListCompletedProps) {
     return (
         <div className={styles.taskList}>
             <div className={styles.header}>
-                <p className="flex-[3]">Завдання</p>
-                <p className="flex-[2]">Умова</p>
-                <div className="flex-1">Оцінка</div>
+                <p className="flex-[3]">Показник</p>
+                <p className="flex-[2]">Підтвердження</p>
+                <div className="flex-1">Бал</div>
             </div>
             {list?.map((item) => {
                 return (

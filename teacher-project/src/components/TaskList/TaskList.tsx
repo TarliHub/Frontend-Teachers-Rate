@@ -15,8 +15,8 @@ export function TaskList({ list }: ITaskListProps) {
         return (
             <div className={styles.taskList}>
                 <div className={styles.header}>
-                    <p className="flex-[5]">Завдання</p>
-                    <p className="flex-[5]">Умова</p>
+                    <p className="flex-[5]">Показник</p>
+                    <p className="flex-[5]">Підтвердження</p>
                     <div className="flex-1"></div>
                 </div>
                 {list?.map((item) => {
@@ -31,13 +31,13 @@ export function TaskList({ list }: ITaskListProps) {
                             <div className={styles.buttonContainer}>
                                 <Link
                                     to={`${ROUTES.TASKS}/update-task/${item.id}`}
-                                    title="Змінити завдання"
+                                    title="Змінити показник"
                                 >
                                     <span className="material-symbols-outlined">
                                         edit
                                     </span>
                                 </Link>
-                                <button title="Видалити завдання">
+                                <button title="Видалити показник">
                                     <span className="material-symbols-outlined">
                                         delete
                                     </span>
@@ -52,8 +52,8 @@ export function TaskList({ list }: ITaskListProps) {
     return (
         <div className={styles.taskList}>
             <div className={styles.header}>
-                <p className="flex-[4]">Завдання</p>
-                <p className="flex-[4]">Умова</p>
+                <p className="flex-[4]">Показник</p>
+                <p className="flex-[4]">Підтвердження</p>
                 <div className="flex-1"></div>
             </div>
             {list?.map((item) => {
@@ -75,13 +75,13 @@ export function TaskList({ list }: ITaskListProps) {
                                 <>
                                     <Link
                                         to={`${ROUTES.TASKS}/update-task/${item.id}`}
-                                        title="Змінити завдання"
+                                        title="Змінити показник"
                                     >
                                         <span className="material-symbols-outlined">
                                             edit
                                         </span>
                                     </Link>
-                                    <button title="Видалити завдання">
+                                    <button title="Видалити показник">
                                         <span className="material-symbols-outlined">
                                             delete
                                         </span>

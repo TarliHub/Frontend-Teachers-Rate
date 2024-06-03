@@ -3,18 +3,18 @@ import { ROUTES } from "./routes";
 export const userNavigation = [
     {
         url: ROUTES.TASKS,
-        name: "Завдання",
+        name: "Показники",
     },
 ];
 
 export const adminNavigation = [
     {
         url: ROUTES.TEACHERS,
-        name: "Голови центральних комісій",
+        name: "Голови циклових комісій",
     },
     {
         url: ROUTES.TASKS,
-        name: "Завдання",
+        name: "Показники",
     },
     {
         url: "/category",
@@ -29,10 +29,10 @@ export const adminNavigation = [
 export const cCNavigation = [
     {
         url: ROUTES.TEACHERS,
-        name: "Вчителі",
+        name: "Викладачі",
     },
     {
         url: ROUTES.TASKS,
-        name: "Завдання",
+        name: "Показники",
     },
 ];

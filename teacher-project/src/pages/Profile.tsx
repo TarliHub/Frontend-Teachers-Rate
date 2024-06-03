@@ -45,13 +45,13 @@ export function Profile(): JSX.Element {
                 <p>Рейтинг: {data?.points}</p>
             </div>
             <h3 className="flex flex-row text-2xl p-3 pb-5 border-b-[2px] border-slate-300 text-secondaryBlue">
-                Виконані завдання
+                Виконані показники
             </h3>
             <div className="flex flex-col flex-1 lg:flex-[2] border-2 rounded-2xl border-primaryBlue m-2 p-2 font-medium">
                 <div className="flex flex-row text-xl p-3 pb-5 border-b-[2px] border-slate-300 text-secondaryBlue">
-                    <p className="flex-[3]">Завдання</p>
-                    <p className="flex-[2]">Умова</p>
-                    <div className="flex-1">Оцінка</div>
+                    <p className="flex-[3]">Показник</p>
+                    <p className="flex-[2]">Підтвердження</p>
+                    <div className="flex-1">Бал</div>
                 </div>
                 {data?.tasks.map((item) => {
                     return (
