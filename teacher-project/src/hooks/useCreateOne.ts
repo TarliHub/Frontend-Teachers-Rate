@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { useContext } from "react";
+import { AxiosError } from "axios";
 
 import DataProvider from "../providers/DataProvider";
 
@@ -12,7 +13,7 @@ export const useCreateOne = <T>(key: string, routing: string) => {
 
     const queryClient = useQueryClient();
 
-    return useMutation<T, Error, { data: T; route: string }>({
+    return useMutation<T, AxiosError, { data: T; route: string }>({
         mutationFn: async ({ data, route }) => {
             return await DataProvider.createOne(data, route, token);
         },
