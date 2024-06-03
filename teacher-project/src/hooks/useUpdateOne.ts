@@ -6,6 +6,7 @@ import { AuthContext } from "../context/AuthContext";
 import DataProvider from "../providers/DataProvider";
 
 import { ROUTES } from "../constants/routes";
+import { AxiosError } from "axios";
 
 export const useUpdateOne = <T>(key: string) => {
     const { token } = useContext(AuthContext);
@@ -14,7 +15,7 @@ export const useUpdateOne = <T>(key: string) => {
 
     const queryClient = useQueryClient();
 
-    return useMutation<T, Error, { data: T; id: number; route: string }>({
+    return useMutation<T, AxiosError, { data: T; id: number; route: string }>({
         mutationFn: async ({ data, id, route }) => {
             return await DataProvider.updateOne<T>(data, id, route, token);
         },

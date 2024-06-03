@@ -6,14 +6,16 @@ import { ICategory } from "../../types/Category.interface";
 
 export interface IUserFormProps {
     taskData?: ITaskOne;
-    handleCreateTask: (data: ITaskOne) => void;
+    handleCreateTask?: (data: ITaskOne) => void;
     categories?: ICategory[];
+    handleTask?: (data: ITaskOne) => void;
 }
 
 export function TaskForm({
     taskData,
     handleCreateTask,
     categories,
+    handleTask,
 }: IUserFormProps): JSX.Element {
     const {
         register,
@@ -36,7 +38,12 @@ export function TaskForm({
             ...data,
             points: points,
         };
-        handleCreateTask(taskWithPoints);
+        if (handleTask) {
+            handleTask(taskWithPoints);
+        }
+        if (handleCreateTask) {
+            handleCreateTask(taskWithPoints);
+        }
     };
 
     const handlePointsChange = (
@@ -113,7 +120,7 @@ export function TaskForm({
             <div className={styles.category}>
                 <label>Категорія</label>
                 <select
-                    defaultValue={taskData && taskData.category?.id}
+                    defaultValue={taskData && taskData.category?.name}
                     {...register("categoryId", {
                         required: "*категорія обов'язкове поле",
                     })}

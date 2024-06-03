@@ -25,6 +25,7 @@ import { OtherProfile } from "./pages/OtherProfile";
 import { OtherProfileCH } from "./pages/OtherProfileCH";
 import { AdminProfile } from "./pages/AdminProfile";
 import { Task } from "./pages/Task";
+import { UpdateTask } from "./pages/UpdateTask";
 
 function App(): JSX.Element {
     const { token, role } = useContext(AuthContext);
@@ -55,9 +56,6 @@ function App(): JSX.Element {
                                     path={`${ROUTES.TASKS}/create-task`}
                                 />
                                 <Route
-                                    path={`${ROUTES.TASKS}/update-task/:id`}
-                                />
-                                <Route
                                     path="/category"
                                     element={<Category />}
                                 />
@@ -67,12 +65,16 @@ function App(): JSX.Element {
                                 />
                                 <Route path="/category/update-category/:id" />
                                 <Route
-                                    path="*"
-                                    element={<Navigate to={ROUTES.TEACHERS} />}
-                                />
-                                <Route
                                     element={<OtherProfile />}
                                     path={`${ROUTES.TEACHERS}/teacher/:id`}
+                                />
+                                <Route
+                                    element={<UpdateTask />}
+                                    path={`${ROUTES.TASKS}/update-task/:id`}
+                                />
+                                <Route
+                                    path="*"
+                                    element={<Navigate to={ROUTES.TEACHERS} />}
                                 />
                             </>
                         )}
