@@ -1,12 +1,12 @@
 import styles from "./CategoryList.module.scss";
-import { Link } from "react-router-dom";
 import { ICategory } from "../../types/Category.interface";
 
 interface ICategoryListProps {
     list?: ICategory[];
+    handleDelete: (id: number) => void;
 }
 
-export function CategoryList({ list }: ICategoryListProps) {
+export function CategoryList({ list, handleDelete }: ICategoryListProps) {
     return (
         <div className={styles.categoryList}>
             <div className={styles.header}>
@@ -23,15 +23,10 @@ export function CategoryList({ list }: ICategoryListProps) {
                         <p className="flex-1">{item.name}</p>
 
                         <div className={styles.buttonContainer}>
-                            <Link
-                                to={`/category/update-category/${item.id}`}
-                                title="Змінити категорію"
+                            <button
+                                onClick={() => handleDelete(item.id)}
+                                title="Видалити категорію"
                             >
-                                <span className="material-symbols-outlined">
-                                    edit
-                                </span>
-                            </Link>
-                            <button title="Видалити категорію">
                                 <span className="material-symbols-outlined">
                                     delete
                                 </span>

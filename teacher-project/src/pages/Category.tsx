@@ -5,36 +5,63 @@ import { useList } from "../hooks/useList";
 import { ICategoryList } from "../types/Category.interface";
 import { CategoryList } from "../components/CategoryList/CategoryList";
 import { AuthContext } from "../context/AuthContext";
-import { AxiosError } from "axios"; // Імпортуємо тип AxiosError
+import { AxiosError } from "axios"; // Import AxiosError type
+import { useDeleteOne } from "../hooks/useDeleteOne"; // Import useDeleteOne hook
 
 export function Category(): JSX.Element {
     const [currentPage, setCurrentPage] = useState(0);
     const [showError, setShowError] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+    const [errorCode, setErrorCode] = useState<number | null>(null);
 
     const { deleteToken } = useContext(AuthContext);
 
-    const { data, error } = useList<ICategoryList>(
+    const { data, error: fetchError } = useList<ICategoryList>(
         "category",
         currentPage,
         "category"
     );
 
+    const DeleteCategory = useDeleteOne<void>("category");
+
+    const handleDelete = (id: number) => {
+        DeleteCategory.mutate(
+            {
+                id,
+                route: "category",
+            },
+            {
+                onError: (error: AxiosError) => {
+                    if (error.response?.status === 401) {
+                        setError("Час авторизації вийшов. Увійдіть знову.");
+                        setErrorCode(401);
+                    } else {
+                        setError(error.message);
+                        setErrorCode(error.response?.status || null);
+                    }
+                },
+            }
+        );
+    };
+
     const handleContinueClick = () => {
-        if (error && (error as AxiosError).response?.status === 401) {
+        if (errorCode === 401) {
             deleteToken();
         } else {
             setShowError(false);
         }
+        setError(null);
+        setErrorCode(null);
     };
 
-    if (error && showError) {
+    if (fetchError && showError) {
         return (
             <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
                 <div className="bg-white p-6 rounded-lg shadow-lg">
                     <p className="text-red-600 mb-4">
-                        {(error as AxiosError).response?.status === 401
+                        {(fetchError as AxiosError).response?.status === 401
                             ? "Час авторизації вийшов"
-                            : error.message}
+                            : fetchError.message}
                     </p>
                     <button
                         className="bg-primaryBlue p-2 rounded-md text-white hover:bg-secondaryBlue"
@@ -49,9 +76,22 @@ export function Category(): JSX.Element {
 
     return (
         <div>
+            {error && (
+                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                    <div className="bg-white p-6 rounded-lg shadow-lg">
+                        <p className="text-red-600 mb-4">{error}</p>
+                        <button
+                            className="bg-primaryBlue p-2 rounded-md text-white hover:bg-secondaryBlue"
+                            onClick={handleContinueClick}
+                        >
+                            Продовжити
+                        </button>
+                    </div>
+                </div>
+            )}
             <div className="flex justify-end m-4">
                 <Link
-                    className=" flex items-center gap-1 text-secondaryBlue cursor-pointer"
+                    className="flex items-center gap-1 text-secondaryBlue cursor-pointer"
                     to="/category/create-category"
                 >
                     <span className="material-symbols-outlined text-3xl">
@@ -60,7 +100,7 @@ export function Category(): JSX.Element {
                     <p className="text-lg font-medium">СТВОРИТИ</p>
                 </Link>
             </div>
-            <CategoryList list={data?.items} />
+            <CategoryList list={data?.items} handleDelete={handleDelete} />
             <div>
                 <Pagination
                     totalPages={data?.totalPages}

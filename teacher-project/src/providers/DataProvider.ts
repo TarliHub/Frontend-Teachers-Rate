@@ -95,6 +95,21 @@ class DataProvider {
                 throw error;
             });
     }
+    static deleteAll<T>(route: string, token?: string): Promise<T> {
+        return axios
+            .delete(`${BASE_API_URL}/${route}/deleteAll`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then((response: AxiosResponse<T>) => {
+                return response.data;
+            })
+            .catch((error) => {
+                console.error(error);
+                throw error;
+            });
+    }
 }
 
 export default DataProvider;

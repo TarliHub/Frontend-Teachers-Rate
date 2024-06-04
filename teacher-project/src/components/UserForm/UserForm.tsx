@@ -151,8 +151,9 @@ export function UserForm({
                     </div>
                 )}
             </div>
-            {useLocation().pathname ===
-                `${ROUTES.TEACHERS}${ROUTES.CREATE_USER}` && (
+            {(userData ||
+                useLocation().pathname ===
+                    `${ROUTES.TEACHERS}${ROUTES.CREATE_USER}`) && (
                 <>
                     <div className={styles.password}>
                         <label>Пароль</label>
