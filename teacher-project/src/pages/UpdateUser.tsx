@@ -100,6 +100,7 @@ export function UpdateUser(): JSX.Element {
                 </div>
             )}
             <UserForm
+                updateForm={true}
                 handleUser={handleUpdateUser}
                 userData={GetOneUser.data}
             />
