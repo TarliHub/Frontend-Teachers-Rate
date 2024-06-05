@@ -66,15 +66,16 @@ export function TaskList({ list }: ITaskListProps) {
             )}
             <div className={styles.taskList}>
                 <div className={styles.header}>
-                    <p className="flex-[5]">Показник</p>
-                    <p className="flex-[5]">Підтвердження</p>
+                    <p className="flex-[2]">Показник</p>
+                    <p className="flex-[2]">Підтвердження</p>
+                    <p className="flex-[2]">Категорія</p>
                     <div className="flex-1"></div>
                 </div>
                 {list?.map((item) => {
                     return (
                         <div className={styles.taskContainer} key={item.id}>
-                            <div className="flex-[3] p-3 flex flex-row">
-                                <div className="flex-[3]">
+                            <div className="flex-[6] p-3 flex flex-row">
+                                <div className="flex-1">
                                     {role !== 0 ? (
                                         <Link to={`/tasks/${item.id}`}>
                                             {item.title}
@@ -84,6 +85,7 @@ export function TaskList({ list }: ITaskListProps) {
                                     )}
                                 </div>
                                 <p className="flex-1">{item.approval}</p>
+                                <p className="flex-1">{item.category.name}</p>
                             </div>
                             <div className={styles.buttonContainer}>
                                 {role === 0 && (

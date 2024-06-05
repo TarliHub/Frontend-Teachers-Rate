@@ -10,7 +10,7 @@
     @apply flex flex-row justify-between text-lg border-b-[2px] border-slate-300;
 
     .buttonContainer {
-        @apply flex-[2] flex flex-row gap-4 lg:gap-8 justify-end;
+        @apply flex-[1] flex flex-row gap-4 lg:gap-8 justify-end;
 
         button,
         a {

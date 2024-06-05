@@ -9,17 +9,19 @@ export function TaskListCompleted({ list }: ITaskListCompletedProps) {
     return (
         <div className={styles.taskList}>
             <div className={styles.header}>
-                <p className="flex-[3]">Показник</p>
+                <p className="flex-[2]">Показник</p>
                 <p className="flex-[2]">Підтвердження</p>
+                <p className="flex-[2]">Категорія</p>
                 <div className="flex-1">Бал</div>
             </div>
             {list?.map((item) => {
                 return (
                     <div className={styles.taskContainer} key={item.id}>
-                        <div className="flex-[3]">
+                        <div className="flex-[2]">
                             <p>{item?.task.title}</p>
                         </div>
                         <p className="flex-[2]">{item?.task.approval}</p>
+                        <p className="flex-[2]">{item.task.category.name}</p>
                         <p className="flex-1">{item?.points}</p>
                     </div>
                 );
