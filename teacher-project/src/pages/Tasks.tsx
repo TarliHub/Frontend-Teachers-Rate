@@ -6,7 +6,7 @@ import { ITaskList } from "../types/Task.interface";
 import { TaskList } from "../components/TaskList/TaskList";
 import { TaskListCompleted } from "../components/TaskListCompleted/TaskListCompleted";
 import { AuthContext } from "../context/AuthContext";
-import { useDeleteAll } from "../hooks/useDeleteAll"; // Import the new hook
+import { useDeleteAll } from "../hooks/useDeleteAll";
 import { AxiosError } from "axios";
 import { ROUTES } from "../constants/routes";
 

@@ -12,7 +12,7 @@ interface ITaskListProps {
 }
 
 export function TaskList({ list }: ITaskListProps) {
-    const { deleteToken } = useContext(AuthContext);
+    const { deleteToken, role } = useContext(AuthContext);
     const [error, setError] = useState<string | null>(null);
     const [errorCode, setErrorCode] = useState<number | null>(null);
 
@@ -75,27 +75,39 @@ export function TaskList({ list }: ITaskListProps) {
                         <div className={styles.taskContainer} key={item.id}>
                             <div className="flex-[3] p-3 flex flex-row">
                                 <div className="flex-[3]">
-                                    <p>{item.title}</p>
+                                    {role !== 0 ? (
+                                        <Link to={`/tasks/${item.id}`}>
+                                            {item.title}
+                                        </Link>
+                                    ) : (
+                                        <p>{item.title}</p>
+                                    )}
                                 </div>
                                 <p className="flex-1">{item.approval}</p>
                             </div>
                             <div className={styles.buttonContainer}>
-                                <Link
-                                    to={`${ROUTES.TASKS}/update-task/${item.id}`}
-                                    title="Змінити показник"
-                                >
-                                    <span className="material-symbols-outlined">
-                                        edit
-                                    </span>
-                                </Link>
-                                <button
-                                    onClick={() => handleDelete(item.id)}
-                                    title="Видалити показник"
-                                >
-                                    <span className="material-symbols-outlined">
-                                        delete
-                                    </span>
-                                </button>
+                                {role === 0 && (
+                                    <>
+                                        <Link
+                                            to={`${ROUTES.TASKS}/update-task/${item.id}`}
+                                            title="Змінити показник"
+                                        >
+                                            <span className="material-symbols-outlined">
+                                                edit
+                                            </span>
+                                        </Link>
+                                        <button
+                                            onClick={() =>
+                                                handleDelete(item.id)
+                                            }
+                                            title="Видалити показник"
+                                        >
+                                            <span className="material-symbols-outlined">
+                                                delete
+                                            </span>
+                                        </button>
+                                    </>
+                                )}
                             </div>
                         </div>
                     );
