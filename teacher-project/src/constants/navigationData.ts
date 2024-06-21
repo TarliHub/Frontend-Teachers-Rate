@@ -2,41 +2,37 @@ import { ROUTES } from "./routes";
 
 export const userNavigation = [
     {
-        url: "/",
-        name: "Головна",
-    },
-    {
         url: ROUTES.TASKS,
-        name: "Завдання",
+        name: "Показники",
     },
 ];
 
 export const adminNavigation = [
     {
-        url: "/",
-        name: "Головна",
-    },
-    {
         url: ROUTES.TEACHERS,
-        name: "Голови центральних комісій",
+        name: "Голови циклових комісій",
     },
     {
         url: ROUTES.TASKS,
-        name: "Завдання",
+        name: "Показники",
+    },
+    {
+        url: "/category",
+        name: "Категорії",
+    },
+    {
+        url: "/",
+        name: "Налаштування",
     },
 ];
 
 export const cCNavigation = [
     {
-        url: "/",
-        name: "Головна",
-    },
-    {
         url: ROUTES.TEACHERS,
-        name: "Вчителі",
+        name: "Викладачі",
     },
     {
         url: ROUTES.TASKS,
-        name: "Завдання",
+        name: "Показники",
     },
 ];

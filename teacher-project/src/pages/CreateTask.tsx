@@ -1,27 +1,26 @@
-import { Link } from "react-router-dom";
+import { TaskForm } from "../components/TaskForm/TaskForm";
 import { useCreateOne } from "../hooks/useCreateOne";
-import { UserForm } from "../components/UserForm/UserForm";
-import { ROUTES } from "../constants/routes";
-import { IUser } from "../types/User.interface";
-import { AuthContext } from "../context/AuthContext";
+import { useList } from "../hooks/useList";
+import { ICategoryList } from "../types/Category.interface";
+import { ITask } from "../types/Task.interface";
 import { useContext, useState } from "react";
 import { AxiosError } from "axios";
+import { AuthContext } from "../context/AuthContext";
 
-export function CreateUser(): JSX.Element {
-    const { role, deleteToken } = useContext(AuthContext);
+export function CreateTask() {
     const [error, setError] = useState<string | null>(null);
     const [errorCode, setErrorCode] = useState<number | null>(null);
+    const { deleteToken } = useContext(AuthContext);
 
-    const CreateUser = useCreateOne<IUser>(
-        role === 1 ? "teachers" : "central-comision",
-        "teachers"
-    );
+    const CreateTask = useCreateOne<ITask>("tasks", "tasks");
 
-    const handleCreateUser = (data: IUser) => {
-        CreateUser.mutate(
+    const { data } = useList<ICategoryList>("category", 0, "category");
+
+    const handleCreateTask = (data: ITask) => {
+        CreateTask.mutate(
             {
                 data,
-                route: role === 1 ? "teachers" : "head-teachers",
+                route: "tasks",
             },
             {
                 onError: (error: AxiosError) => {
@@ -63,8 +62,10 @@ export function CreateUser(): JSX.Element {
                     </div>
                 </div>
             )}
-            <Link to={ROUTES.TEACHERS}>Назад</Link>
-            <UserForm handleUser={handleCreateUser} />
+            <TaskForm
+                categories={data?.items}
+                handleCreateTask={handleCreateTask}
+            />
         </div>
     );
 }

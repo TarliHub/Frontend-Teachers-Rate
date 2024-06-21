@@ -1,18 +1,17 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { AuthContext } from "../context/AuthContext";
 import { useContext } from "react";
-
-import DataProvider from "../providers/DataProvider";
 import { AxiosError } from "axios";
+import DataProvider from "../providers/DataProvider";
 
-export const useDeleteOne = <T>(key: string) => {
+export const useDeleteAll = <T>(key: string) => {
     const { token } = useContext(AuthContext);
 
     const queryClient = useQueryClient();
 
-    return useMutation<T, AxiosError, { id: number; route: string }>({
-        mutationFn: async ({ id, route }) => {
-            return await DataProvider.deleteOne<T>(id, route, token);
+    return useMutation<T, AxiosError, { route: string }>({
+        mutationFn: async ({ route }) => {
+            return await DataProvider.deleteAll<T>(route, token);
         },
         onSuccess: async () => {
             await queryClient.invalidateQueries({ queryKey: [key] });

@@ -6,13 +6,14 @@ import { AuthContext } from "../context/AuthContext";
 import { ILoginFields, IUserData } from "../types/Auth.interface";
 
 import AuthenticationProvider from "../providers/AuthenticationProvider";
+import { AxiosError } from "axios";
 
 export const useLoginUser = () => {
     const navigate = useNavigate();
 
     const { setToken, setRole } = useContext(AuthContext);
 
-    return useMutation<IUserData, Error, { data: ILoginFields }>({
+    return useMutation<IUserData, AxiosError, { data: ILoginFields }>({
         mutationFn: async ({ data }) => {
             return await AuthenticationProvider.loginUser(data);
         },

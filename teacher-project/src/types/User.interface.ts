@@ -1,3 +1,5 @@
+import { ITask } from "./Task.interface";
+
 export interface IUsersList {
     currentPage: number;
     pageSize: number;
@@ -19,4 +21,12 @@ export interface IUser {
     commissionName?: string;
     teachers?: IUser[];
     headTeacher?: IUser;
+    tasks: [
+        {
+            id: number;
+            teacherId: number;
+            task: ITask;
+            points: number;
+        }
+    ];
 }

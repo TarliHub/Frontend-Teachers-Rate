@@ -1,24 +1,17 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useGetOne } from "../hooks/useGetOne";
-import { useState, useContext } from "react";
-
-import { IUser } from "../types/User.interface";
-import { UsersList } from "../components/UsersList/UsersList";
-import { ROUTES } from "../constants/routes";
-import { CentralComisionInfo } from "../components/CentralComisionInfo/CentralComisionInfo";
-import { AuthContext } from "../context/AuthContext";
+import { ITaskOne } from "../types/Task.interface";
+import { useContext, useState } from "react";
 import { AxiosError } from "axios";
+import { AuthContext } from "../context/AuthContext";
 
-export function CentralComision(): JSX.Element {
-    const { id } = useParams();
-    const [showError, setShowError] = useState(true);
+export function Task() {
     const { deleteToken } = useContext(AuthContext);
+    const { id } = useParams();
+    const taskId = id !== undefined ? parseInt(id) : 0;
+    const [showError, setShowError] = useState(true);
 
-    const { data, error } = useGetOne<IUser>(
-        id ? parseInt(id) : 0,
-        "head-teachers",
-        "central-comision"
-    );
+    const { data, error } = useGetOne<ITaskOne>(taskId, "tasks", `task-${id}`);
 
     const handleContinueClick = () => {
         if (error && (error as AxiosError).response?.status === 401) {
@@ -49,16 +42,20 @@ export function CentralComision(): JSX.Element {
     }
 
     return (
-        <div>
-            <CentralComisionInfo
-                name={`${data?.lastName} ${data?.name} ${data?.middleName}`}
-                comissionName={data?.commissionName}
-                id={data?.id}
-            />
-            <UsersList
-                usersData={data?.teachers}
-                customLinkRoute={`${ROUTES.TEACHER}`}
-            />
+        <div className="flex flex-col text-2xl p-3 pb-5 border-b-[2px] border-slate-300 gap-4">
+            <h1 className="text-3xl font-bold">{data?.title}</h1>
+            <p className="text-lg">Опис: {data?.pointsDescription}</p>
+            <p className="text-lg mb-4">Підтвердження: {data?.approval}</p>
+            <div>
+                <h2 className="text-2xl font-semibold mb-2">Категорія</h2>
+                <p className="text-lg">{data?.category.name}</p>
+            </div>
+            <Link
+                className="p-2 ml-8 text-center flex items-center justify-center text-xl rounded-md bg-primaryBlue text-white"
+                to={`/tasks/submit/${taskId}`}
+            >
+                Submit Task
+            </Link>
         </div>
     );
 }

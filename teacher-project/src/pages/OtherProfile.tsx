@@ -1,23 +1,20 @@
 import { useParams } from "react-router-dom";
 import { useGetOne } from "../hooks/useGetOne";
-import { useState, useContext } from "react";
-
 import { IUser } from "../types/User.interface";
-import { UsersList } from "../components/UsersList/UsersList";
-import { ROUTES } from "../constants/routes";
-import { CentralComisionInfo } from "../components/CentralComisionInfo/CentralComisionInfo";
+import { UserProfile } from "../components/UserProfile/UserProfile";
+import { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { AxiosError } from "axios";
 
-export function CentralComision(): JSX.Element {
+export function OtherProfile() {
     const { id } = useParams();
     const [showError, setShowError] = useState(true);
     const { deleteToken } = useContext(AuthContext);
 
     const { data, error } = useGetOne<IUser>(
         id ? parseInt(id) : 0,
-        "head-teachers",
-        "central-comision"
+        "teachers",
+        "teachers"
     );
 
     const handleContinueClick = () => {
@@ -50,15 +47,7 @@ export function CentralComision(): JSX.Element {
 
     return (
         <div>
-            <CentralComisionInfo
-                name={`${data?.lastName} ${data?.name} ${data?.middleName}`}
-                comissionName={data?.commissionName}
-                id={data?.id}
-            />
-            <UsersList
-                usersData={data?.teachers}
-                customLinkRoute={`${ROUTES.TEACHER}`}
-            />
+            <UserProfile data={data} />
         </div>
     );
 }

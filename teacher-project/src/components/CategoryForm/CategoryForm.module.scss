@@ -1,0 +1,33 @@
+@import "../../assets/styles/vars.scss";
+
+.registrationForm {
+    @apply flex flex-col border-2 border-primaryBlue font-medium text-lg rounded-lg sm:w-[400px] m-2 px-2 lg:w-[500px] lg:text-xl lg:m-4 lg:px-4;
+
+    .category {
+        @apply flex flex-col w-full my-2;
+
+        .input {
+            @apply h-[44px] flex flex-col mb-4;
+
+            button {
+                @apply h-11 w-11 relative flex items-center justify-center self-end bottom-[52px] py-[18px] focus:outline-none;
+            }
+        }
+
+        input {
+            @apply w-full p-2 my-2 outline-none border-2 border-secondaryBlue rounded-md;
+        }
+    }
+
+    .button {
+        @apply self-center m-3;
+
+        button {
+            @apply bg-primaryBlue text-white p-2 rounded-lg cursor-pointer focus:outline-none;
+        }
+    }
+}
+
+.errorText {
+    @apply text-base lg:text-lg font-medium text-[#FF0000];
+}

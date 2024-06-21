@@ -1,4 +1,4 @@
-.usersList {
+.taskList {
     @apply flex flex-col flex-1 lg:flex-[2] border-2 rounded-2xl border-primaryBlue m-2 p-2 font-medium;
 
     .header {
@@ -6,11 +6,11 @@
     }
 }
 
-.userContainer {
-    @apply flex flex-row justify-between text-lg p-3 border-b-[2px] border-slate-300;
+.taskContainer {
+    @apply flex flex-row justify-between text-lg border-b-[2px] border-slate-300;
 
     .buttonContainer {
-        @apply flex-[2] flex flex-row gap-4 lg:gap-8 justify-end;
+        @apply flex-[1] flex flex-row gap-4 lg:gap-8 justify-end;
 
         button,
         a {

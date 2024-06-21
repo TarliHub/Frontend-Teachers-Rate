@@ -1,4 +1,4 @@
-.usersList {
+.categoryList {
     @apply flex flex-col flex-1 lg:flex-[2] border-2 rounded-2xl border-primaryBlue m-2 p-2 font-medium;
 
     .header {
@@ -6,7 +6,7 @@
     }
 }
 
-.userContainer {
+.categoryContainer {
     @apply flex flex-row justify-between text-lg p-3 border-b-[2px] border-slate-300;
 
     .buttonContainer {

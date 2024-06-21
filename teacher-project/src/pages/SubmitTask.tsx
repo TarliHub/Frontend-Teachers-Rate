@@ -1,27 +1,28 @@
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { SubmitTaskForm } from "../components/SubmitTask/SubmitTaskForm";
 import { useCreateOne } from "../hooks/useCreateOne";
-import { UserForm } from "../components/UserForm/UserForm";
-import { ROUTES } from "../constants/routes";
-import { IUser } from "../types/User.interface";
-import { AuthContext } from "../context/AuthContext";
+import { ISubmitTask, ITaskOne } from "../types/Task.interface";
+import { useGetOne } from "../hooks/useGetOne";
 import { useContext, useState } from "react";
 import { AxiosError } from "axios";
+import { AuthContext } from "../context/AuthContext";
 
-export function CreateUser(): JSX.Element {
-    const { role, deleteToken } = useContext(AuthContext);
+export function SubmitTask() {
+    const { id } = useParams();
+    const taskId = id !== undefined ? parseInt(id) : 0;
+
+    const { deleteToken } = useContext(AuthContext);
+
     const [error, setError] = useState<string | null>(null);
     const [errorCode, setErrorCode] = useState<number | null>(null);
 
-    const CreateUser = useCreateOne<IUser>(
-        role === 1 ? "teachers" : "central-comision",
-        "teachers"
-    );
+    const SubmitTask = useCreateOne<ISubmitTask>("completed-tasks", "tasks");
 
-    const handleCreateUser = (data: IUser) => {
-        CreateUser.mutate(
+    const handlSubmitTask = (data: ISubmitTask) => {
+        SubmitTask.mutate(
             {
                 data,
-                route: role === 1 ? "teachers" : "head-teachers",
+                route: "tasks/send-request",
             },
             {
                 onError: (error: AxiosError) => {
@@ -37,14 +38,25 @@ export function CreateUser(): JSX.Element {
         );
     };
 
+    const pointsData = useGetOne<ITaskOne>(taskId, "tasks", "tasks");
+
+    if (pointsData.error) {
+        if ((pointsData.error as AxiosError).response?.status === 401) {
+            setError("Час авторизації вийшов. Увійдіть знову.");
+            setErrorCode(401);
+        } else {
+            setError(pointsData.error.message);
+            setErrorCode(
+                (pointsData.error as AxiosError).response?.status || null
+            );
+        }
+    }
+
     const handleErrorButtonClick = () => {
         if (errorCode === 401) {
             deleteToken();
-        } else {
-            setError("");
-            setErrorCode(0);
         }
-        setError(null);
+        setError("");
         setErrorCode(null);
     };
 
@@ -63,8 +75,11 @@ export function CreateUser(): JSX.Element {
                     </div>
                 </div>
             )}
-            <Link to={ROUTES.TEACHERS}>Назад</Link>
-            <UserForm handleUser={handleCreateUser} />
+            <SubmitTaskForm
+                handleSubmitTask={handlSubmitTask}
+                points={pointsData.data?.points}
+                taskId={taskId}
+            />
         </div>
     );
 }
